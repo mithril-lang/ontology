@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@gftdcojp/resourcebox':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: 0.2.1
+        version: 0.2.1
       '@orpc/client':
         specifier: ^1.10.0
         version: 1.10.0
@@ -55,8 +55,8 @@ importers:
         specifier: ^2.0.9
         version: 2.0.9
       fast-xml-parser:
-        specifier: ^5.3.0
-        version: 5.3.0
+        specifier: ^5.3.4
+        version: 5.3.4
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)
@@ -236,9 +236,10 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@gftdcojp/resourcebox@0.2.0':
-    resolution: {integrity: sha512-O74Kcb2lm/bEo4gwDXKIRAkh/7R49aqNmzSryyLexP9QF6ZbO9+YNovda0bg9LTX7yOSFPd/i7PWzjZtXv9BqQ==}
+  '@gftdcojp/resourcebox@0.2.1':
+    resolution: {integrity: sha512-ZabFK+Idbz1feYJLBCp5B6JJPkL/hscs3V2TeV9mxDpuPHG6WHrDmAX/m8tiybW8v1zvdBA2b1jC1BCKGk3+KQ==}
     engines: {node: '>=22.0.0', pnpm: '>=9.0.0'}
+    hasBin: true
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -663,8 +664,8 @@ packages:
   fast-uri@3.1.0:
     resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
 
-  fast-xml-parser@5.3.0:
-    resolution: {integrity: sha512-gkWGshjYcQCF+6qtlrqBqELqNqnt4CxruY6UVAWWnqb3DQ6qaNFEIKqzYep1XzHLM/QtrHVCxyPOtTk4LTQ7Aw==}
+  fast-xml-parser@5.3.4:
+    resolution: {integrity: sha512-EFd6afGmXlCx8H8WTZHhAoDaWaGyuIBoZJ2mknrNxug+aZKjkp0a0dlars9Izl+jF+7Gu1/5f/2h68cQpe0IiA==}
     hasBin: true
 
   fdir@6.5.0:
@@ -982,8 +983,8 @@ packages:
   strip-literal@3.1.0:
     resolution: {integrity: sha512-8r3mkIM/2+PpjHoOtiAW8Rg3jJLHaV7xPwG+YRGrv6FP0wwk/toTpATxWYOW0BKdWwl82VT2tFYi5DlROa0Mxg==}
 
-  strnum@2.1.1:
-    resolution: {integrity: sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==}
+  strnum@2.1.2:
+    resolution: {integrity: sha512-l63NF9y/cLROq/yqKXSLtcMeeyOfnSQlfMSlzFt/K73oIaD8DGaQWd7Z34X9GPiKqP5rbSh84Hl4bOlLcjiSrQ==}
 
   sucrase@3.35.0:
     resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==}
@@ -1273,11 +1274,12 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@gftdcojp/resourcebox@0.2.0':
+  '@gftdcojp/resourcebox@0.2.1':
     dependencies:
       '@sinclair/typebox': 0.32.35
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
+      commander: 14.0.1
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -1694,9 +1696,9 @@ snapshots:
 
   fast-uri@3.1.0: {}
 
-  fast-xml-parser@5.3.0:
+  fast-xml-parser@5.3.4:
     dependencies:
-      strnum: 2.1.1
+      strnum: 2.1.2
 
   fdir@6.5.0(picomatch@4.0.3):
     optionalDependencies:
@@ -2007,7 +2009,7 @@ snapshots:
     dependencies:
       js-tokens: 9.0.1
 
-  strnum@2.1.1: {}
+  strnum@2.1.2: {}
 
   sucrase@3.35.0:
     dependencies:
