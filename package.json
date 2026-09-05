@@ -37,7 +37,7 @@
     "@rdfjs/data-model": "^2.0.1",
     "@rdfjs/types": "^1.1.0",
     "commander": "^14.0.1",
-    "hono": "^4.12.27",
+    "hono": "^4.12.34",
     "jsonld": "^8.3.3",
     "n3": "^1.17.3",
     "rdf-validate-shacl": "^0.4.3",

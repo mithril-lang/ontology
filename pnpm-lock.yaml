@@ -27,8 +27,8 @@ importers:
         specifier: ^14.0.1
         version: 14.0.1
       hono:
-        specifier: ^4.12.27
-        version: 4.12.27
+        specifier: ^4.12.34
+        version: 4.12.34
       jsonld:
         specifier: ^8.3.3
         version: 8.3.3(web-streams-polyfill@3.3.3)
@@ -1050,8 +1050,8 @@ packages:
     deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
-  hono@4.12.27:
-    resolution: {integrity: sha512-1yrb/+w6HWQJrUCLkJ2IF5jNIPvvFkblV5RNOYl6bV+OA6p9GLcMpHFFGTosSvHvcAUibuUukRqhlYI4z32C7Q==}
+  hono@4.12.34:
+    resolution: {integrity: sha512-GqXJqY/xJkJmuloTrnV1ZEXG3fqte+VjkUqoRNZXcrUidiUOP4fMSIHHY4tsqZBK++kVyWmt/AAfSUuy57/eSA==}
     engines: {node: '>=16.9.0'}
 
   ieee754@1.2.1:
@@ -2353,7 +2353,7 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
-  hono@4.12.27: {}
+  hono@4.12.34: {}
 
   ieee754@1.2.1: {}
 
