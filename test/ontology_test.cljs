@@ -1,0 +1,458 @@
+#!/usr/bin/env nbb
+;; test/ontology_test.cljs — the DoDAF 2.0 meta-model index and the standard
+;; views catalogue, executed rather than described.
+;;
+;;   nbb test/ontology_test.cljs            (run from the repo root)
+;;
+;; exit 0  all green  (prints "ontology metamodel: all green" — the maturity-loop marker)
+;; exit 1  an invariant no longer holds
+;; exit 2  REFUSED — the sources could not be inspected, so no verdict is given
+;;         (src/ontology/*.ts missing, a module would not load, or fewer checks
+;;         ran than the floor)
+;;
+;; What runs here is the real `src/ontology/dodaf-metamodel.ts`, the eleven
+;; `src/ontology/*-metamodel.ts` tables it spreads, and `src/ontology/dodaf-views.ts`.
+;; Node >= 23.6 strips TypeScript types on import, so the code under test is the
+;; code the package ships — not a Clojure re-implementation of it (a mirror would
+;; stay green while the .ts drifted). The only seam is a resolve hook that maps
+;; the extensionless relative specifiers (`./core-metamodel`) onto the `.ts`
+;; files that exist; it rewrites no source. These modules import no package, so
+;; the file runs without `node_modules` — which is also why it stops at the
+;; meta model and the views: `builder.ts` and the validators pull in jsonld / n3 /
+;; resourcebox and are covered by the package's own vitest suite instead.
+;;
+;; Invariants pinned:
+;;   - DODAF_CORE_METAMODEL / DODAF_RELATIONSHIP_METAMODEL are exactly the ordered
+;;     spread of the eleven module tables — same keys, same objects. Fourteen
+;;     element keys are defined by two modules (Capability, Performer, Measure,
+;;     Project, Rule, Location, Service, Port, ServicePort, ServiceDescription,
+;;     Information, InformationType, Representation, RepresentationType); the
+;;     index keeps whichever module is spread LAST, and that order is part of
+;;     the contract here (reordering two spreads changes which class wins).
+;;   - every class is well-formed: string name/description, property types drawn
+;;     from the MetaModelProperty union, boolean `required`, unique property
+;;     names, constraint types drawn from the MetaModelConstraint union
+;;   - a known element type is held to its OWN required properties and nothing
+;;     else (no fall-back to the default model); an unknown type is held to the
+;;     default model's id / name / description with `properties` optional
+;;   - the validator reports every missing required property, not only the first,
+;;     and names both the property and the type in each message
+;;   - relationship validation mirrors element validation, and says
+;;     "relationship type" in its messages
+;;   - getElementMetaModel / getRelationshipMetaModel return the index entry
+;;     itself for a known type and undefined for an unknown one
+;;   - the five standard views come in DoDAF order AV, OV, SV, TV, DIV with the
+;;     five ViewName strings; every product number carries its view prefix, is
+;;     unique across the catalogue, and starts with empty element/relationship
+;;     lists; an unknown view type yields an empty list, not a fall-back
+;;
+;; Observed but NOT pinned (reported on the SCANNED line, left for the source):
+;;   - 42 names in the ElementType union (OperationalActivity, System*, Data*,
+;;     Entity, Table, ...) have no class in the index and silently validate
+;;     against the default model; `TRADITIONAL_DATA_METAMODEL` is exported but
+;;     never spread into the index
+;;   - 48 classes name `superClass: 'Element'`, which is not in the index
+;;   - presence is tested by key (`in`), so `{name: undefined}` passes
+(ns ontology-test
+  (:require [clojure.string :as str]
+            [clojure.set :as set]
+            [promesa.core :as p]
+            ["node:fs" :as fs]
+            ["node:path" :as path]
+            ["node:url" :as url]
+            ["node:module" :as nm]))
+
+(def root (or (.. js/process -env -ONTOLOGY_ROOT) (js/process.cwd)))
+(def ont-dir (path/join root "src" "ontology"))
+(def index-path (path/join ont-dir "dodaf-metamodel.ts"))
+(def views-path (path/join ont-dir "dodaf-views.ts"))
+(def types-path (path/join root "src" "types" "dodaf.ts"))
+
+(def element-spread
+  "The order dodaf-metamodel.ts spreads the element tables. Later wins."
+  [["core" "CORE_METAMODEL"] ["operational" "OPERATIONAL_METAMODEL"]
+   ["system" "SYSTEM_METAMODEL"] ["data" "DATA_METAMODEL"]
+   ["service" "SERVICE_METAMODEL"] ["logical" "LOGICAL_METAMODEL"]
+   ["standard" "STANDARD_METAMODEL"] ["organizational" "ORGANIZATIONAL_METAMODEL"]
+   ["infrastructure" "INFRASTRUCTURE_METAMODEL"] ["security" "SECURITY_METAMODEL"]
+   ["dm2" "DM2_PRINCIPAL_METAMODEL"] ["dm2" "DM2_SUPPORTING_METAMODEL"]])
+
+(def relationship-spread
+  [["core" "CORE_RELATIONSHIP_METAMODEL"] ["operational" "OPERATIONAL_RELATIONSHIP_METAMODEL"]
+   ["system" "SYSTEM_RELATIONSHIP_METAMODEL"] ["data" "DATA_RELATIONSHIP_METAMODEL"]
+   ["service" "SERVICE_RELATIONSHIP_METAMODEL"] ["logical" "LOGICAL_RELATIONSHIP_METAMODEL"]
+   ["standard" "STANDARD_RELATIONSHIP_METAMODEL"] ["organizational" "ORGANIZATIONAL_RELATIONSHIP_METAMODEL"]
+   ["infrastructure" "INFRASTRUCTURE_RELATIONSHIP_METAMODEL"] ["security" "SECURITY_RELATIONSHIP_METAMODEL"]
+   ["dm2" "DM2_RELATIONSHIP_METAMODEL"]])
+
+(def module-names (vec (distinct (map first (concat element-spread relationship-spread)))))
+(defn module-path [m] (path/join ont-dir (str m "-metamodel.ts")))
+
+(defn refuse! [& msg]
+  (println (apply str "REFUSED: " msg))
+  (js/process.exit 2))
+
+;; ── resolve hook: extensionless `./x` → `./x.ts`; `.ts` entries are TypeScript ──
+
+(nm/registerHooks
+ #js {:resolve
+      (fn [spec ctx next]
+        (cond
+          (str/ends-with? spec ".ts")
+          (let [u (if (str/starts-with? spec "file:") spec (.-href (url/pathToFileURL spec)))]
+            #js {:url u :shortCircuit true :format "module-typescript"})
+
+          (and (or (str/starts-with? spec "./") (str/starts-with? spec "../"))
+               (not (re-find #"\.[a-z]+$" spec))
+               (some-> (.-parentURL ctx) (str/ends-with? ".ts")))
+          (let [u (js/URL. (str spec ".ts") (.-parentURL ctx))]
+            (if (fs/existsSync (url/fileURLToPath u))
+              #js {:url (.-href u) :shortCircuit true :format "module-typescript"}
+              (next spec ctx)))
+
+          :else (next spec ctx)))})
+
+;; ── module handles ────────────────────────────────────────────────────────────
+
+(def index (atom nil))    ; dodaf-metamodel.ts
+(def views (atom nil))    ; dodaf-views.ts
+(def modules (atom {}))   ; "core" -> module namespace object
+
+(defn table [[m ex]]
+  (let [t (aget (get @modules m) ex)]
+    (when-not (object? t) (refuse! m "-metamodel.ts does not export " ex))
+    t))
+
+(defn op [f]
+  (let [fn* (aget @index (name f))]
+    (when-not (fn? fn*) (refuse! "dodaf-metamodel.ts does not export " (name f)))
+    fn*))
+
+(defn js-keys [o] (vec (js/Object.keys o)))
+(defn js-key-set [o] (set (js-keys o)))
+
+(defn spread
+  "Same semantics as `{...A, ...B}`: later tables win. Returns {key -> object}."
+  [tables]
+  (reduce (fn [acc t] (reduce (fn [a k] (assoc a k (aget t k))) acc (js-keys t))) {} tables))
+
+(defn union-names
+  "Names of a string-literal union in src/types/dodaf.ts — report only."
+  [type-name]
+  (let [t (fs/readFileSync types-path "utf8")
+        m (re-find (re-pattern (str "export type " type-name " =([\\s\\S]*?);")) t)]
+    (if m (vec (map second (re-seq #"\|\s*'([A-Za-z]+)'" (second m)))) [])))
+
+(defn validate-element [m] ((op :validateElementAgainstMetaModel) (clj->js m)))
+(defn validate-relationship [m] ((op :validateRelationshipAgainstMetaModel) (clj->js m)))
+(defn result [r] {:valid (.-valid r) :errors (vec (.-errors r))})
+
+(defn required-names [cls] (vec (for [p (.-properties cls) :when (true? (.-required p))] (.-name p))))
+
+(def property-types #{"string" "boolean" "number" "date" "reference" "array"})
+(def constraint-types #{"cardinality" "valueRange" "pattern" "reference" "custom"})
+
+;; ── checks ────────────────────────────────────────────────────────────────────
+
+(def checks (atom []))
+(defn check [nm f] (swap! checks conj [nm f]))
+
+(check "index-is-the-ordered-union-of-the-eleven-modules"
+  ;; key sets: every module class reaches the index, and nothing else does
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          rel  (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+          exp-e (set (keys (spread (map table element-spread))))
+          exp-r (set (keys (spread (map table relationship-spread))))]
+      (ex (object? core) "DODAF_CORE_METAMODEL is exported")
+      (ex (object? rel) "DODAF_RELATIONSHIP_METAMODEL is exported")
+      (ex (empty? (set/difference exp-e (js-key-set core)))
+          (str "element classes missing from the index: " (pr-str (sort (set/difference exp-e (js-key-set core))))))
+      (ex (empty? (set/difference (js-key-set core) exp-e))
+          (str "element classes in the index that no module defines: " (pr-str (sort (set/difference (js-key-set core) exp-e)))))
+      (ex (empty? (set/difference exp-r (js-key-set rel)))
+          (str "relationship classes missing from the index: " (pr-str (sort (set/difference exp-r (js-key-set rel))))))
+      (ex (empty? (set/difference (js-key-set rel) exp-r))
+          (str "relationship classes in the index that no module defines: " (pr-str (sort (set/difference (js-key-set rel) exp-r)))))
+      (ex (> (count exp-e) 100) (str "only " (count exp-e) " element classes across the modules"))
+      (ex (> (count exp-r) 100) (str "only " (count exp-r) " relationship classes across the modules")))))
+
+(check "colliding-keys-resolve-to-the-module-spread-last"
+  ;; identity per key: the index holds the very object the LAST module defines
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          rel  (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+          e-tables (map table element-spread)
+          exp-e (spread e-tables)
+          exp-r (spread (map table relationship-spread))
+          defined-in (fn [k] (vec (for [[[m ex-name] t] (map vector element-spread e-tables) :when (aget t k)] (str m "/" ex-name))))
+          collisions (vec (for [k (sort (keys exp-e)) :when (> (count (defined-in k)) 1)] k))]
+      (doseq [[k o] exp-e]
+        (ex (identical? o (aget core k)) (str "index." k " is not the object from " (last (defined-in k)))))
+      (doseq [[k o] exp-r]
+        (ex (identical? o (aget rel k)) (str "relationship index." k " is not the object its module defines")))
+      (ex (pos? (count collisions)) "at least one key is defined by two modules (the shadowing order is what this check pins)")
+      (doseq [k collisions]
+        (ex (identical? (aget core k) (aget (table (last (filter #(aget (table %) k) element-spread))) k))
+            (str k " should resolve to the module spread last: " (last (defined-in k))))))))
+
+(check "every-class-is-well-formed"
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          rel  (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+          seen (atom 0)]
+      (doseq [[tbl-name tbl] [["element" core] ["relationship" rel]]
+              k (js-keys tbl)
+              :let [c (aget tbl k)]]
+        (swap! seen inc)
+        (ex (and (string? (.-name c)) (not (str/blank? (.-name c)))) (str tbl-name " " k " has no name"))
+        (ex (and (string? (.-description c)) (not (str/blank? (.-description c)))) (str tbl-name " " k " has no description"))
+        (ex (array? (.-properties c)) (str tbl-name " " k ".properties is not an array"))
+        (ex (array? (.-constraints c)) (str tbl-name " " k ".constraints is not an array"))
+        (when (array? (.-properties c))
+          (let [names (map #(.-name %) (.-properties c))]
+            (ex (= (count names) (count (distinct names))) (str tbl-name " " k " declares a property twice: " (pr-str names))))
+          (doseq [p (.-properties c)]
+            (ex (and (string? (.-name p)) (not (str/blank? (.-name p)))) (str tbl-name " " k " has an unnamed property"))
+            (ex (contains? property-types (.-type p)) (str tbl-name " " k "." (.-name p) " has type " (pr-str (.-type p)) " (not in the MetaModelProperty union)"))
+            (ex (boolean? (.-required p)) (str tbl-name " " k "." (.-name p) ".required is " (pr-str (.-required p)) ", not a boolean"))))
+        (when (array? (.-constraints c))
+          (doseq [cn (.-constraints c)]
+            (ex (contains? constraint-types (.-type cn)) (str tbl-name " " k " has a constraint of type " (pr-str (.-type cn)))))))
+      (ex (> @seen 200) (str "only " @seen " classes inspected")))))
+
+(check "lookups-return-the-index-entry-or-undefined"
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          rel  (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+          ge (op :getElementMetaModel) gr (op :getRelationshipMetaModel)
+          same? (fn [a b] (= (js->clj a) (js->clj b)))]
+      (doseq [k (js-keys core)]
+        (ex (same? (aget core k) (ge k)) (str "getElementMetaModel(" k ") is not the index entry")))
+      (doseq [k (js-keys rel)]
+        (ex (same? (aget rel k) (gr k)) (str "getRelationshipMetaModel(" k ") is not the index entry")))
+      (ex (undefined? (ge "NoSuchElementType")) "unknown element type → undefined")
+      (ex (undefined? (gr "NoSuchRelationshipType")) "unknown relationship type → undefined")
+      (ex (undefined? (ge "OperationalActivity")) "OperationalActivity has no class today (it validates against the default model) — if this went green, update the header")
+      (ex (undefined? (ge "Association")) "Association is a relationship class; the element lookup must not see it")
+      (ex (object? (gr "Association")) "Association is a relationship class"))))
+
+(check "known-element-required-properties-are-enforced"
+  ;; for every class with required properties: all present → valid; each one
+  ;; dropped → exactly one error naming that property and the type
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          exercised (atom 0)]
+      (doseq [k (js-keys core)
+              :let [req (required-names (aget core k))]
+              :when (seq req)]
+        (swap! exercised inc)
+        (let [full (into {:type k} (map (fn [p] [p (str "v-" p)]) req))
+              r (result (validate-element full))]
+          (ex (true? (:valid r)) (str k " with all " (count req) " required properties should be valid, got " (pr-str (:errors r))))
+          (ex (empty? (:errors r)) (str k " valid but with errors " (pr-str (:errors r))))
+          (doseq [p req]
+            (let [r (result (validate-element (dissoc full p)))]
+              (ex (false? (:valid r)) (str k " without " p " should be invalid"))
+              (ex (= 1 (count (:errors r))) (str k " without " p " should produce exactly one error, got " (pr-str (:errors r))))
+              (ex (some #(and (str/includes? % (str "'" p "'")) (str/includes? % (str "element type '" k "'"))) (:errors r))
+                  (str k " without " p ": error does not name the property and the element type: " (pr-str (:errors r))))))))
+      (ex (>= @exercised 50) (str "only " @exercised " classes declare required properties")))))
+
+(check "known-element-types-do-not-fall-back-to-the-default-model"
+  ;; a class with no required properties accepts {type} alone — the default
+  ;; model would demand id / name / description
+  (fn [ex]
+    (let [core (aget @index "DODAF_CORE_METAMODEL")
+          bare (vec (for [k (js-keys core) :when (empty? (required-names (aget core k)))] k))]
+      (ex (>= (count bare) 20) (str "only " (count bare) " classes have no required properties"))
+      (doseq [k bare]
+        (let [r (result (validate-element {:type k}))]
+          (ex (true? (:valid r)) (str k " declares nothing required, {type} alone should be valid, got " (pr-str (:errors r))))))
+      ;; a class requiring only id + name must not also demand description
+      (let [k "Activity" req (required-names (aget core "Activity"))]
+        (ex (= ["id" "name"] req) (str "Activity requires " (pr-str req) " (expected id + name)"))
+        (ex (true? (:valid (result (validate-element {:type k :id "a" :name "n"}))))
+            "Activity {type id name} without description should be valid (the default model would reject it)")))))
+
+(check "unknown-element-types-use-the-default-model"
+  (fn [ex]
+    (let [t "NoSuchElementType"
+          full {:type t :id "e1" :name "n" :description "d" :properties {}}]
+      (ex (true? (:valid (result (validate-element full)))) "id + name + description + properties → valid")
+      (ex (true? (:valid (result (validate-element (dissoc full :properties))))) "`properties` is optional in the default model")
+      (doseq [p [:id :name :description]]
+        (let [r (result (validate-element (dissoc full p)))]
+          (ex (false? (:valid r)) (str "missing " (name p) " → invalid"))
+          (ex (= 1 (count (:errors r))) (str "missing " (name p) " → exactly one error, got " (pr-str (:errors r))))
+          (ex (some #(= % (str "Required property '" (name p) "' is missing for element type '" t "'")) (:errors r))
+              (str "message for missing " (name p) ": " (pr-str (:errors r)))))))))
+
+(check "validator-reports-every-missing-required-property"
+  (fn [ex]
+    (let [r (result (validate-element {:type "Activity"}))]
+      (ex (false? (:valid r)) "Activity with nothing is invalid")
+      (ex (= 2 (count (:errors r))) (str "Activity with nothing → 2 errors (id, name), got " (pr-str (:errors r))))
+      (ex (= #{"id" "name"} (set (map #(second (re-find #"Required property '([^']+)'" %)) (:errors r))))
+          (str "errors should name id and name: " (pr-str (:errors r)))))
+    (let [r (result (validate-element {:type "NoSuchElementType"}))]
+      (ex (= 3 (count (:errors r))) (str "unknown type with nothing → 3 errors, got " (pr-str (:errors r))))
+      (ex (= #{"id" "name" "description"} (set (map #(second (re-find #"Required property '([^']+)'" %)) (:errors r))))
+          (str "errors should name id, name and description: " (pr-str (:errors r)))))
+    (let [r (result (validate-relationship {:type "NoSuchRelationshipType"}))]
+      (ex (= 3 (count (:errors r))) (str "unknown relationship with nothing → 3 errors, got " (pr-str (:errors r)))))))
+
+(check "known-relationship-types-use-their-own-model"
+  (fn [ex]
+    (let [rel (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+          exercised (atom 0)]
+      (doseq [k (js-keys rel)
+              :let [req (required-names (aget rel k))
+                    full (into {:type k} (map (fn [p] [p (str "v-" p)]) req))]]
+        (swap! exercised inc)
+        (let [r (result (validate-relationship full))]
+          (ex (true? (:valid r)) (str k " with its " (count req) " required properties should be valid, got " (pr-str (:errors r)))))
+        (doseq [p req]
+          (let [r (result (validate-relationship (dissoc full p)))]
+            (ex (false? (:valid r)) (str k " without " p " should be invalid"))
+            (ex (some #(str/includes? % (str "relationship type '" k "'")) (:errors r))
+                (str k " without " p ": error does not name the relationship type: " (pr-str (:errors r)))))))
+      (ex (> @exercised 100) (str "only " @exercised " relationship classes exercised"))
+      ;; today no relationship class declares a required property; a known
+      ;; type with {type} alone is therefore valid — the default model would not be
+      (ex (true? (:valid (result (validate-relationship {:type "Association"}))))
+          "Association {type} alone should be valid (no required properties declared; must not fall back to the default model)"))))
+
+(check "unknown-relationship-types-use-the-default-model"
+  (fn [ex]
+    (let [t "NoSuchRelationshipType"
+          full {:type t :id "r1" :name "n" :description "d" :sourceId "s" :targetId "t" :properties {}}]
+      (ex (true? (:valid (result (validate-relationship full)))) "id + name + description → valid")
+      (ex (true? (:valid (result (validate-relationship (dissoc full :properties :sourceId :targetId)))))
+          "properties / sourceId / targetId are not demanded by the default model")
+      (doseq [p [:id :name :description]]
+        (let [r (result (validate-relationship (dissoc full p)))]
+          (ex (false? (:valid r)) (str "missing " (name p) " → invalid"))
+          (ex (= 1 (count (:errors r))) (str "missing " (name p) " → exactly one error, got " (pr-str (:errors r))))
+          (ex (some #(= % (str "Required property '" (name p) "' is missing for relationship type '" t "'")) (:errors r))
+              (str "message for missing " (name p) " must say 'relationship type': " (pr-str (:errors r)))))))))
+
+(check "validity-is-derived-from-the-error-list"
+  (fn [ex]
+    (doseq [[label r] [["element known ok" (result (validate-element {:type "Activity" :id "a" :name "n"}))]
+                       ["element known missing" (result (validate-element {:type "Activity" :id "a"}))]
+                       ["element unknown ok" (result (validate-element {:type "X" :id "a" :name "n" :description "d"}))]
+                       ["element unknown missing" (result (validate-element {:type "X" :id "a"}))]
+                       ["relationship known ok" (result (validate-relationship {:type "Association"}))]
+                       ["relationship unknown ok" (result (validate-relationship {:type "X" :id "a" :name "n" :description "d"}))]
+                       ["relationship unknown missing" (result (validate-relationship {:type "X" :name "n"}))]]]
+      (ex (= (:valid r) (empty? (:errors r))) (str label ": valid=" (:valid r) " but errors=" (pr-str (:errors r)))))))
+
+(check "five-standard-views-in-dodaf-order"
+  (fn [ex]
+    (let [vs (vec (aget @views "DODAF_VIEWS"))]
+      (ex (= ["AV" "OV" "SV" "TV" "DIV"] (mapv #(.-type %) vs)) (str "view types: " (pr-str (mapv #(.-type %) vs))))
+      (ex (= [["AV" "All Views"] ["OV" "Operational View"] ["SV" "Systems View"]
+              ["TV" "Technical Standards View"] ["DIV" "Data and Information View"]]
+             (mapv (fn [v] [(.-type v) (.-name v)]) vs))
+          (str "view names: " (pr-str (mapv (fn [v] [(.-type v) (.-name v)]) vs))))
+      (doseq [v vs]
+        (ex (and (string? (.-description v)) (not (str/blank? (.-description v)))) (str (.-type v) " has no description"))
+        (ex (and (string? (.-purpose v)) (not (str/blank? (.-purpose v)))) (str (.-type v) " has no purpose"))))))
+
+(check "each-view-has-its-numbered-products"
+  (fn [ex]
+    (let [gp (aget @views "getProductsForView")
+          expected {"AV" ["AV-1" "AV-2"]
+                    "OV" ["OV-1" "OV-2" "OV-3" "OV-4" "OV-5a" "OV-5b" "OV-6a" "OV-6b" "OV-6c"]
+                    "SV" ["SV-1" "SV-2" "SV-3" "SV-4" "SV-5" "SV-6" "SV-7" "SV-8" "SV-9"]
+                    "TV" ["TV-1" "TV-2"]
+                    "DIV" ["DIV-1" "DIV-2" "DIV-3"]}
+          constants {"AV" "AV_PRODUCTS" "OV" "OV_PRODUCTS" "SV" "SV_PRODUCTS" "TV" "TV_PRODUCTS" "DIV" "DIV_PRODUCTS"}
+          all-numbers (atom [])]
+      (doseq [v (aget @views "DODAF_VIEWS")
+              :let [t (.-type v) ps (gp t)]]
+        (ex (array? ps) (str t ": getProductsForView returned " (pr-str ps)))
+        (ex (identical? ps (aget @views (constants t))) (str t ": getProductsForView is not the exported " (constants t)))
+        (ex (= (expected t) (mapv #(.-number %) ps)) (str t " products: " (pr-str (mapv #(.-number %) ps)) " expected " (pr-str (expected t))))
+        (doseq [p ps]
+          (swap! all-numbers conj (.-number p))
+          (ex (str/starts-with? (.-number p) (str t "-")) (str (.-number p) " is filed under " t))
+          (doseq [f ["name" "description" "purpose"]]
+            (ex (and (string? (aget p f)) (not (str/blank? (aget p f)))) (str (.-number p) " has no " f)))
+          (ex (and (array? (.-elements p)) (zero? (count (.-elements p)))) (str (.-number p) " template should start with no elements"))
+          (ex (and (array? (.-relationships p)) (zero? (count (.-relationships p)))) (str (.-number p) " template should start with no relationships"))))
+      (ex (= 25 (count @all-numbers)) (str (count @all-numbers) " products in the catalogue (expected 25)"))
+      (ex (= (count @all-numbers) (count (distinct @all-numbers))) (str "product numbers repeat: " (pr-str @all-numbers))))))
+
+(check "unknown-view-yields-no-products"
+  (fn [ex]
+    (let [gp (aget @views "getProductsForView")]
+      (doseq [t ["XX" "" "OV-1" "Operational View" "AV "]]
+        (let [ps (gp t)]
+          (ex (array? ps) (str (pr-str t) " → " (pr-str ps) " (expected an empty array)"))
+          (ex (and (array? ps) (zero? (count ps))) (str (pr-str t) " → " (count ps) " products (expected none)")))))))
+
+;; ── runner ────────────────────────────────────────────────────────────────────
+
+(def green-marker "ontology metamodel: all green")
+(def check-floor 10)
+
+(defn run-checks []
+  (p/loop [cs @checks, failed 0, ran 0]
+    (if (empty? cs)
+      {:failed failed :ran ran}
+      (let [[nm f] (first cs)
+            fails  (atom [])
+            ex     (fn [ok? msg] (when-not ok? (swap! fails conj msg)) ok?)]
+        (p/let [_ (-> (p/do! (f ex))
+                      (p/catch (fn [e] (swap! fails conj (str "threw: " (or (some-> e .-message) (str e)))))))]
+          (if (empty? @fails)
+            (println "PASS" nm)
+            (do (println "FAIL" nm)
+                (doseq [m (take 12 @fails)] (println "   -" m))
+                (when (> (count @fails) 12) (println "   - …" (- (count @fails) 12) "more"))))
+          (p/recur (rest cs) (if (empty? @fails) failed (inc failed)) (inc ran)))))))
+
+(defn report-line []
+  (let [core (aget @index "DODAF_CORE_METAMODEL")
+        rel  (aget @index "DODAF_RELATIONSHIP_METAMODEL")
+        et   (union-names "ElementType")
+        e-tables (map table element-spread)
+        colliding (count (for [k (js-keys core) :when (> (count (filter #(aget % k) e-tables)) 1)] k))
+        unmodelled (count (remove (js-key-set core) et))]
+    (str "SCANNED\tindex=" index-path "\tviews=" views-path
+         "\telement-classes=" (count (js-keys core))
+         "\trelationship-classes=" (count (js-keys rel))
+         "\tcolliding-keys=" colliding
+         "\tElementType-union=" (count et) "\tunmodelled=" unmodelled
+         "\tchecks=" (count @checks))))
+
+(defn -main []
+  (doseq [f (concat [index-path views-path types-path] (map module-path module-names))]
+    (when-not (fs/existsSync f) (refuse! "source not found at " f)))
+  (-> (p/let [i (js/import index-path)
+              v (js/import views-path)
+              ms (p/all (map #(js/import (module-path %)) module-names))]
+        (reset! index i) (reset! views v)
+        (reset! modules (zipmap module-names ms)))
+      (p/catch (fn [e] (refuse! "src/ontology could not be loaded: " (or (some-> e .-message) (str e)))))
+      (p/then (fn [_] (println (report-line))))
+      (p/then run-checks)
+      (p/then (fn [{:keys [failed ran]}]
+                (cond
+                  (< ran check-floor)
+                  (refuse! "only " ran " checks ran (floor " check-floor ") — a silent skip is not a pass")
+
+                  (zero? failed)
+                  (do (println (str "\n" green-marker " (" ran " checks)"))
+                      (js/process.exit 0))
+
+                  :else
+                  (do (println (str "\nontology metamodel: " failed " of " ran " checks FAILED"))
+                      (js/process.exit 1)))))
+      (p/catch (fn [e]
+                 (println "ERROR" (or (some-> e .-stack) (str e)))
+                 (js/process.exit 1)))))
+
+(-main)
