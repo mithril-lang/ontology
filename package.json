@@ -13,7 +13,7 @@
     "dev": "tsup --watch",
     "test": "vitest",
     "test:run": "CI=1 vitest --run --reporter=dot --ui=false --no-watch --passWithNoTests",
-    "test:metamodel": "nbb test/ontology_test.cljs",
+    "test:metamodel": "nbb test/ontology_test.kotoba",
     "type-check": "tsc --noEmit",
     "generate:context": "node scripts/generate-context.js",
     "generate:shacl": "node scripts/generate-shacl.js",
