@@ -1,8 +1,8 @@
-#!/usr/bin/env nbb
+#!/usr/bin/env kbb
 ;; test/ontology_test.cljs — the DoDAF 2.0 meta-model index and the standard
 ;; views catalogue, executed rather than described.
 ;;
-;;   nbb test/ontology_test.cljs            (run from the repo root)
+;;   kbb --backend sci test/ontology_test.cljk            (run from the repo root)
 ;;
 ;; exit 0  all green  (prints "ontology metamodel: all green" — the maturity-loop marker)
 ;; exit 1  an invariant no longer holds
