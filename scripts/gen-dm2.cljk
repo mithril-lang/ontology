@@ -1,0 +1,415 @@
+(ns gen-dm2
+  "Deterministically derive the DM2 2.02 Mithril ontology and view catalog
+  from source/dm2-2.02.edn (the official DoD extract).
+
+    kbb --backend sci scripts/gen-dm2.cljk            write both outputs
+    kbb --backend sci scripts/gen-dm2.cljk --check    regenerate in memory,
+                                                      compare, run self-checks
+    kbb --backend sci scripts/gen-dm2.cljk --check --root <dir>
+                                                      check a copy of the repo
+
+  Exit codes: 0 = generated / every check passed, 1 = a check failed (each
+  failure is printed as FAIL<TAB>reason), 2 = usage or unreadable input.
+
+  Nothing here is invented: every axiom is one EA connector or one dictionary
+  cell from source/dm2-2.02.edn. What the Mithril form surface cannot express
+  is listed under :axiom-gaps in the view catalog instead of being dropped."
+  (:require [cljs.reader :as reader]
+            [clojure.set :as set]
+            [clojure.string :as str]))
+
+(def fs (js/require "fs"))
+(def path-mod (js/require "path"))
+
+(def base "https://mithril.fund/ontology/dm2/2.02")
+(def term-ns (str base "#"))
+(def shape-ns (str base "/shapes#"))
+(def views-ns (str base "/views#"))
+
+(def source-rel "source/dm2-2.02.edn")
+(def mith-rel "ontology/dodaf-v2-02.mith")
+(def views-rel "ontology/dodaf-v2-02-views.edn")
+
+;; DoDAF 2.02 viewpoint names, as published on
+;; https://dowcio.war.gov/Library/DoD-Architecture-Framework/dodaf20_viewpoints/
+;; The model-id prefix in the dictionary header (row 4) selects the viewpoint.
+(def viewpoints
+  [{:prefix "AV" :local "All" :name "All Viewpoint"}
+   {:prefix "CV" :local "Capability" :name "Capability Viewpoint"}
+   {:prefix "DIV" :local "DataAndInformation" :name "Data and Information Viewpoint"}
+   {:prefix "OV" :local "Operational" :name "Operational Viewpoint"}
+   {:prefix "PV" :local "Project" :name "Project Viewpoint"}
+   {:prefix "SvcV" :local "Services" :name "Services Viewpoint"}
+   {:prefix "StdV" :local "Standards" :name "Standards Viewpoint"}
+   {:prefix "SV" :local "Systems" :name "Systems Viewpoint"}])
+
+(defn- die! [code msg]
+  (println (str "ERROR\t" msg))
+  (js/process.exit code))
+
+(defn- read-file [p]
+  (try (.readFileSync fs p "utf8")
+       (catch :default e (die! 2 (str "cannot read " p ": " (.-message e))))))
+
+(defn- term-iri [n] (str term-ns n))
+(defn- q [s] (pr-str s))
+
+;; ---------------------------------------------------------------- derivation
+
+(defn- derive-axioms [src]
+  (let [terms (:terms src)
+        assoc? (into {} (map (juxt :name :association?)) terms)
+        in-model (set (keys assoc?))
+        class? (fn [n] (and (in-model n) (not (assoc? n))))
+        prop? (fn [n] (and (in-model n) (assoc? n)))
+        edges (:super-subtype src)
+        sub-class (reduce (fn [m [sub sup]]
+                            (if (and (class? sub) (class? sup))
+                              (update m sub (fnil conj []) sup) m))
+                          {} edges)
+        sub-prop (reduce (fn [m [sub sup]]
+                           (if (and (prop? sub) (prop? sup))
+                             (update m sub (fnil conj []) sup) m))
+                         {} edges)
+        edge-gaps (vec (for [[sub sup] edges
+                             :when (not (or (and (class? sub) (class? sup))
+                                            (and (prop? sub) (prop? sup))))]
+                         {:sub sub :super sup
+                          :reason (cond
+                                    (not (and (in-model sub) (in-model sup)))
+                                    "an end is not an in-model dictionary term"
+                                    :else
+                                    "association is a subtype of a non-association class; OWL has no subClassOf/subPropertyOf between a property and a class")}))
+        places (:tuple-places src)
+        dom-rng (into {}
+                      (for [t terms :when (:association? t)
+                            :let [p (get places (:name t))
+                                  d (:place1Type p) r (:place2Type p)]]
+                        [(:name t) (cond-> {}
+                                     (class? d) (assoc :domain d)
+                                     (class? r) (assoc :range r))]))
+        place-gaps (vec (concat
+                         (for [t terms :when (:association? t)
+                               :when (not (contains? places (:name t)))]
+                           {:association (:name t)
+                            :reason "no place connector in the EA model under this exact name"})
+                         (for [t terms :when (:association? t)
+                               :let [p (get places (:name t))]
+                               :when p
+                               [k v] (sort-by key p)
+                               :when (not (or (and (= k :place1Type) (class? v))
+                                              (and (= k :place2Type) (class? v))))]
+                           {:association (:name t) :place (name k) :type v
+                            :reason (cond
+                                      (#{:place3Type :placeType} k)
+                                      (str (name k) " has no binary OWL counterpart (domain is place1Type, range is place2Type)")
+                                      (prop? v)
+                                      "place type is an association (object property), not a class"
+                                      :else "place type is not an in-model dictionary term")})))]
+    {:class? class? :prop? prop?
+     :sub-class sub-class :sub-prop sub-prop :dom-rng dom-rng
+     :edge-gaps edge-gaps :place-gaps place-gaps}))
+
+;; ---------------------------------------------------------------- .mith text
+
+(defn- iri-value [names]
+  (if (= 1 (count names))
+    (q (term-iri (first names)))
+    (str "[" (str/join " " (map (comp q term-iri) names)) "]")))
+
+(defn- node-text [t {:keys [sub-class sub-prop dom-rng]}]
+  (let [n (:name t)
+        tag (if (:association? t) "owl/object-property" "owl/class")
+        axioms (if (:association? t)
+                 (let [{:keys [domain range]} (dom-rng n)]
+                   (cond-> []
+                     (sub-prop n) (conj (str ":rdfs/sub-property-of " (iri-value (sub-prop n))))
+                     domain (conj (str ":rdfs/domain " (q (term-iri domain))))
+                     range (conj (str ":rdfs/range " (q (term-iri range))))))
+                 (cond-> []
+                   (sub-class n) (conj (str ":rdfs/sub-class-of " (iri-value (sub-class n))))))]
+    (str "   (" tag "\n"
+         "     :id " (q (term-iri n)) "\n"
+         "     :name " (q n) "\n"
+         "     :description " (q (:definition t))
+         (apply str (map #(str "\n     " %) axioms))
+         " )")))
+
+(defn- shape-text [assoc-name {:keys [domain range]} src-places]
+  (str "   (shacl/node-shape\n"
+       "     :id " (q (str shape-ns assoc-name)) "\n"
+       "     :name " (q (str assoc-name "Shape")) "\n"
+       "     :description " (q (str "Tuple place typing of " assoc-name
+                                    " in the official DM2 2.02 EA model: place1Type "
+                                    (:place1Type src-places) ", place2Type "
+                                    (:place2Type src-places) ".")) "\n"
+       "     :sh/target-class " (q (term-iri domain)) "\n"
+       "     :sh/property\n"
+       "     [(shacl/property-shape\n"
+       "        :sh/path " (q (term-iri assoc-name)) "\n"
+       "        :sh/class " (q (term-iri range)) ")] )"))
+
+(defn- mith-text [src ax]
+  (let [terms (:terms src)
+        pairs (for [t terms :when (:association? t)
+                    :let [dr ((:dom-rng ax) (:name t))]
+                    :when (and (:domain dr) (:range dr))]
+                [(:name t) dr])]
+    (str "(mithril/ontology\n"
+         "  :id " (q base) "\n"
+         "  :profile\n"
+         "  [\"https://www.w3.org/TR/rdf11-concepts/\"\n"
+         "   \"https://www.w3.org/TR/owl2-profiles/#OWL_2_RL\"\n"
+         "   \"https://www.w3.org/TR/shacl/\"]\n"
+         "  :graph\n"
+         "  [\n"
+         (str/join "\n" (concat (map #(node-text % ax) terms)
+                                (map (fn [[n dr]] (shape-text n dr (get (:tuple-places src) n)))
+                                     pairs)))
+         "\n  ])\n")))
+
+;; ---------------------------------------------------------------- EDN printer
+;; Deterministic: map keys sorted, one entry per line once a value is nested.
+
+(defn- scalar? [x] (not (coll? x)))
+
+(def ^:private key-priority
+  [:dm2/version :generated-from :generated-by :ontology :iri-note :viewpoint-source
+   :id :iri :name :title :description :viewpoint :owl-kind :ideas-kind
+   :data-groups :models :concepts :viewpoints :terms :mapping-codes])
+
+(defn- sort-keys [m]
+  (let [rank (zipmap key-priority (range))]
+    (sort-by (fn [k] [(if (keyword? k) (get rank k 1000) 2000) (str k)]) (keys m))))
+
+(defn- emit
+  "ind is the column of the opening bracket; nested entries start one column
+  to its right, so line width does not grow with key length."
+  [x ind]
+  (let [pad (apply str (repeat (inc ind) " "))]
+    (cond
+      (scalar? x) (pr-str x)
+      (map? x)
+      (let [ks (sort-keys x)
+            inline (str "{" (str/join " " (map #(str (pr-str %) " " (pr-str (get x %))) ks)) "}")]
+        (if (or (empty? x) (and (every? scalar? (vals x)) (<= (count inline) 1000)))
+          inline
+          (str "{"
+               (str/join (str "\n" pad)
+                         (map (fn [k]
+                                (let [v (get x k)]
+                                  (if (scalar? v)
+                                    (str (pr-str k) " " (pr-str v))
+                                    (str (pr-str k) "\n" pad (emit v (inc ind))))))
+                              ks))
+               "}")))
+      (vector? x)
+      (if (every? scalar? x)
+        (str "[" (str/join " " (map pr-str x)) "]")
+        (str "[" (str/join (str "\n" pad) (map #(emit % (inc ind)) x)) "]"))
+      :else (throw (ex-info "unsupported value" {:value x})))))
+
+;; ---------------------------------------------------------------- views EDN
+
+(defn- viewpoint-of [model-id]
+  (let [prefix (first (str/split model-id #"-"))]
+    (or (first (filter #(= prefix (:prefix %)) viewpoints))
+        (throw (ex-info (str "no viewpoint for model " model-id) {})))))
+
+(defn- views-data [src ax]
+  (let [terms (:terms src)
+        models (:models src)]
+    {:dm2/version (:dm2/version src)
+     :generated-from source-rel
+     :generated-by "scripts/gen-dm2.cljk"
+     :ontology base
+     :iri-note "IRIs are local identifiers minted by this repository, not DoD-issued IRIs."
+     :viewpoint-source "https://dowcio.war.gov/Library/DoD-Architecture-Framework/dodaf20_viewpoints/"
+     :mapping-codes (get-in src [:sources :dictionary :mapping-codes])
+     :viewpoints
+     (vec (for [vp viewpoints]
+            {:id (:prefix vp)
+             :iri (str views-ns (:local vp))
+             :name (:name vp)
+             :models (vec (for [m models :when (= vp (viewpoint-of (:id m)))]
+                            (str views-ns (:id m))))}))
+     :models
+     (vec (for [m models]
+            {:id (:id m)
+             :iri (str views-ns (:id m))
+             :title (:title m)
+             :description (:description m)
+             :viewpoint (str views-ns (:local (viewpoint-of (:id m))))
+             :concepts (into {} (for [t terms
+                                      :let [c (get (:models t) (:id m))]
+                                      :when c]
+                                  [(term-iri (:name t)) c]))}))
+     :data-groups (:data-groups src)
+     :terms
+     (into {} (for [t terms]
+                [(term-iri (:name t))
+                 (cond-> {:name (:name t)
+                          :owl-kind (if (:association? t) "owl:ObjectProperty" "owl:Class")
+                          :data-groups (:data-groups t)
+                          :models (:models t)}
+                   (get (:ideas-kind src) (:name t))
+                   (assoc :ideas-kind (get (:ideas-kind src) (:name t))))]))
+     :axiom-gaps
+     {:super-subtype (:edge-gaps ax)
+      :tuple-places (:place-gaps ax)
+      :ideas-kind (vec (for [t terms :when (not (get (:ideas-kind src) (:name t)))]
+                         {:term (:name t)
+                          :reason "no EA class with this exact name (EA spells a class superSubtype; names are not fuzzy-matched)"}))
+      :powertype-instance {:count (count (:powertype-instance src))
+                           :reason "IDEAS powertypeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it (no rdf:type between two classes / punning)"}
+      :type-instance {:count (count (:type-instance src))
+                      :reason "IDEAS typeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it"}}}))
+
+(defn- views-text [src ax]
+  (str ";; Generated by scripts/gen-dm2.cljk from source/dm2-2.02.edn. Do not edit.\n"
+       (emit (views-data src ax) 0) "\n"))
+
+;; ---------------------------------------------------------------- self-checks
+;; Every check reads the files on disk, not the in-memory derivation, so a
+;; corrupted checkout is measured rather than assumed.
+
+(defn- form->map [form]
+  (assoc (apply hash-map (rest form)) :tag (first form)))
+
+(defn- as-vec [v] (cond (nil? v) [] (vector? v) v :else [v]))
+
+(defn- acyclic-count
+  "Kahn's algorithm. Returns the number of nodes left in a cycle (0 = acyclic)."
+  [edges]
+  (let [nodes (set (concat (keys edges) (mapcat val edges)))
+        indeg (reduce (fn [m [_ sups]] (reduce #(update %1 %2 inc) m sups))
+                      (zipmap nodes (repeat 0)) edges)]
+    (loop [queue (filterv #(zero? (indeg %)) nodes) indeg indeg seen 0]
+      (if (empty? queue)
+        (- (count nodes) seen)
+        (let [n (peek queue)
+              sups (get edges n)
+              indeg' (reduce #(update %1 %2 dec) indeg sups)
+              ready (filter #(zero? (indeg' %)) sups)]
+          (recur (into (pop queue) ready) indeg' (inc seen)))))))
+
+(defn- self-check [root src]
+  (let [mith (reader/read-string (read-file (.join path-mod root mith-rel)))
+        views (reader/read-string (read-file (.join path-mod root views-rel)))
+        graph (mapv form->map (get (form->map mith) :graph))
+        by-tag (group-by :tag graph)
+        classes (get by-tag 'owl/class)
+        props (get by-tag 'owl/object-property)
+        shapes (get by-tag 'shacl/node-shape)
+        class-iris (set (map :id classes))
+        prop-iris (set (map :id props))
+        declared (set/union class-iris prop-iris)
+        sc-edges (into {} (for [c classes :when (:rdfs/sub-class-of c)]
+                            [(:id c) (as-vec (:rdfs/sub-class-of c))]))
+        sp-edges (into {} (for [p props :when (:rdfs/sub-property-of p)]
+                            [(:id p) (as-vec (:rdfs/sub-property-of p))]))
+        shape-props (mapcat #(as-vec (:sh/property %)) shapes)
+        shape-props (map form->map shape-props)
+        ;; [iri expected-kind where]
+        refs (concat
+              (for [[s sups] sc-edges sup sups] [sup :class (str "sub-class-of of " s)])
+              (for [[s sups] sp-edges sup sups] [sup :prop (str "sub-property-of of " s)])
+              (for [p props :when (:rdfs/domain p)] [(:rdfs/domain p) :class (str "domain of " (:id p))])
+              (for [p props :when (:rdfs/range p)] [(:rdfs/range p) :class (str "range of " (:id p))])
+              (for [s shapes] [(:sh/target-class s) :class (str "target-class of " (:id s))])
+              (for [p shape-props] [(:sh/path p) :prop "sh:path of a property shape"])
+              (for [p shape-props] [(:sh/class p) :class "sh:class of a property shape"])
+              (for [m (:models views) [iri _] (:concepts m)] [iri :any (str "concept of " (:id m))])
+              (for [[iri _] (:terms views)] [iri :any "view catalog term"]))
+        dangling (remove (fn [[iri _ _]] (declared iri)) refs)
+        miskinded (filter (fn [[iri kind _]]
+                            (and (declared iri)
+                                 (case kind :class (not (class-iris iri))
+                                        :prop (not (prop-iris iri)) false)))
+                          refs)
+        defs (into {} (map (juxt (comp term-iri :name) :definition)) (:terms src))
+        faithful (count (filter #(= (:description %) (defs (:id %)))
+                                (concat classes props)))
+        pairs (count (filter #(and (:rdfs/domain %) (:rdfs/range %)) props))
+        model-concepts (reduce + (map (comp count :concepts) (:models views)))
+        vp-models (set (mapcat :models (:viewpoints views)))
+        counts [["classes" (count classes)]
+                ["object-properties" (count props)]
+                ["sub-class-of-edges" (reduce + (map count (vals sc-edges)))]
+                ["sub-property-of-edges" (reduce + (map count (vals sp-edges)))]
+                ["domains" (count (filter :rdfs/domain props))]
+                ["ranges" (count (filter :rdfs/range props))]
+                ["domain-range-pairs" pairs]
+                ["node-shapes" (count shapes)]
+                ["property-shapes" (count shape-props)]
+                ["viewpoints" (count (:viewpoints views))]
+                ["models" (count (:models views))]
+                ["models-in-a-viewpoint" (count vp-models)]
+                ["model-concept-mappings" model-concepts]
+                ["view-catalog-terms" (count (:terms views))]
+                ["descriptions-equal-source-definition" faithful]
+                ["iri-references" (count refs)]]
+        failures (concat
+                  (for [[k n] counts :when (zero? n)]
+                    (str "SCANNED " k " = 0 (nothing measured is not a pass)"))
+                  (when (not= faithful (count (:terms src)))
+                    [(str "descriptions equal to source definition: " faithful " of " (count (:terms src)))])
+                  (when (not= (count declared) (count (:terms src)))
+                    [(str "declared term IRIs " (count declared) " != source terms " (count (:terms src)))])
+                  (when (not= (count (:models views)) (count (:models src)))
+                    [(str "view catalog models " (count (:models views)) " != source models " (count (:models src)))])
+                  (when (not= (count vp-models) (count (:models views)))
+                    ["a model is not assigned to exactly one viewpoint"])
+                  (for [[iri _ where] (take 5 dangling)]
+                    (str "dangling IRI " iri " (" where ")"))
+                  (for [[iri kind where] (take 5 miskinded)]
+                    (str "IRI " iri " is declared but not as " (name kind) " (" where ")"))
+                  (let [n (acyclic-count sc-edges)]
+                    (when (pos? n) [(str "sub-class-of graph is cyclic: " n " classes cannot be topologically ordered")]))
+                  (let [n (acyclic-count sp-edges)]
+                    (when (pos? n) [(str "sub-property-of graph is cyclic: " n " properties cannot be topologically ordered")])))]
+    (doseq [[k n] counts] (println (str "SCANNED\t" k "\t" n)))
+    (println (str "COUNT\tdangling-iris\t" (count dangling)))
+    (println (str "COUNT\tmiskinded-iris\t" (count miskinded)))
+    (println (str "COUNT\tsub-class-cycle-nodes\t" (acyclic-count sc-edges)))
+    (println (str "COUNT\tsub-property-cycle-nodes\t" (acyclic-count sp-edges)))
+    (vec failures)))
+
+;; ---------------------------------------------------------------- main
+
+(defn- first-diff-line [a b]
+  (let [la (str/split-lines a) lb (str/split-lines b)]
+    (or (first (keep-indexed (fn [i [x y]] (when (not= x y) (inc i))) (map vector la lb)))
+        (inc (min (count la) (count lb))))))
+
+(let [args *command-line-args*
+      check? (some #{"--check"} args)
+      root-idx (.indexOf (clj->js (vec args)) "--root")
+      root (if (neg? root-idx)
+             (.resolve path-mod (.dirname path-mod (.resolve path-mod *file*)) "..")
+             (.resolve path-mod (nth args (inc root-idx))))
+      _ (when (seq (remove #{"--check" "--root" (when-not (neg? root-idx) (nth args (inc root-idx)))} args))
+          (die! 2 (str "usage: gen-dm2.cljk [--check [--root <dir>]]; got " (pr-str args))))
+      src (reader/read-string (read-file (.join path-mod root source-rel)))
+      ax (derive-axioms src)
+      outputs [[mith-rel (mith-text src ax)] [views-rel (views-text src ax)]]]
+  (println (str "SCANNED\tsource-terms\t" (count (:terms src))))
+  (when (zero? (count (:terms src))) (die! 1 "source has no terms"))
+  (if-not check?
+    (do (doseq [[rel text] outputs]
+          (.writeFileSync fs (.join path-mod root rel) text "utf8")
+          (println (str "WROTE\t" rel "\t" (count text) " chars")))
+        (let [failures (self-check root src)]
+          (doseq [f failures] (println (str "FAIL\t" f)))
+          (js/process.exit (if (seq failures) 1 0))))
+    (let [diffs (for [[rel text] outputs
+                      :let [p (.join path-mod root rel)
+                            on-disk (when (.existsSync fs p) (.readFileSync fs p "utf8"))]
+                      :when (not= on-disk text)]
+                  (if on-disk
+                    (str rel " differs from regeneration at line " (first-diff-line on-disk text))
+                    (str rel " is missing")))
+          failures (concat diffs (self-check root src))]
+      (doseq [f failures] (println (str "FAIL\t" f)))
+      (println (if (seq failures) "RESULT\tFAIL" "RESULT\tOK"))
+      (js/process.exit (if (seq failures) 1 0)))))
