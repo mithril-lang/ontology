@@ -1,0 +1,1025 @@
+(mithril/ontology
+  :id "https://mithril.fund/ontology/dm2/2.02"
+  :profile
+  ["https://www.w3.org/TR/rdf11-concepts/"
+   "https://www.w3.org/TR/owl2-profiles/#OWL_2_RL"
+   "https://www.w3.org/TR/shacl/"]
+  :graph
+  [
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Activity"
+     :name "Activity"
+     :description "Work, not specific to a single organization, weapon system or individual that transforms inputs (Resources) into outputs (Resources) or changes their state." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityConsumesResource"
+     :name "activityConsumesResource"
+     :description "Represents that an activity consumes a resource" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityMapsToCapabilityType"
+     :name "activityMapsToCapabilityType"
+     :description "Represents that an activity was / is / can-be/ must-be conducted under certain conditions with a spatiotemporal overlap of the activity with the condition." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityPartOfCapability"
+     :name "activityPartOfCapability"
+     :description "A disposition to manifest an Activity. An Activity to be performed to achieve a desired effect under specified [performance] standards and conditions through combinations of ways and means." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityPartOfProjectType"
+     :name "activityPartOfProjectType"
+     :description "A wholePart relationship between a Project and an Activity (Task) that is part of the Project" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityPerformableUnderCondition"
+     :name "activityPerformableUnderCondition"
+     :description "Represents that an activity was / is / can-be/ must-be conducted under certain conditions with a spatiotemporal overlap of the activity with the condition." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityPerformedByPerformer"
+     :name "activityPerformedByPerformer"
+     :description "An overlap between a Performer and an Activity that is non-specific as to whether:\n1. the Activity is solely performed by the Performer\n2. the Activity is performed by several Performers\n3. the Performer performs only this Activity\n4. the Performer performs other Activities" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#activityProducesResource"
+     :name "activityProducesResource"
+     :description "Represents that an activity produces a resource" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ActivityType"
+     :name "ActivityType"
+     :description "Powertype of Activity" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#AdaptabilityMeasure"
+     :name "AdaptabilityMeasure"
+     :description "A measure of the ease with which Performers satisfy differing Constraints and Capability and Service needs." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#AdaptabilityMeasureType"
+     :name "AdaptabilityMeasureType"
+     :description "The Powertype of AdaptabilityMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Address"
+     :name "Address"
+     :description "The name of a location along with the location-finding scheme that allows a location to be found from the name.  Examples include postal address, email address, URL, datalink address." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#AddressType"
+     :name "AddressType"
+     :description "The Powertype of Address." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Agreement"
+     :name "Agreement"
+     :description "A consent among parties regarding the terms and conditions of activities that said parties participate in." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#AgreementType"
+     :name "AgreementType"
+     :description "The Powertype of Agreement." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescription"
+     :name "ArchitecturalDescription"
+     :description "Information describing an architecture such as an OV-5 Activity Model document." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescriptionType"
+     :name "ArchitecturalDescriptionType"
+     :description "The Powertype of ArchitecturalDescription." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#associationOfInformation"
+     :name "associationOfInformation"
+     :description "A relationship or association between two elements of  information." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#axesDescribedBy"
+     :name "axesDescribedBy"
+     :description "A relationship describing the straight lines about which bodies rotate" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#beforeAfter"
+     :name "beforeAfter"
+     :description "A couple that represents that the temporal extent end time for the individual in place 1 is less than temporal extent start time for the individual in place 2." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType"
+     :name "BeforeAfterType"
+     :description "An association between two Individual Types signifying that the temporal end of all the Individuals of one Individual Type is before the temporal start of all the Individuals of the other Individual Type." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Capability"
+     :name "Capability"
+     :description "The ability to achieve a Desired Effect under specified [performance] standards and conditions through combinations of ways and means [activities and resources] to perform a set of activities." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#capabilityOfPerformer"
+     :name "capabilityOfPerformer"
+     :description "A couple that represents the capability that a performer manifests" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CapabilityType"
+     :name "CapabilityType"
+     :description "Category or type of capability" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CircularArea"
+     :name "CircularArea"
+     :description "The space enclosed by a circle." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CircularAreaType"
+     :name "CircularAreaType"
+     :description "Powertype Of CircularArea" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CircularAreaTypeType"
+     :name "CircularAreaTypeType"
+     :description "The Powertype of CircularAreaType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Condition"
+     :name "Condition"
+     :description "The state of an environment or situation in which a Performer performs or is disposed to perform." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ConditionType"
+     :name "ConditionType"
+     :description "The Powertype of Condition." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#coordinateCenterDescribedBy"
+     :name "coordinateCenterDescribedBy"
+     :description "A relationship describing the mid point of a position reference frame" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Country"
+     :name "Country"
+     :description "A political state or nation or its territory." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CountryType"
+     :name "CountryType"
+     :description "Powertype Of Country" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#CountryTypeType"
+     :name "CountryTypeType"
+     :description "The Powertype of CountryType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#couple"
+     :name "couple"
+     :description "An ordered relationship (tuple) between two Things, i.e., that has two place positions." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#CoupleType"
+     :name "CoupleType"
+     :description "A couple in which the places are taken by Types only." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Data"
+     :name "Data"
+     :description "Representation of information in a formalized manner suitable for communication, interpretation, or processing by humans or by automatic means. Examples could be whole models, packages, entities, attributes, classes, domain values, enumeration values, records, tables, rows, columns, and fields." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DataType"
+     :name "DataType"
+     :description "Powertype of Data" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#describedBy"
+     :name "describedBy"
+     :description "A tuple that asserts that Information describes a Thing." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DescriptionScheme"
+     :name "DescriptionScheme"
+     :description "A RepresentationScheme and DescriptionType whose members are intentionally descriptions" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#descriptionSchemeInstance"
+     :name "descriptionSchemeInstance"
+     :description "A representationSchemeInstance that asserts a Description is a member of a DescriptionScheme." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#desiredEffect"
+     :name "desiredEffect"
+     :description "A desired state of a Resource" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#desiredEffectDirectsActivity"
+     :name "desiredEffectDirectsActivity"
+     :description "The couple that represents how a desired effect directs an activity" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#desiredEffectIsRealizedByProjectType"
+     :name "desiredEffectIsRealizedByProjectType"
+     :description "The couple that represents how a desired effect is realized by a project type" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#desiredEffectOfCapability"
+     :name "desiredEffectOfCapability"
+     :description "A couple that represents the whole part relationship between a desired effect and a capability" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#desireMeasure"
+     :name "desireMeasure"
+     :description "A measureOfType that relates a DesiredEffect to a MeasureOfDesire" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DomainInformation"
+     :name "DomainInformation"
+     :description "Types of information within the scope or domain of the architecture." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DomainInformationType"
+     :name "DomainInformationType"
+     :description "The Powertype of DomainInformation." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#effectMeasure"
+     :name "effectMeasure"
+     :description "A measureOfType that relates a DesiredEffect to a MeasureOfEffect" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#EllipticalArea"
+     :name "EllipticalArea"
+     :description "The space enclosed by an ellipse." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaType"
+     :name "EllipticalAreaType"
+     :description "Powertype Of EllipticalArea" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaTypeType"
+     :name "EllipticalAreaTypeType"
+     :description "The Powertype of EllipticalAreaType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#endBoundary"
+     :name "endBoundary"
+     :description "A temporal whole part couple that relates the temporal boundary to the whole." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#EndBoundaryType"
+     :name "EndBoundaryType"
+     :description "A temporal whole part couple that relates the temporal boundary to the whole taken over a Type." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Facility"
+     :name "Facility"
+     :description "A real property entity consisting of underlying land and one or more of the following: a building, a structure (including linear structures), a utility system, or pavement." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#facilityPartOfSite"
+     :name "facilityPartOfSite"
+     :description "A whole part association between a Facility (part) and the Site (whole) in which it resides." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FacilityType"
+     :name "FacilityType"
+     :description "Powertype Of Facility" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FacilityTypeType"
+     :name "FacilityTypeType"
+     :description "The Powertype of FacilityType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FunctionalStandard"
+     :name "FunctionalStandard"
+     :description "Functional standards set forth rules, conditions, guidelines, and characteristics." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FunctionalStandardType"
+     :name "FunctionalStandardType"
+     :description "The Powertype of FunctionalStandard." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoFeature"
+     :name "GeoFeature"
+     :description "An object that encompasses meteorological, geographic, and control features mission significance" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoFeatureType"
+     :name "GeoFeatureType"
+     :description "Powertype Of GeoFeature" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoFeatureTypeType"
+     :name "GeoFeatureTypeType"
+     :description "The Powertype of GeoFeatureType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+     :name "GeoPoliticalExtent"
+     :description "A geospatial extent whose boundaries are by declaration or agreement by political parties." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+     :name "GeoPoliticalExtentType"
+     :description "Powertype Of GeoPoliticalExtent" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+     :name "GeoPoliticalExtentTypeType"
+     :description "The Powertype of GeoPoliticalExtentType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPoint"
+     :name "GeoStationaryPoint"
+     :description "Unidimensional Individual (dimensionless in space, existant over all time)" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPointType"
+     :name "GeoStationaryPointType"
+     :description "Powertype Of GeoStationaryPoint" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPointTypeType"
+     :name "GeoStationaryPointTypeType"
+     :description "The Powertype of GeoStationaryPointType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Guidance"
+     :name "Guidance"
+     :description "An authoritative statement intended to lead or steer the execution of actions." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#GuidanceType"
+     :name "GuidanceType"
+     :description "The Powertype of Guidance." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Individual"
+     :name "Individual"
+     :description "A Thing that has spatio-temporal extent.  Note - this may be something that existed in the past, exists now, or may exist in some future possible world." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualActivity"
+     :name "IndividualActivity"
+     :description "Activities that are Individuals, i.e., that occur in space and time." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer"
+     :name "IndividualPerformer"
+     :description "A specific thing that can perform an action" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualPersonRole"
+     :name "IndividualPersonRole"
+     :description "Person roles defined by the role or roles they share that are relevant to an architecture.  Includes assigned materiel." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#individualPersonRolePartOfIndividualPerformer"
+     :name "individualPersonRolePartOfIndividualPerformer"
+     :description "Whole part relationship between an individual person role and an individual performer" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualResource"
+     :name "IndividualResource"
+     :description "Any specific physical or virtual entity of limited availability" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#individualResourceInLocation"
+     :name "individualResourceInLocation"
+     :description "A wholePart that asserts an IndividualResourceState is in a Location" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+     :name "IndividualType"
+     :description "The powertype of Individual." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+     :name "IndividualTypeType"
+     :description "A PlaceableType that is the Powertype of IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Information"
+     :name "Information"
+     :description "Information is the state of a something of interest that is materialized -- in any medium or form -- and communicated or received." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#InformationType"
+     :name "InformationType"
+     :description "Category or type of information" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Installation"
+     :name "Installation"
+     :description "A base, camp, post, station, yard, center, or other activity, including leased facilities, without regard to the duration of operational control. An installation may include one or more sites." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#InstallationType"
+     :name "InstallationType"
+     :description "Powertype Of Installation" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#InstallationTypeType"
+     :name "InstallationTypeType"
+     :description "The Powertype of InstallationType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#jointAction"
+     :name "jointAction"
+     :description "Relating two parts of a joint action" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Line"
+     :name "Line"
+     :description "A geometric figure formed by a point moving along a fixed direction and the reverse direction." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#linePartOfPlanarSurface"
+     :name "linePartOfPlanarSurface"
+     :description "A couple that represents the whole part relationship between Line and PlanarSurface" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#LineType"
+     :name "LineType"
+     :description "Powertype Of Line" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#LineTypeType"
+     :name "LineTypeType"
+     :description "The Powertype of LineType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Location"
+     :name "Location"
+     :description "A point or extent in space that may be referred to physically or logically." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#locationNamedByAddress"
+     :name "locationNamedByAddress"
+     :description "A relationship that represents a location being named by an address" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#LocationType"
+     :name "LocationType"
+     :description "The powertype of Location" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#LocationTypeType"
+     :name "LocationTypeType"
+     :description "The Powertype of LocationType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MaintainabilityMeasure"
+     :name "MaintainabilityMeasure"
+     :description "A category of measures of  the amount of time a Performer is able to conduct Activities over some time interval." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MaintainabilityMeasureType"
+     :name "MaintainabilityMeasureType"
+     :description "The Powertype of MaintainabilityMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Materiel"
+     :name "Materiel"
+     :description "Equipment, apparatus or supplies that are of interest, without distinction as to its application for administrative or combat purposes." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#materielPartOfPerformer"
+     :name "materielPartOfPerformer"
+     :description "A whole-part association between a Performer (whole) and the Materiel parts of the Performer.  (A Performer can have Personnel Type, System, Service, and Organizational components.)" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MaterielType"
+     :name "MaterielType"
+     :description "The Powertype of Materiel." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Measure"
+     :name "Measure"
+     :description "The magnitude of some attribute of an individual." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureableSkill"
+     :name "MeasureableSkill"
+     :description "A Skill that can be measured numerically" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureableSkillOfPersonRoleType"
+     :name "measureableSkillOfPersonRoleType"
+     :description "skillPartOfPersonRoleType is a member of Measure" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureableSkillType"
+     :name "MeasureableSkillType"
+     :description "The Powertype of MeasureableSkill." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesire"
+     :name "MeasureOfDesire"
+     :description "DesiredEffect is a member of Measure" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesireType"
+     :name "MeasureOfDesireType"
+     :description "The Powertype of MeasureOfDesire." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffect"
+     :name "MeasureOfEffect"
+     :description "Category of measures on Effect Objects" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffectType"
+     :name "MeasureOfEffectType"
+     :description "The Powertype of MeasureOfEffect." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfIndividual"
+     :name "measureOfIndividual"
+     :description "A propertyOfIndividual that asserts an Individual is an instance of a Measure - i.e. the Individual \"has\" a property corresponding to the Measure.\n\nExamples:\n\nA laptop weighing 2.2kg\nA car travelling between 40 and 50 km/h" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualEndBoundary"
+     :name "measureOfIndividualEndBoundary"
+     :description "endBoundary is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualPoint"
+     :name "measureOfIndividualPoint"
+     :description "Point is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualStartBoundary"
+     :name "measureOfIndividualStartBoundary"
+     :description "startBoundary is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+     :name "measureOfType"
+     :description "A propertyOfType that asserts an IndividualType is a subtype of a Measure - i.e. it asserts all members of the Individual type have a property corresponding to the Measure \n\nExamples:\n\nAll Porsche 911 2.2S have a mass between 900 and 960 kg\nAll atoms of mercury have an atomic weight of 200.59 &thinsp;g·mol&minus;1" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeActivity"
+     :name "measureOfTypeActivity"
+     :description "A measureOfType that relates an Activity to a Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeCondition"
+     :name "measureOfTypeCondition"
+     :description "Condition is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeEndBoundaryType"
+     :name "measureOfTypeEndBoundaryType"
+     :description "endBoundaryType is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeProjectType"
+     :name "measureOfTypeProjectType"
+     :description "ProjectType is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeResource"
+     :name "measureOfTypeResource"
+     :description "ResourceType is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeStartBoundaryType"
+     :name "measureOfTypeStartBoundaryType"
+     :description "startBoundaryType is a member of Measure" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureOfTypeWholePartType"
+     :name "measureOfTypeWholePartType"
+     :description "wholePart is a member of Measure" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+     :name "MeasureType"
+     :description "A category of Measures" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#measureTypeApplicableToActivity"
+     :name "measureTypeApplicableToActivity"
+     :description "Type instance relationship between Activity and MeasureType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#MeasureTypeUnitsOfMeasure"
+     :name "MeasureTypeUnitsOfMeasure"
+     :description "The subtype of MeasureType that has units." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Name"
+     :name "Name"
+     :description "The type of all utterances of a given name for a Thing. The exemplarText provides a written example of the uttered name." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#namedBy"
+     :name "namedBy"
+     :description "A couple that asserts that a Name describes a Thing." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#NameType"
+     :name "NameType"
+     :description "A RepresentationType that is the Powertype of Name" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#NamingScheme"
+     :name "NamingScheme"
+     :description "A Type whose members are Names. What kind of name the name is." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#namingSchemeInstance"
+     :name "namingSchemeInstance"
+     :description "A representationSchemeInstance that asserts a Name is a member of a NamingScheme." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#NeedsSatisfactionMeasure"
+     :name "NeedsSatisfactionMeasure"
+     :description "A category of quality measures that address how well a system meets the user's needs and requirements." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#NeedsSatisfactionMeasureType"
+     :name "NeedsSatisfactionMeasureType"
+     :description "The Powertype of NeedsStatisfactionMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Organization"
+     :name "Organization"
+     :description "A specific real-world assemblage of people and other resources organized for an on-going purpose." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#OrganizationalMeasure"
+     :name "OrganizationalMeasure"
+     :description "A category of quality measures that address how costly a Performer is to operate and maintain." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#OrganizationalMeasureType"
+     :name "OrganizationalMeasureType"
+     :description "The Powertype of OrganizationalMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#OrganizationType"
+     :name "OrganizationType"
+     :description "A type of Organization" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#OrganizationTypeType"
+     :name "OrganizationTypeType"
+     :description "The Powertype of OrganizationType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#overlap"
+     :name "overlap"
+     :description "A couple of wholePart couples where the part in each couple is the same." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+     :name "OverlapType"
+     :description "An overlap in which the places are taken by Types only." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#partiesToAnAgreement"
+     :name "partiesToAnAgreement"
+     :description "The two parties involved in an agreement" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PedigreeInformation"
+     :name "PedigreeInformation"
+     :description "Information describing pedigree" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PedigreeInformationType"
+     :name "PedigreeInformationType"
+     :description "The Powertype of PedigreeInformation." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PerformanceMeasure"
+     :name "PerformanceMeasure"
+     :description "A category of quality measures that address how well a Performer meets Capability needs." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PerformanceMeasureType"
+     :name "PerformanceMeasureType"
+     :description "The Powertype of PerformanceMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Performer"
+     :name "Performer"
+     :description "Any entity - human, automated, or any aggregation of human and/or automated - that performs an activity and provides a capability." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+     :name "PerformerType"
+     :description "The Powertype of Performer." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PersonRoleType"
+     :name "PersonRoleType"
+     :description "A category of person roles defined by the role or roles they share that are relevant to an architecture.  Includes assigned materiel." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#personRoleTypePartOfPerformer"
+     :name "personRoleTypePartOfPerformer"
+     :description "A wholePart between a PersonRoleType and a Performer in which it performs" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PersonRoleTypeType"
+     :name "PersonRoleTypeType"
+     :description "The Powertype of PersonRoleType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasure"
+     :name "PhysicalMeasure"
+     :description "A category of measures of spatio-temporal extent of an Individual such as length, mass, energy, velocity, …" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasureType"
+     :name "PhysicalMeasureType"
+     :description "The Powertype of PhysicalMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PlanarSurface"
+     :name "PlanarSurface"
+     :description "A two-dimensional portion of space." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceType"
+     :name "PlanarSurfaceType"
+     :description "Powertype Of PlanarSurface" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceTypeType"
+     :name "PlanarSurfaceTypeType"
+     :description "The Powertype of PlanarSurfaceType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Point"
+     :name "Point"
+     :description "Unidimensional Individual (dimensionless in space, existant over all time)" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#pointPartOfLine"
+     :name "pointPartOfLine"
+     :description "A couple that represents the whole part relationship between a line and a point" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#pointPartOfPlanarSurface"
+     :name "pointPartOfPlanarSurface"
+     :description "A couple that represents the whole part relationship between a planar surface and a point" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PointType"
+     :name "PointType"
+     :description "Powertype Of Point" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PointTypeType"
+     :name "PointTypeType"
+     :description "The Powertype of PointType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PolygonArea"
+     :name "PolygonArea"
+     :description "The space enclosed by a polygon." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PolygonAreaType"
+     :name "PolygonAreaType"
+     :description "Powertype Of PolygonArea" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PolygonAreaTypeType"
+     :name "PolygonAreaTypeType"
+     :description "The Powertype of PolygonAreaType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#portPartOfPerformer"
+     :name "portPartOfPerformer"
+     :description "A an association of the whole Performer to its Port that is visible and interfaces with other Performers" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PortType"
+     :name "PortType"
+     :description "The Powertype of Port." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame"
+     :name "PositionReferenceFrame"
+     :description "An arbitrary set of axes with reference to which the position or motion of something is described or physical laws are formulated." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrameType"
+     :name "PositionReferenceFrameType"
+     :description "The Powertype of PositionReferenceFrame." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Powertype"
+     :name "Powertype"
+     :description "A Type that is the is the set (i.e., Type) of all subsets (i.e., subTypes) that can be taken over the some Type." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#powertypeInstance"
+     :name "powertypeInstance"
+     :description "An association that between of the sets within the powerType and the powerType.  A special form of typeInstance." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Project"
+     :name "Project"
+     :description "A temporary endeavor undertaken to create Resources or Desired Effects." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ProjectType"
+     :name "ProjectType"
+     :description "The powertype of Project" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ProjectTypeType"
+     :name "ProjectTypeType"
+     :description "The Powertype of ProjectType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Property"
+     :name "Property"
+     :description "An IndividualType whose members all exhibit a common trait or feature. Often the Individuals are states having a property (the state of being 18 degrees centigrade), where this property can be a CategoricalProperty (qv.) or a DispositionalProperty (qv.)." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#propertyOfIndividual"
+     :name "propertyOfIndividual"
+     :description "A typeInstance that asserts an Individual is an instance of a Property - i.e. the Individual \"has\" a property \n\nExamples:\n\nA product being \"expensive\"\nA laptop weighing 2.2kg\nA car travelling between 40 and 50 km/h" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#propertyOfType"
+     :name "propertyOfType"
+     :description "A superSubtype that asserts an IndividualType is a subtype of a Property - i.e. it asserts all members of the Individual type \"have\" a property \n\nExamples:\n\nAll London Buses are red\nAll Porsche 911 2.2S have a mass between 900 and 960 kg\nAll atoms of merc" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#PropertyType"
+     :name "PropertyType"
+     :description "The Powertype of Property." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RealProperty"
+     :name "RealProperty"
+     :description "Land and improvements to land (i.e., facilities)." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RealPropertyType"
+     :name "RealPropertyType"
+     :description "Powertype Of RealProperty" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RealPropertyTypeType"
+     :name "RealPropertyTypeType"
+     :description "The Powertype of RealPropertyType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RectangularArea"
+     :name "RectangularArea"
+     :description "The space enclosed by a rectangle." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RectangularAreaType"
+     :name "RectangularAreaType"
+     :description "Powertype Of RectangularArea" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RectangularAreaTypeType"
+     :name "RectangularAreaTypeType"
+     :description "The Powertype of RectangularAreaType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfCountry"
+     :name "RegionOfCountry"
+     :description "A large, usually continuous segment of a political state or nation or its territory." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#regionOfCountryPartOfCountry"
+     :name "regionOfCountryPartOfCountry"
+     :description "A couple that represents the whole part relationship between a country and a region within it" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfCountryType"
+     :name "RegionOfCountryType"
+     :description "Powertype Of RegionOfCountry" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfCountryTypeType"
+     :name "RegionOfCountryTypeType"
+     :description "The Powertype of RegionOfCountryType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfWorld"
+     :name "RegionOfWorld"
+     :description "A large, usually continuous segment of a surface or space; area." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfWorldType"
+     :name "RegionOfWorldType"
+     :description "Powertype Of RegionOfWorld" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RegionOfWorldTypeType"
+     :name "RegionOfWorldTypeType"
+     :description "The Powertype of RegionOfWorldType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Representation"
+     :name "Representation"
+     :description "A SignType where all the individual Signs are intended to signify the same Thing." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme"
+     :name "RepresentationScheme"
+     :description "A RepresentationType that is a collection of Representations that are intended to be the preferred Representations in certain contexts." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#representationSchemeInstance"
+     :name "representationSchemeInstance"
+     :description "A typeInstance that asserts a Representation is a member of a RepresentationScheme." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RepresentationType"
+     :name "RepresentationType"
+     :description "A Type that is the Powertype of Representation" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#representedBy"
+     :name "representedBy"
+     :description "A couple that asserts that a Representation represents a Thing." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Resource"
+     :name "Resource"
+     :description "Data, Information, Performers, Materiel, or Personnel Types that are produced or consumed." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#resourceInLocationType"
+     :name "resourceInLocationType"
+     :description "The relationship that describes the location of a performer or type of performer" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ResourceType"
+     :name "ResourceType"
+     :description "The Powertype of Resource." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Rule"
+     :name "Rule"
+     :description "A principle or condition that governs behavior; a prescribed guide for conduct or action" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#ruleConstrainsActivity"
+     :name "ruleConstrainsActivity"
+     :description "An overlap between a Rule and the Activities it allows" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#rulePartOfMeasureType"
+     :name "rulePartOfMeasureType"
+     :description "A couple that represents the whole part relationship between types of measures and rules" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#RuleType"
+     :name "RuleType"
+     :description "The Powertype of Rule." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :name "SecurityAttributesGroup"
+     :description "The group of Information Security Marking attributes in which the use of attributes 'classification' and 'ownerProducer' is required. This group is to be contrasted with group 'SecurityAttributesOptionGroup' in which use of those attributes is optional." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroupType"
+     :name "SecurityAttributesGroupType"
+     :description "The Powertype of SecurityAttributesGroup." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Service"
+     :name "Service"
+     :description "A mechanism to enable access to a set of one or more capabilities , where the access is provided using a prescribed interface and is exercised consistent with constraints and policies as specified by the service description.  The mechanism is a Performer.  The \"capabilities\" accessed are Resources -- Information, Data, Materiel, Performers, and Geo-political Extents." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServiceDescription"
+     :name "ServiceDescription"
+     :description "Information necessary to interact with the service in such terms as the service inputs, outputs, and associated semantics. The service description also conveys what is accomplished when the service is invoked and the conditions for using the service." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServiceDescriptionType"
+     :name "ServiceDescriptionType"
+     :description "The Powertype of ServiceDescription." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#serviceEnablesAccessToResource"
+     :name "serviceEnablesAccessToResource"
+     :description "An overlap between the Service (i.e., mechanism) and the Resources (i.e., capabilities) to which it provides access." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServiceLevel"
+     :name "ServiceLevel"
+     :description "A measurement of the performance of a system or service." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType"
+     :name "ServiceLevelType"
+     :description "The Powertype of ServiceLevel." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServicePort"
+     :name "ServicePort"
+     :description "A part of a Performer that specifics a interaction component through which the Performer interacts with other Performers.  This isolates dependencies between performers to particular interaction points rather than to the performer as a whole." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#servicePortDescribedBy"
+     :name "servicePortDescribedBy"
+     :description "A tuple that asserts that Information describes a Thing." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServicePortType"
+     :name "ServicePortType"
+     :description "The Powertype of ServicePort." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ServiceType"
+     :name "ServiceType"
+     :description "The Powertype of Service." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Sign"
+     :name "Sign"
+     :description "An Individual that signifies a Thing.\n\nExample: 'BOSTON' signifies BOSTON" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SignType"
+     :name "SignType"
+     :description "An IndividualType that is the Powertype of Sign." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SignTypeType"
+     :name "SignTypeType"
+     :description "The Powertype of SignType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SingletonActivity"
+     :name "SingletonActivity"
+     :description "A set of activities containing only one activity." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SingletonIndividualType"
+     :name "SingletonIndividualType"
+     :description "A set of individuals containing only one individual." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SingletonResource"
+     :name "SingletonResource"
+     :description "A set of resources containing only one resource" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Site"
+     :name "Site"
+     :description "Physical (geographic) location that is or was owned by, leased to, or otherwise possessed. Each site is assigned to a single installation. A site may exist in one of three forms: (1) Land only, where there are no facilities present and where the land consists of either a single land parcel or two or more contiguous land parcels. (2)  Facility or facilities only, where the underlying land is neither owned nor controlled by the government. A stand-alone facility can be a site. If a facility is not a stand-alone facility, it must be assigned to a site. (3). Land and all the facilities thereon, where the land consists of either a single land parcel or two or more contiguous land parcels." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#sitePartOfInstallation"
+     :name "sitePartOfInstallation"
+     :description "A whole-part association representing that a Site (the part) is spatio-temporally contained within an Installation (the whole)." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SiteType"
+     :name "SiteType"
+     :description "Powertype Of Site" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SiteTypeType"
+     :name "SiteTypeType"
+     :description "The Powertype of SiteType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Skill"
+     :name "Skill"
+     :description "The ability, coming from one's knowledge, practice, aptitude, etc., to do something well." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#skillOfPersonRoleType"
+     :name "skillOfPersonRoleType"
+     :description "A type property between a PersonRoleType and the Skills it entails" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SkillType"
+     :name "SkillType"
+     :description "The Powertype of Skill." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SolidVolume"
+     :name "SolidVolume"
+     :description "The amount of space occupied by a three-dimensional object of definite shape; not liquid or gaseous." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SolidVolumeType"
+     :name "SolidVolumeType"
+     :description "Powertype Of SolidVolume" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SolidVolumeTypeType"
+     :name "SolidVolumeTypeType"
+     :description "The Powertype of SolidVolumeType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SpatialMeasure"
+     :name "SpatialMeasure"
+     :description "A category of measures of the spatio-temporal location of an Individual." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SpatialMeasureType"
+     :name "SpatialMeasureType"
+     :description "The Powertype of SpatialMeasure." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Standard"
+     :name "Standard"
+     :description "A formal agreement documenting generally accepted specifications or criteria for products, processes, procedures, policies, systems, and/or personnel." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#StandardType"
+     :name "StandardType"
+     :description "The Powertype of Standard." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#startBoundary"
+     :name "startBoundary"
+     :description "The beginning of a temporalBoundary." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#StartBoundaryType"
+     :name "StartBoundaryType"
+     :description "The beginning of a temporalBoundaryType." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#superSubType"
+     :name "superSubType"
+     :description "An association in which one Type (the subtype) is a subset of the other Type (supertype)." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Surface"
+     :name "Surface"
+     :description "A portion of space having length and breadth but no thickness or regards to time." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SurfaceType"
+     :name "SurfaceType"
+     :description "Powertype Of Surface" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SurfaceTypeType"
+     :name "SurfaceTypeType"
+     :description "The Powertype of SurfaceType." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#System"
+     :name "System"
+     :description "A functionally, physically, and/or behaviorally related group of regularly interacting or interdependent elements." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SystemType"
+     :name "SystemType"
+     :description "The Powertype of System." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TechnicalStandard"
+     :name "TechnicalStandard"
+     :description "Technical standards document specific technical methodologies and practices to design and implement." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TechnicalStandardType"
+     :name "TechnicalStandardType"
+     :description "The Powertype of TechnicalStandard." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#temporalBoundary"
+     :name "temporalBoundary"
+     :description "The start and end times for the spatio-temporal extent of an Individual" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#TemporalBoundaryType"
+     :name "TemporalBoundaryType"
+     :description "The start and end times for the Individual members of a Type." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TemporalMeasure"
+     :name "TemporalMeasure"
+     :description "A type of measure of time" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TemporalMeasureType"
+     :name "TemporalMeasureType"
+     :description "The Powertype of TemporalMeasure." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#temporalWholePart"
+     :name "temporalWholePart"
+     :description "A wholePart that asserts the spatial extent of the (whole) individual is co-extensive with the spatial extent of the (part) individual for a particular period of time." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#TemporalWholePartType"
+     :name "TemporalWholePartType"
+     :description "A couple between two Individual Types where for each member of the whole set, there is a corresponding member of the part set for which a wholePart relationship exists, and conversely" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Thing"
+     :name "Thing"
+     :description "The union of Individual, Type, and tuple." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#tuple"
+     :name "tuple"
+     :description "A relationship between two or more things. Note: Tuples are identified by their places (i.e. the ends of the relationship)." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#TupleType"
+     :name "TupleType"
+     :description "The powertype of tuple that provides the stereotype for tuples of Types." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Type"
+     :name "Type"
+     :description "A set (or class) of Things.  Note1: Types are identified by their members (i.e. all the things of that type). Note2: The IDEAS Foundation is a higher-order ontology, so Types may have members that are also Types." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#typeInstance"
+     :name "typeInstance"
+     :description "A Thing can be an instance of a Type - i.e. set membership. Note that IDEAS is a higher-order model, hence Types may be instances of Types." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Vision"
+     :name "Vision"
+     :description "An end that describes the future state of the enterprise, without regard to how it is to be achieved; a mental image of what the future will or could be like" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#visionIsRealizedByDesiredEffect"
+     :name "visionIsRealizedByDesiredEffect"
+     :description "The relationship that exists between a vision and the specific desired effect that realised it" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#VisionType"
+     :name "VisionType"
+     :description "The Powertype of Vision." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#wholePart"
+     :name "wholePart"
+     :description "A couple that asserts one (part) Individual is part of another (whole) Individual." )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :name "WholePartType"
+     :description "A coupleType that asserts one Type (the part) has members that have a whole-part relation with a member of the other Type (whole)." )
+  ])
