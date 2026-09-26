@@ -1,0 +1,1884 @@
+@prefix dm2: <https://mithril.fund/ontology/dm2/2.02#> .
+@prefix dm2sh: <https://mithril.fund/ontology/dm2/2.02/shapes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<https://mithril.fund/ontology/dm2/2.02> a owl:Ontology ;
+    rdfs:comment "Generated from source/dm2-2.02.edn by scripts/gen_dm2_ttl.py." ;
+    owl:versionInfo "2.02" .
+
+dm2:ActivityType a owl:Class ;
+    rdfs:label "ActivityType" ;
+    rdfs:comment "Powertype of Activity" ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:AdaptabilityMeasure a owl:Class ;
+    rdfs:label "AdaptabilityMeasure" ;
+    rdfs:comment "A measure of the ease with which Performers satisfy differing Constraints and Capability and Service needs." ;
+    rdfs:subClassOf dm2:ServiceLevel .
+
+dm2:AdaptabilityMeasureType a owl:Class ;
+    rdfs:label "AdaptabilityMeasureType" ;
+    rdfs:comment "The Powertype of AdaptabilityMeasure." ;
+    rdfs:subClassOf dm2:ServiceLevelType .
+
+dm2:AddressType a owl:Class ;
+    rdfs:label "AddressType" ;
+    rdfs:comment "The Powertype of Address." ;
+    rdfs:subClassOf dm2:NameType .
+
+dm2:AgreementType a owl:Class ;
+    rdfs:label "AgreementType" ;
+    rdfs:comment "The Powertype of Agreement." ;
+    rdfs:subClassOf dm2:RuleType .
+
+dm2:CircularArea a owl:Class ;
+    rdfs:label "CircularArea" ;
+    rdfs:comment "The space enclosed by a circle." ;
+    rdfs:subClassOf dm2:EllipticalArea .
+
+dm2:CircularAreaType a owl:Class ;
+    rdfs:label "CircularAreaType" ;
+    rdfs:comment "Powertype Of CircularArea" ;
+    rdfs:subClassOf dm2:EllipticalAreaType .
+
+dm2:CircularAreaTypeType a owl:Class ;
+    rdfs:label "CircularAreaTypeType" ;
+    rdfs:comment "The Powertype of CircularAreaType." ;
+    rdfs:subClassOf dm2:EllipticalAreaTypeType .
+
+dm2:ConditionType a owl:Class ;
+    rdfs:label "ConditionType" ;
+    rdfs:comment "The Powertype of Condition." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:CountryType a owl:Class ;
+    rdfs:label "CountryType" ;
+    rdfs:comment "Powertype Of Country" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:CountryTypeType a owl:Class ;
+    rdfs:label "CountryTypeType" ;
+    rdfs:comment "The Powertype of CountryType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:Data a owl:Class ;
+    rdfs:label "Data" ;
+    rdfs:comment "Representation of information in a formalized manner suitable for communication, interpretation, or processing by humans or by automatic means. Examples could be whole models, packages, entities, attributes, classes, domain values, enumeration values, records, tables, rows, columns, and fields." ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:DataType a owl:Class ;
+    rdfs:label "DataType" ;
+    rdfs:comment "Powertype of Data" ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:DomainInformation a owl:Class ;
+    rdfs:label "DomainInformation" ;
+    rdfs:comment "Types of information within the scope or domain of the architecture." ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:DomainInformationType a owl:Class ;
+    rdfs:label "DomainInformationType" ;
+    rdfs:comment "The Powertype of DomainInformation." ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:EndBoundaryType a owl:ObjectProperty ;
+    rdfs:label "EndBoundaryType" ;
+    rdfs:comment "A temporal whole part couple that relates the temporal boundary to the whole taken over a Type." ;
+    rdfs:subPropertyOf dm2:TemporalBoundaryType .
+
+dm2:FacilityType a owl:Class ;
+    rdfs:label "FacilityType" ;
+    rdfs:comment "Powertype Of Facility" ;
+    rdfs:subClassOf dm2:RealPropertyType .
+
+dm2:FacilityTypeType a owl:Class ;
+    rdfs:label "FacilityTypeType" ;
+    rdfs:comment "The Powertype of FacilityType." ;
+    rdfs:subClassOf dm2:RealPropertyTypeType .
+
+dm2:FunctionalStandard a owl:Class ;
+    rdfs:label "FunctionalStandard" ;
+    rdfs:comment "Functional standards set forth rules, conditions, guidelines, and characteristics." ;
+    rdfs:subClassOf dm2:Standard .
+
+dm2:FunctionalStandardType a owl:Class ;
+    rdfs:label "FunctionalStandardType" ;
+    rdfs:comment "The Powertype of FunctionalStandard." ;
+    rdfs:subClassOf dm2:StandardType .
+
+dm2:GeoFeature a owl:Class ;
+    rdfs:label "GeoFeature" ;
+    rdfs:comment "An object that encompasses meteorological, geographic, and control features mission significance" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:GeoFeatureType a owl:Class ;
+    rdfs:label "GeoFeatureType" ;
+    rdfs:comment "Powertype Of GeoFeature" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:GeoFeatureTypeType a owl:Class ;
+    rdfs:label "GeoFeatureTypeType" ;
+    rdfs:comment "The Powertype of GeoFeatureType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:GeoStationaryPoint a owl:Class ;
+    rdfs:label "GeoStationaryPoint" ;
+    rdfs:comment "Unidimensional Individual (dimensionless in space, existant over all time)" ;
+    rdfs:subClassOf dm2:Point .
+
+dm2:GeoStationaryPointType a owl:Class ;
+    rdfs:label "GeoStationaryPointType" ;
+    rdfs:comment "Powertype Of GeoStationaryPoint" ;
+    rdfs:subClassOf dm2:PointType .
+
+dm2:GeoStationaryPointTypeType a owl:Class ;
+    rdfs:label "GeoStationaryPointTypeType" ;
+    rdfs:comment "The Powertype of GeoStationaryPointType." ;
+    rdfs:subClassOf dm2:PointTypeType .
+
+dm2:IndividualActivity a owl:Class ;
+    rdfs:label "IndividualActivity" ;
+    rdfs:comment "Activities that are Individuals, i.e., that occur in space and time." ;
+    rdfs:subClassOf dm2:Individual .
+
+dm2:InstallationType a owl:Class ;
+    rdfs:label "InstallationType" ;
+    rdfs:comment "Powertype Of Installation" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:InstallationTypeType a owl:Class ;
+    rdfs:label "InstallationTypeType" ;
+    rdfs:comment "The Powertype of InstallationType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:LineType a owl:Class ;
+    rdfs:label "LineType" ;
+    rdfs:comment "Powertype Of Line" ;
+    rdfs:subClassOf dm2:LocationType .
+
+dm2:LineTypeType a owl:Class ;
+    rdfs:label "LineTypeType" ;
+    rdfs:comment "The Powertype of LineType." ;
+    rdfs:subClassOf dm2:LocationTypeType .
+
+dm2:MaintainabilityMeasure a owl:Class ;
+    rdfs:label "MaintainabilityMeasure" ;
+    rdfs:comment "A category of measures of  the amount of time a Performer is able to conduct Activities over some time interval." ;
+    rdfs:subClassOf dm2:ServiceLevel .
+
+dm2:MaintainabilityMeasureType a owl:Class ;
+    rdfs:label "MaintainabilityMeasureType" ;
+    rdfs:comment "The Powertype of MaintainabilityMeasure." ;
+    rdfs:subClassOf dm2:ServiceLevelType .
+
+dm2:MaterielType a owl:Class ;
+    rdfs:label "MaterielType" ;
+    rdfs:comment "The Powertype of Materiel." ;
+    rdfs:subClassOf dm2:ResourceType .
+
+dm2:MeasureOfDesireType a owl:Class ;
+    rdfs:label "MeasureOfDesireType" ;
+    rdfs:comment "The Powertype of MeasureOfDesire." ;
+    rdfs:subClassOf dm2:MeasureType .
+
+dm2:MeasureOfEffectType a owl:Class ;
+    rdfs:label "MeasureOfEffectType" ;
+    rdfs:comment "The Powertype of MeasureOfEffect." ;
+    rdfs:subClassOf dm2:MeasureType .
+
+dm2:MeasureTypeUnitsOfMeasure a owl:Class ;
+    rdfs:label "MeasureTypeUnitsOfMeasure" ;
+    rdfs:comment "The subtype of MeasureType that has units." ;
+    rdfs:subClassOf dm2:MeasureType,
+        dm2:RuleType .
+
+dm2:MeasureableSkillType a owl:Class ;
+    rdfs:label "MeasureableSkillType" ;
+    rdfs:comment "The Powertype of MeasureableSkill." ;
+    rdfs:subClassOf dm2:MeasureType,
+        dm2:SkillType .
+
+dm2:NeedsSatisfactionMeasure a owl:Class ;
+    rdfs:label "NeedsSatisfactionMeasure" ;
+    rdfs:comment "A category of quality measures that address how well a system meets the user's needs and requirements." ;
+    rdfs:subClassOf dm2:ServiceLevel .
+
+dm2:NeedsSatisfactionMeasureType a owl:Class ;
+    rdfs:label "NeedsSatisfactionMeasureType" ;
+    rdfs:comment "The Powertype of NeedsStatisfactionMeasure." ;
+    rdfs:subClassOf dm2:ServiceLevelType .
+
+dm2:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:comment "A specific real-world assemblage of people and other resources organized for an on-going purpose." ;
+    rdfs:subClassOf dm2:IndividualPerformer .
+
+dm2:OrganizationType a owl:Class ;
+    rdfs:label "OrganizationType" ;
+    rdfs:comment "A type of Organization" ;
+    rdfs:subClassOf dm2:Performer .
+
+dm2:OrganizationTypeType a owl:Class ;
+    rdfs:label "OrganizationTypeType" ;
+    rdfs:comment "The Powertype of OrganizationType." ;
+    rdfs:subClassOf dm2:PerformerType .
+
+dm2:OrganizationalMeasure a owl:Class ;
+    rdfs:label "OrganizationalMeasure" ;
+    rdfs:comment "A category of quality measures that address how costly a Performer is to operate and maintain." ;
+    rdfs:subClassOf dm2:Measure .
+
+dm2:OrganizationalMeasureType a owl:Class ;
+    rdfs:label "OrganizationalMeasureType" ;
+    rdfs:comment "The Powertype of OrganizationalMeasure." ;
+    rdfs:subClassOf dm2:MeasureType .
+
+dm2:PedigreeInformation a owl:Class ;
+    rdfs:label "PedigreeInformation" ;
+    rdfs:comment "Information describing pedigree" ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:PedigreeInformationType a owl:Class ;
+    rdfs:label "PedigreeInformationType" ;
+    rdfs:comment "The Powertype of PedigreeInformation." ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:PerformanceMeasure a owl:Class ;
+    rdfs:label "PerformanceMeasure" ;
+    rdfs:comment "A category of quality measures that address how well a Performer meets Capability needs." ;
+    rdfs:subClassOf dm2:ServiceLevel .
+
+dm2:PerformanceMeasureType a owl:Class ;
+    rdfs:label "PerformanceMeasureType" ;
+    rdfs:comment "The Powertype of PerformanceMeasure." ;
+    rdfs:subClassOf dm2:ServiceLevelType .
+
+dm2:PersonRoleTypeType a owl:Class ;
+    rdfs:label "PersonRoleTypeType" ;
+    rdfs:comment "The Powertype of PersonRoleType." ;
+    rdfs:subClassOf dm2:PerformerType .
+
+dm2:PositionReferenceFrameType a owl:Class ;
+    rdfs:label "PositionReferenceFrameType" ;
+    rdfs:comment "The Powertype of PositionReferenceFrame." ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:Project a owl:Class ;
+    rdfs:label "Project" ;
+    rdfs:comment "A temporary endeavor undertaken to create Resources or Desired Effects." ;
+    rdfs:subClassOf dm2:Individual .
+
+dm2:ProjectTypeType a owl:Class ;
+    rdfs:label "ProjectTypeType" ;
+    rdfs:comment "The Powertype of ProjectType." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:RectangularArea a owl:Class ;
+    rdfs:label "RectangularArea" ;
+    rdfs:comment "The space enclosed by a rectangle." ;
+    rdfs:subClassOf dm2:PolygonArea .
+
+dm2:RectangularAreaType a owl:Class ;
+    rdfs:label "RectangularAreaType" ;
+    rdfs:comment "Powertype Of RectangularArea" ;
+    rdfs:subClassOf dm2:PolygonAreaType .
+
+dm2:RectangularAreaTypeType a owl:Class ;
+    rdfs:label "RectangularAreaTypeType" ;
+    rdfs:comment "The Powertype of RectangularAreaType." ;
+    rdfs:subClassOf dm2:PolygonAreaTypeType .
+
+dm2:RegionOfCountryType a owl:Class ;
+    rdfs:label "RegionOfCountryType" ;
+    rdfs:comment "Powertype Of RegionOfCountry" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:RegionOfCountryTypeType a owl:Class ;
+    rdfs:label "RegionOfCountryTypeType" ;
+    rdfs:comment "The Powertype of RegionOfCountryType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:RegionOfWorld a owl:Class ;
+    rdfs:label "RegionOfWorld" ;
+    rdfs:comment "A large, usually continuous segment of a surface or space; area." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:RegionOfWorldType a owl:Class ;
+    rdfs:label "RegionOfWorldType" ;
+    rdfs:comment "Powertype Of RegionOfWorld" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:RegionOfWorldTypeType a owl:Class ;
+    rdfs:label "RegionOfWorldTypeType" ;
+    rdfs:comment "The Powertype of RegionOfWorldType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:SecurityAttributesGroup a owl:Class ;
+    rdfs:label "SecurityAttributesGroup" ;
+    rdfs:comment "The group of Information Security Marking attributes in which the use of attributes 'classification' and 'ownerProducer' is required. This group is to be contrasted with group 'SecurityAttributesOptionGroup' in which use of those attributes is optional." ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:SecurityAttributesGroupType a owl:Class ;
+    rdfs:label "SecurityAttributesGroupType" ;
+    rdfs:comment "The Powertype of SecurityAttributesGroup." ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:ServiceDescriptionType a owl:Class ;
+    rdfs:label "ServiceDescriptionType" ;
+    rdfs:comment "The Powertype of ServiceDescription." ;
+    rdfs:subClassOf dm2:ArchitecturalDescriptionType .
+
+dm2:ServicePortType a owl:Class ;
+    rdfs:label "ServicePortType" ;
+    rdfs:comment "The Powertype of ServicePort." ;
+    rdfs:subClassOf dm2:PortType .
+
+dm2:ServiceType a owl:Class ;
+    rdfs:label "ServiceType" ;
+    rdfs:comment "The Powertype of Service." ;
+    rdfs:subClassOf dm2:PerformerType .
+
+dm2:Sign a owl:Class ;
+    rdfs:label "Sign" ;
+    rdfs:comment """An Individual that signifies a Thing.
+
+Example: 'BOSTON' signifies BOSTON""" ;
+    rdfs:subClassOf dm2:Individual .
+
+dm2:SingletonActivity a owl:Class ;
+    rdfs:label "SingletonActivity" ;
+    rdfs:comment "A set of activities containing only one activity." ;
+    rdfs:subClassOf dm2:Activity,
+        dm2:SingletonIndividualType .
+
+dm2:SingletonResource a owl:Class ;
+    rdfs:label "SingletonResource" ;
+    rdfs:comment "A set of resources containing only one resource" ;
+    rdfs:subClassOf dm2:Resource,
+        dm2:SingletonIndividualType .
+
+dm2:SiteType a owl:Class ;
+    rdfs:label "SiteType" ;
+    rdfs:comment "Powertype Of Site" ;
+    rdfs:subClassOf dm2:RealPropertyType .
+
+dm2:SiteTypeType a owl:Class ;
+    rdfs:label "SiteTypeType" ;
+    rdfs:comment "The Powertype of SiteType." ;
+    rdfs:subClassOf dm2:RealPropertyTypeType .
+
+dm2:SolidVolume a owl:Class ;
+    rdfs:label "SolidVolume" ;
+    rdfs:comment "The amount of space occupied by a three-dimensional object of definite shape; not liquid or gaseous." ;
+    rdfs:subClassOf dm2:Location .
+
+dm2:SolidVolumeType a owl:Class ;
+    rdfs:label "SolidVolumeType" ;
+    rdfs:comment "Powertype Of SolidVolume" ;
+    rdfs:subClassOf dm2:LocationType .
+
+dm2:SolidVolumeTypeType a owl:Class ;
+    rdfs:label "SolidVolumeTypeType" ;
+    rdfs:comment "The Powertype of SolidVolumeType." ;
+    rdfs:subClassOf dm2:LocationTypeType .
+
+dm2:SpatialMeasure a owl:Class ;
+    rdfs:label "SpatialMeasure" ;
+    rdfs:comment "A category of measures of the spatio-temporal location of an Individual." ;
+    rdfs:subClassOf dm2:PhysicalMeasure .
+
+dm2:SpatialMeasureType a owl:Class ;
+    rdfs:label "SpatialMeasureType" ;
+    rdfs:comment "The Powertype of SpatialMeasure." ;
+    rdfs:subClassOf dm2:PhysicalMeasureType .
+
+dm2:StartBoundaryType a owl:ObjectProperty ;
+    rdfs:label "StartBoundaryType" ;
+    rdfs:comment "The beginning of a temporalBoundaryType." ;
+    rdfs:subPropertyOf dm2:TemporalBoundaryType .
+
+dm2:System a owl:Class ;
+    rdfs:label "System" ;
+    rdfs:comment "A functionally, physically, and/or behaviorally related group of regularly interacting or interdependent elements." ;
+    rdfs:subClassOf dm2:Performer .
+
+dm2:SystemType a owl:Class ;
+    rdfs:label "SystemType" ;
+    rdfs:comment "The Powertype of System." ;
+    rdfs:subClassOf dm2:PerformerType .
+
+dm2:TechnicalStandard a owl:Class ;
+    rdfs:label "TechnicalStandard" ;
+    rdfs:comment "Technical standards document specific technical methodologies and practices to design and implement." ;
+    rdfs:subClassOf dm2:Standard .
+
+dm2:TechnicalStandardType a owl:Class ;
+    rdfs:label "TechnicalStandardType" ;
+    rdfs:comment "The Powertype of TechnicalStandard." ;
+    rdfs:subClassOf dm2:StandardType .
+
+dm2:TemporalMeasure a owl:Class ;
+    rdfs:label "TemporalMeasure" ;
+    rdfs:comment "A type of measure of time" ;
+    rdfs:subClassOf dm2:PhysicalMeasure .
+
+dm2:TemporalMeasureType a owl:Class ;
+    rdfs:label "TemporalMeasureType" ;
+    rdfs:comment "The Powertype of TemporalMeasure." ;
+    rdfs:subClassOf dm2:PhysicalMeasureType .
+
+dm2:VisionType a owl:Class ;
+    rdfs:label "VisionType" ;
+    rdfs:comment "The Powertype of Vision." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:endBoundary a owl:ObjectProperty ;
+    rdfs:label "endBoundary" ;
+    rdfs:comment "A temporal whole part couple that relates the temporal boundary to the whole." ;
+    rdfs:subPropertyOf dm2:temporalBoundary .
+
+dm2:measureOfTypeWholePartType a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeWholePartType" ;
+    rdfs:comment "wholePart is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureableSkillOfPersonRoleType a owl:ObjectProperty ;
+    rdfs:label "measureableSkillOfPersonRoleType" ;
+    rdfs:comment "skillPartOfPersonRoleType is a member of Measure" ;
+    rdfs:domain dm2:MeasureableSkill ;
+    rdfs:subPropertyOf dm2:measureOfType,
+        dm2:skillOfPersonRoleType .
+
+dm2:overlap a owl:ObjectProperty ;
+    rdfs:label "overlap" ;
+    rdfs:comment "A couple of wholePart couples where the part in each couple is the same." ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:portPartOfPerformer a owl:ObjectProperty ;
+    rdfs:label "portPartOfPerformer" ;
+    rdfs:comment "A an association of the whole Performer to its Port that is visible and interfaces with other Performers" ;
+    rdfs:domain dm2:Performer ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:startBoundary a owl:ObjectProperty ;
+    rdfs:label "startBoundary" ;
+    rdfs:comment "The beginning of a temporalBoundary." ;
+    rdfs:subPropertyOf dm2:temporalBoundary .
+
+dm2:superSubType a owl:ObjectProperty ;
+    rdfs:label "superSubType" ;
+    rdfs:comment "An association in which one Type (the subtype) is a subset of the other Type (supertype)." .
+
+dm2sh:BeforeAfterType a sh:NodeShape ;
+    sh:property dm2sh:BeforeAfterType-property ;
+    sh:targetClass dm2:IndividualType .
+
+dm2sh:CoupleType a sh:NodeShape ;
+    sh:property dm2sh:CoupleType-property ;
+    sh:targetClass dm2:Type .
+
+dm2sh:WholePartType a sh:NodeShape ;
+    sh:property dm2sh:WholePartType-property ;
+    sh:targetClass dm2:IndividualType .
+
+dm2sh:activityConsumesResource a sh:NodeShape ;
+    sh:property dm2sh:activityConsumesResource-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:activityMapsToCapabilityType a sh:NodeShape ;
+    sh:property dm2sh:activityMapsToCapabilityType-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:activityPartOfCapability a sh:NodeShape ;
+    sh:property dm2sh:activityPartOfCapability-property ;
+    sh:targetClass dm2:Capability .
+
+dm2sh:activityPartOfProjectType a sh:NodeShape ;
+    sh:property dm2sh:activityPartOfProjectType-property ;
+    sh:targetClass dm2:ProjectType .
+
+dm2sh:activityPerformableUnderCondition a sh:NodeShape ;
+    sh:property dm2sh:activityPerformableUnderCondition-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:activityPerformedByPerformer a sh:NodeShape ;
+    sh:property dm2sh:activityPerformedByPerformer-property ;
+    sh:targetClass dm2:Performer .
+
+dm2sh:activityProducesResource a sh:NodeShape ;
+    sh:property dm2sh:activityProducesResource-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:associationOfInformation a sh:NodeShape ;
+    sh:property dm2sh:associationOfInformation-property ;
+    sh:targetClass dm2:InformationType .
+
+dm2sh:axesDescribedBy a sh:NodeShape ;
+    sh:property dm2sh:axesDescribedBy-property ;
+    sh:targetClass dm2:Line .
+
+dm2sh:beforeAfter a sh:NodeShape ;
+    sh:property dm2sh:beforeAfter-property ;
+    sh:targetClass dm2:Individual .
+
+dm2sh:capabilityOfPerformer a sh:NodeShape ;
+    sh:property dm2sh:capabilityOfPerformer-property ;
+    sh:targetClass dm2:Capability .
+
+dm2sh:coordinateCenterDescribedBy a sh:NodeShape ;
+    sh:property dm2sh:coordinateCenterDescribedBy-property ;
+    sh:targetClass dm2:Point .
+
+dm2sh:couple a sh:NodeShape ;
+    sh:property dm2sh:couple-property ;
+    sh:targetClass dm2:Thing .
+
+dm2sh:describedBy a sh:NodeShape ;
+    sh:property dm2sh:describedBy-property ;
+    sh:targetClass dm2:Thing .
+
+dm2sh:descriptionSchemeInstance a sh:NodeShape ;
+    sh:property dm2sh:descriptionSchemeInstance-property ;
+    sh:targetClass dm2:DescriptionScheme .
+
+dm2sh:desireMeasure a sh:NodeShape ;
+    sh:property dm2sh:desireMeasure-property ;
+    sh:targetClass dm2:MeasureOfDesire .
+
+dm2sh:desiredEffect a sh:NodeShape ;
+    sh:property dm2sh:desiredEffect-property ;
+    sh:targetClass dm2:Resource .
+
+dm2sh:desiredEffectDirectsActivity a sh:NodeShape ;
+    sh:property dm2sh:desiredEffectDirectsActivity-property ;
+    sh:targetClass dm2:Resource .
+
+dm2sh:desiredEffectIsRealizedByProjectType a sh:NodeShape ;
+    sh:property dm2sh:desiredEffectIsRealizedByProjectType-property ;
+    sh:targetClass dm2:ProjectType .
+
+dm2sh:desiredEffectOfCapability a sh:NodeShape ;
+    sh:property dm2sh:desiredEffectOfCapability-property ;
+    sh:targetClass dm2:Capability .
+
+dm2sh:effectMeasure a sh:NodeShape ;
+    sh:property dm2sh:effectMeasure-property ;
+    sh:targetClass dm2:MeasureOfEffect .
+
+dm2sh:facilityPartOfSite a sh:NodeShape ;
+    sh:property dm2sh:facilityPartOfSite-property ;
+    sh:targetClass dm2:Site .
+
+dm2sh:individualPersonRolePartOfIndividualPerformer a sh:NodeShape ;
+    sh:property dm2sh:individualPersonRolePartOfIndividualPerformer-property ;
+    sh:targetClass dm2:IndividualPerformer .
+
+dm2sh:individualResourceInLocation a sh:NodeShape ;
+    sh:property dm2sh:individualResourceInLocation-property ;
+    sh:targetClass dm2:Location .
+
+dm2sh:jointAction a sh:NodeShape ;
+    sh:property dm2sh:jointAction-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:linePartOfPlanarSurface a sh:NodeShape ;
+    sh:property dm2sh:linePartOfPlanarSurface-property ;
+    sh:targetClass dm2:PlanarSurface .
+
+dm2sh:locationNamedByAddress a sh:NodeShape ;
+    sh:property dm2sh:locationNamedByAddress-property ;
+    sh:targetClass dm2:Location .
+
+dm2sh:materielPartOfPerformer a sh:NodeShape ;
+    sh:property dm2sh:materielPartOfPerformer-property ;
+    sh:targetClass dm2:Performer .
+
+dm2sh:measureOfIndividualEndBoundary a sh:NodeShape ;
+    sh:property dm2sh:measureOfIndividualEndBoundary-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfIndividualPoint a sh:NodeShape ;
+    sh:property dm2sh:measureOfIndividualPoint-property ;
+    sh:targetClass dm2:Point .
+
+dm2sh:measureOfIndividualStartBoundary a sh:NodeShape ;
+    sh:property dm2sh:measureOfIndividualStartBoundary-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeActivity a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeActivity-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeCondition a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeCondition-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeEndBoundaryType a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeEndBoundaryType-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeProjectType a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeProjectType-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeResource a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeResource-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureOfTypeStartBoundaryType a sh:NodeShape ;
+    sh:property dm2sh:measureOfTypeStartBoundaryType-property ;
+    sh:targetClass dm2:Measure .
+
+dm2sh:measureTypeApplicableToActivity a sh:NodeShape ;
+    sh:property dm2sh:measureTypeApplicableToActivity-property ;
+    sh:targetClass dm2:MeasureType .
+
+dm2sh:namingSchemeInstance a sh:NodeShape ;
+    sh:property dm2sh:namingSchemeInstance-property ;
+    sh:targetClass dm2:NamingScheme .
+
+dm2sh:partiesToAnAgreement a sh:NodeShape ;
+    sh:property dm2sh:partiesToAnAgreement-property ;
+    sh:targetClass dm2:Performer .
+
+dm2sh:personRoleTypePartOfPerformer a sh:NodeShape ;
+    sh:property dm2sh:personRoleTypePartOfPerformer-property ;
+    sh:targetClass dm2:Performer .
+
+dm2sh:pointPartOfLine a sh:NodeShape ;
+    sh:property dm2sh:pointPartOfLine-property ;
+    sh:targetClass dm2:Line .
+
+dm2sh:pointPartOfPlanarSurface a sh:NodeShape ;
+    sh:property dm2sh:pointPartOfPlanarSurface-property ;
+    sh:targetClass dm2:PlanarSurface .
+
+dm2sh:powertypeInstance a sh:NodeShape ;
+    sh:property dm2sh:powertypeInstance-property ;
+    sh:targetClass dm2:Powertype .
+
+dm2sh:propertyOfIndividual a sh:NodeShape ;
+    sh:property dm2sh:propertyOfIndividual-property ;
+    sh:targetClass dm2:Property .
+
+dm2sh:propertyOfType a sh:NodeShape ;
+    sh:property dm2sh:propertyOfType-property ;
+    sh:targetClass dm2:Property .
+
+dm2sh:regionOfCountryPartOfCountry a sh:NodeShape ;
+    sh:property dm2sh:regionOfCountryPartOfCountry-property ;
+    sh:targetClass dm2:Country .
+
+dm2sh:representationSchemeInstance a sh:NodeShape ;
+    sh:property dm2sh:representationSchemeInstance-property ;
+    sh:targetClass dm2:RepresentationScheme .
+
+dm2sh:representedBy a sh:NodeShape ;
+    sh:property dm2sh:representedBy-property ;
+    sh:targetClass dm2:Thing .
+
+dm2sh:resourceInLocationType a sh:NodeShape ;
+    sh:property dm2sh:resourceInLocationType-property ;
+    sh:targetClass dm2:Resource .
+
+dm2sh:ruleConstrainsActivity a sh:NodeShape ;
+    sh:property dm2sh:ruleConstrainsActivity-property ;
+    sh:targetClass dm2:Activity .
+
+dm2sh:rulePartOfMeasureType a sh:NodeShape ;
+    sh:property dm2sh:rulePartOfMeasureType-property ;
+    sh:targetClass dm2:MeasureType .
+
+dm2sh:serviceEnablesAccessToResource a sh:NodeShape ;
+    sh:property dm2sh:serviceEnablesAccessToResource-property ;
+    sh:targetClass dm2:Service .
+
+dm2sh:servicePortDescribedBy a sh:NodeShape ;
+    sh:property dm2sh:servicePortDescribedBy-property ;
+    sh:targetClass dm2:ServicePort .
+
+dm2sh:sitePartOfInstallation a sh:NodeShape ;
+    sh:property dm2sh:sitePartOfInstallation-property ;
+    sh:targetClass dm2:Installation .
+
+dm2sh:skillOfPersonRoleType a sh:NodeShape ;
+    sh:property dm2sh:skillOfPersonRoleType-property ;
+    sh:targetClass dm2:Skill .
+
+dm2sh:typeInstance a sh:NodeShape ;
+    sh:property dm2sh:typeInstance-property ;
+    sh:targetClass dm2:Type .
+
+dm2sh:visionIsRealizedByDesiredEffect a sh:NodeShape ;
+    sh:property dm2sh:visionIsRealizedByDesiredEffect-property ;
+    sh:targetClass dm2:Vision .
+
+dm2sh:wholePart a sh:NodeShape ;
+    sh:property dm2sh:wholePart-property ;
+    sh:targetClass dm2:Individual .
+
+dm2:ArchitecturalDescription a owl:Class ;
+    rdfs:label "ArchitecturalDescription" ;
+    rdfs:comment "Information describing an architecture such as an OV-5 Activity Model document." ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:ArchitecturalDescriptionType a owl:Class ;
+    rdfs:label "ArchitecturalDescriptionType" ;
+    rdfs:comment "The Powertype of ArchitecturalDescription." ;
+    rdfs:subClassOf dm2:InformationType .
+
+dm2:EllipticalArea a owl:Class ;
+    rdfs:label "EllipticalArea" ;
+    rdfs:comment "The space enclosed by an ellipse." ;
+    rdfs:subClassOf dm2:PlanarSurface .
+
+dm2:EllipticalAreaType a owl:Class ;
+    rdfs:label "EllipticalAreaType" ;
+    rdfs:comment "Powertype Of EllipticalArea" ;
+    rdfs:subClassOf dm2:PlanarSurfaceType .
+
+dm2:EllipticalAreaTypeType a owl:Class ;
+    rdfs:label "EllipticalAreaTypeType" ;
+    rdfs:comment "The Powertype of EllipticalAreaType." ;
+    rdfs:subClassOf dm2:PlanarSurfaceTypeType .
+
+dm2:Guidance a owl:Class ;
+    rdfs:label "Guidance" ;
+    rdfs:comment "An authoritative statement intended to lead or steer the execution of actions." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:GuidanceType a owl:Class ;
+    rdfs:label "GuidanceType" ;
+    rdfs:comment "The Powertype of Guidance." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:MeasureableSkill a owl:Class ;
+    rdfs:label "MeasureableSkill" ;
+    rdfs:comment "A Skill that can be measured numerically" ;
+    rdfs:subClassOf dm2:Measure,
+        dm2:Skill .
+
+dm2:PointType a owl:Class ;
+    rdfs:label "PointType" ;
+    rdfs:comment "Powertype Of Point" ;
+    rdfs:subClassOf dm2:LocationType .
+
+dm2:PointTypeType a owl:Class ;
+    rdfs:label "PointTypeType" ;
+    rdfs:comment "The Powertype of PointType." ;
+    rdfs:subClassOf dm2:LocationTypeType .
+
+dm2:PolygonArea a owl:Class ;
+    rdfs:label "PolygonArea" ;
+    rdfs:comment "The space enclosed by a polygon." ;
+    rdfs:subClassOf dm2:PlanarSurface .
+
+dm2:PolygonAreaType a owl:Class ;
+    rdfs:label "PolygonAreaType" ;
+    rdfs:comment "Powertype Of PolygonArea" ;
+    rdfs:subClassOf dm2:PlanarSurfaceType .
+
+dm2:PolygonAreaTypeType a owl:Class ;
+    rdfs:label "PolygonAreaTypeType" ;
+    rdfs:comment "The Powertype of PolygonAreaType." ;
+    rdfs:subClassOf dm2:PlanarSurfaceTypeType .
+
+dm2:PortType a owl:Class ;
+    rdfs:label "PortType" ;
+    rdfs:comment "The Powertype of Port." ;
+    rdfs:subClassOf dm2:PerformerType .
+
+dm2:PropertyType a owl:Class ;
+    rdfs:label "PropertyType" ;
+    rdfs:comment "The Powertype of Property." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:SignType a owl:Class ;
+    rdfs:label "SignType" ;
+    rdfs:comment "An IndividualType that is the Powertype of Sign." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:SignTypeType a owl:Class ;
+    rdfs:label "SignTypeType" ;
+    rdfs:comment "The Powertype of SignType." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:SkillType a owl:Class ;
+    rdfs:label "SkillType" ;
+    rdfs:comment "The Powertype of Skill." ;
+    rdfs:subClassOf dm2:PropertyType .
+
+dm2:Surface a owl:Class ;
+    rdfs:label "Surface" ;
+    rdfs:comment "A portion of space having length and breadth but no thickness or regards to time." ;
+    rdfs:subClassOf dm2:Location .
+
+dm2:SurfaceType a owl:Class ;
+    rdfs:label "SurfaceType" ;
+    rdfs:comment "Powertype Of Surface" ;
+    rdfs:subClassOf dm2:LocationType .
+
+dm2:SurfaceTypeType a owl:Class ;
+    rdfs:label "SurfaceTypeType" ;
+    rdfs:comment "The Powertype of SurfaceType." ;
+    rdfs:subClassOf dm2:LocationTypeType .
+
+dm2:TemporalWholePartType a owl:ObjectProperty ;
+    rdfs:label "TemporalWholePartType" ;
+    rdfs:comment "A couple between two Individual Types where for each member of the whole set, there is a corresponding member of the part set for which a wholePart relationship exists, and conversely" ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:TupleType a owl:ObjectProperty ;
+    rdfs:label "TupleType" ;
+    rdfs:comment "The powertype of tuple that provides the stereotype for tuples of Types." .
+
+dm2:activityConsumesResource a owl:ObjectProperty ;
+    rdfs:label "activityConsumesResource" ;
+    rdfs:comment "Represents that an activity consumes a resource" ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:BeforeAfterType,
+        dm2:OverlapType .
+
+dm2:activityMapsToCapabilityType a owl:ObjectProperty ;
+    rdfs:label "activityMapsToCapabilityType" ;
+    rdfs:comment "Represents that an activity was / is / can-be/ must-be conducted under certain conditions with a spatiotemporal overlap of the activity with the condition." ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:CapabilityType ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:activityPartOfCapability a owl:ObjectProperty ;
+    rdfs:label "activityPartOfCapability" ;
+    rdfs:comment "A disposition to manifest an Activity. An Activity to be performed to achieve a desired effect under specified [performance] standards and conditions through combinations of ways and means." ;
+    rdfs:domain dm2:Capability ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:activityPartOfProjectType a owl:ObjectProperty ;
+    rdfs:label "activityPartOfProjectType" ;
+    rdfs:comment "A wholePart relationship between a Project and an Activity (Task) that is part of the Project" ;
+    rdfs:domain dm2:ProjectType ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:activityPerformableUnderCondition a owl:ObjectProperty ;
+    rdfs:label "activityPerformableUnderCondition" ;
+    rdfs:comment "Represents that an activity was / is / can-be/ must-be conducted under certain conditions with a spatiotemporal overlap of the activity with the condition." ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:Condition ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:activityPerformedByPerformer a owl:ObjectProperty ;
+    rdfs:label "activityPerformedByPerformer" ;
+    rdfs:comment """An overlap between a Performer and an Activity that is non-specific as to whether:
+1. the Activity is solely performed by the Performer
+2. the Activity is performed by several Performers
+3. the Performer performs only this Activity
+4. the Performer performs other Activities""" ;
+    rdfs:domain dm2:Performer ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:activityProducesResource a owl:ObjectProperty ;
+    rdfs:label "activityProducesResource" ;
+    rdfs:comment "Represents that an activity produces a resource" ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:BeforeAfterType,
+        dm2:OverlapType .
+
+dm2:associationOfInformation a owl:ObjectProperty ;
+    rdfs:label "associationOfInformation" ;
+    rdfs:comment "A relationship or association between two elements of  information." ;
+    rdfs:domain dm2:InformationType ;
+    rdfs:range dm2:InformationType ;
+    rdfs:subPropertyOf dm2:tuple .
+
+dm2:axesDescribedBy a owl:ObjectProperty ;
+    rdfs:label "axesDescribedBy" ;
+    rdfs:comment "A relationship describing the straight lines about which bodies rotate" ;
+    rdfs:domain dm2:Line ;
+    rdfs:range dm2:PositionReferenceFrame ;
+    rdfs:subPropertyOf dm2:describedBy .
+
+dm2:beforeAfter a owl:ObjectProperty ;
+    rdfs:label "beforeAfter" ;
+    rdfs:comment "A couple that represents that the temporal extent end time for the individual in place 1 is less than temporal extent start time for the individual in place 2." ;
+    rdfs:domain dm2:Individual ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:couple .
+
+dm2:capabilityOfPerformer a owl:ObjectProperty ;
+    rdfs:label "capabilityOfPerformer" ;
+    rdfs:comment "A couple that represents the capability that a performer manifests" ;
+    rdfs:domain dm2:Capability ;
+    rdfs:range dm2:Performer ;
+    rdfs:subPropertyOf dm2:propertyOfType .
+
+dm2:coordinateCenterDescribedBy a owl:ObjectProperty ;
+    rdfs:label "coordinateCenterDescribedBy" ;
+    rdfs:comment "A relationship describing the mid point of a position reference frame" ;
+    rdfs:domain dm2:Point ;
+    rdfs:range dm2:PositionReferenceFrame ;
+    rdfs:subPropertyOf dm2:describedBy .
+
+dm2:descriptionSchemeInstance a owl:ObjectProperty ;
+    rdfs:label "descriptionSchemeInstance" ;
+    rdfs:comment "A representationSchemeInstance that asserts a Description is a member of a DescriptionScheme." ;
+    rdfs:domain dm2:DescriptionScheme ;
+    rdfs:range dm2:Information ;
+    rdfs:subPropertyOf dm2:representationSchemeInstance .
+
+dm2:desireMeasure a owl:ObjectProperty ;
+    rdfs:label "desireMeasure" ;
+    rdfs:comment "A measureOfType that relates a DesiredEffect to a MeasureOfDesire" ;
+    rdfs:domain dm2:MeasureOfDesire ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:desiredEffect a owl:ObjectProperty ;
+    rdfs:label "desiredEffect" ;
+    rdfs:comment "A desired state of a Resource" ;
+    rdfs:domain dm2:Resource ;
+    rdfs:range dm2:Performer ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:desiredEffectDirectsActivity a owl:ObjectProperty ;
+    rdfs:label "desiredEffectDirectsActivity" ;
+    rdfs:comment "The couple that represents how a desired effect directs an activity" ;
+    rdfs:domain dm2:Resource ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:BeforeAfterType,
+        dm2:OverlapType .
+
+dm2:desiredEffectIsRealizedByProjectType a owl:ObjectProperty ;
+    rdfs:label "desiredEffectIsRealizedByProjectType" ;
+    rdfs:comment "The couple that represents how a desired effect is realized by a project type" ;
+    rdfs:domain dm2:ProjectType ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:BeforeAfterType,
+        dm2:OverlapType .
+
+dm2:desiredEffectOfCapability a owl:ObjectProperty ;
+    rdfs:label "desiredEffectOfCapability" ;
+    rdfs:comment "A couple that represents the whole part relationship between a desired effect and a capability" ;
+    rdfs:domain dm2:Capability ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:effectMeasure a owl:ObjectProperty ;
+    rdfs:label "effectMeasure" ;
+    rdfs:comment "A measureOfType that relates a DesiredEffect to a MeasureOfEffect" ;
+    rdfs:domain dm2:MeasureOfEffect ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:facilityPartOfSite a owl:ObjectProperty ;
+    rdfs:label "facilityPartOfSite" ;
+    rdfs:comment "A whole part association between a Facility (part) and the Site (whole) in which it resides." ;
+    rdfs:domain dm2:Site ;
+    rdfs:range dm2:Facility ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:individualPersonRolePartOfIndividualPerformer a owl:ObjectProperty ;
+    rdfs:label "individualPersonRolePartOfIndividualPerformer" ;
+    rdfs:comment "Whole part relationship between an individual person role and an individual performer" ;
+    rdfs:domain dm2:IndividualPerformer ;
+    rdfs:range dm2:IndividualPersonRole ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:individualResourceInLocation a owl:ObjectProperty ;
+    rdfs:label "individualResourceInLocation" ;
+    rdfs:comment "A wholePart that asserts an IndividualResourceState is in a Location" ;
+    rdfs:domain dm2:Location ;
+    rdfs:range dm2:IndividualResource ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:jointAction a owl:ObjectProperty ;
+    rdfs:label "jointAction" ;
+    rdfs:comment "Relating two parts of a joint action" ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:BeforeAfterType .
+
+dm2:linePartOfPlanarSurface a owl:ObjectProperty ;
+    rdfs:label "linePartOfPlanarSurface" ;
+    rdfs:comment "A couple that represents the whole part relationship between Line and PlanarSurface" ;
+    rdfs:domain dm2:PlanarSurface ;
+    rdfs:range dm2:Line ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:locationNamedByAddress a owl:ObjectProperty ;
+    rdfs:label "locationNamedByAddress" ;
+    rdfs:comment "A relationship that represents a location being named by an address" ;
+    rdfs:domain dm2:Location ;
+    rdfs:range dm2:Address ;
+    rdfs:subPropertyOf dm2:namedBy .
+
+dm2:materielPartOfPerformer a owl:ObjectProperty ;
+    rdfs:label "materielPartOfPerformer" ;
+    rdfs:comment "A whole-part association between a Performer (whole) and the Materiel parts of the Performer.  (A Performer can have Personnel Type, System, Service, and Organizational components.)" ;
+    rdfs:domain dm2:Performer ;
+    rdfs:range dm2:Materiel ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:measureOfIndividualEndBoundary a owl:ObjectProperty ;
+    rdfs:label "measureOfIndividualEndBoundary" ;
+    rdfs:comment "endBoundary is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:measureOfIndividual .
+
+dm2:measureOfIndividualPoint a owl:ObjectProperty ;
+    rdfs:label "measureOfIndividualPoint" ;
+    rdfs:comment "Point is a member of Measure" ;
+    rdfs:domain dm2:Point ;
+    rdfs:range dm2:Measure ;
+    rdfs:subPropertyOf dm2:measureOfIndividual .
+
+dm2:measureOfIndividualStartBoundary a owl:ObjectProperty ;
+    rdfs:label "measureOfIndividualStartBoundary" ;
+    rdfs:comment "startBoundary is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:measureOfIndividual .
+
+dm2:measureOfTypeActivity a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeActivity" ;
+    rdfs:comment "A measureOfType that relates an Activity to a Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureOfTypeCondition a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeCondition" ;
+    rdfs:comment "Condition is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:Condition ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureOfTypeEndBoundaryType a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeEndBoundaryType" ;
+    rdfs:comment "endBoundaryType is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:IndividualType ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureOfTypeProjectType a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeProjectType" ;
+    rdfs:comment "ProjectType is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:ProjectType ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureOfTypeResource a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeResource" ;
+    rdfs:comment "ResourceType is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureOfTypeStartBoundaryType a owl:ObjectProperty ;
+    rdfs:label "measureOfTypeStartBoundaryType" ;
+    rdfs:comment "startBoundaryType is a member of Measure" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:range dm2:IndividualType ;
+    rdfs:subPropertyOf dm2:measureOfType .
+
+dm2:measureTypeApplicableToActivity a owl:ObjectProperty ;
+    rdfs:label "measureTypeApplicableToActivity" ;
+    rdfs:comment "Type instance relationship between Activity and MeasureType" ;
+    rdfs:domain dm2:MeasureType ;
+    rdfs:range dm2:Activity ;
+    rdfs:subPropertyOf dm2:typeInstance .
+
+dm2:namedBy a owl:ObjectProperty ;
+    rdfs:label "namedBy" ;
+    rdfs:comment "A couple that asserts that a Name describes a Thing." ;
+    rdfs:range dm2:Name ;
+    rdfs:subPropertyOf dm2:representedBy .
+
+dm2:namingSchemeInstance a owl:ObjectProperty ;
+    rdfs:label "namingSchemeInstance" ;
+    rdfs:comment "A representationSchemeInstance that asserts a Name is a member of a NamingScheme." ;
+    rdfs:domain dm2:NamingScheme ;
+    rdfs:range dm2:Name ;
+    rdfs:subPropertyOf dm2:representationSchemeInstance .
+
+dm2:partiesToAnAgreement a owl:ObjectProperty ;
+    rdfs:label "partiesToAnAgreement" ;
+    rdfs:comment "The two parties involved in an agreement" ;
+    rdfs:domain dm2:Performer ;
+    rdfs:range dm2:Agreement ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:personRoleTypePartOfPerformer a owl:ObjectProperty ;
+    rdfs:label "personRoleTypePartOfPerformer" ;
+    rdfs:comment "A wholePart between a PersonRoleType and a Performer in which it performs" ;
+    rdfs:domain dm2:Performer ;
+    rdfs:range dm2:PersonRoleType ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:pointPartOfLine a owl:ObjectProperty ;
+    rdfs:label "pointPartOfLine" ;
+    rdfs:comment "A couple that represents the whole part relationship between a line and a point" ;
+    rdfs:domain dm2:Line ;
+    rdfs:range dm2:Point ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:pointPartOfPlanarSurface a owl:ObjectProperty ;
+    rdfs:label "pointPartOfPlanarSurface" ;
+    rdfs:comment "A couple that represents the whole part relationship between a planar surface and a point" ;
+    rdfs:domain dm2:PlanarSurface ;
+    rdfs:range dm2:Point ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:powertypeInstance a owl:ObjectProperty ;
+    rdfs:label "powertypeInstance" ;
+    rdfs:comment "An association that between of the sets within the powerType and the powerType.  A special form of typeInstance." ;
+    rdfs:domain dm2:Powertype ;
+    rdfs:range dm2:Type ;
+    rdfs:subPropertyOf dm2:typeInstance .
+
+dm2:regionOfCountryPartOfCountry a owl:ObjectProperty ;
+    rdfs:label "regionOfCountryPartOfCountry" ;
+    rdfs:comment "A couple that represents the whole part relationship between a country and a region within it" ;
+    rdfs:domain dm2:Country ;
+    rdfs:range dm2:RegionOfCountry ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:resourceInLocationType a owl:ObjectProperty ;
+    rdfs:label "resourceInLocationType" ;
+    rdfs:comment "The relationship that describes the location of a performer or type of performer" ;
+    rdfs:domain dm2:Resource ;
+    rdfs:range dm2:LocationType ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:ruleConstrainsActivity a owl:ObjectProperty ;
+    rdfs:label "ruleConstrainsActivity" ;
+    rdfs:comment "An overlap between a Rule and the Activities it allows" ;
+    rdfs:domain dm2:Activity ;
+    rdfs:range dm2:Rule .
+
+dm2:rulePartOfMeasureType a owl:ObjectProperty ;
+    rdfs:label "rulePartOfMeasureType" ;
+    rdfs:comment "A couple that represents the whole part relationship between types of measures and rules" ;
+    rdfs:domain dm2:MeasureType ;
+    rdfs:range dm2:Rule ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:serviceEnablesAccessToResource a owl:ObjectProperty ;
+    rdfs:label "serviceEnablesAccessToResource" ;
+    rdfs:comment "An overlap between the Service (i.e., mechanism) and the Resources (i.e., capabilities) to which it provides access." ;
+    rdfs:domain dm2:Service ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2:servicePortDescribedBy a owl:ObjectProperty ;
+    rdfs:label "servicePortDescribedBy" ;
+    rdfs:comment "A tuple that asserts that Information describes a Thing." ;
+    rdfs:domain dm2:ServicePort ;
+    rdfs:range dm2:ServiceDescription ;
+    rdfs:subPropertyOf dm2:describedBy .
+
+dm2:sitePartOfInstallation a owl:ObjectProperty ;
+    rdfs:label "sitePartOfInstallation" ;
+    rdfs:comment "A whole-part association representing that a Site (the part) is spatio-temporally contained within an Installation (the whole)." ;
+    rdfs:domain dm2:Installation ;
+    rdfs:range dm2:Site ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:temporalWholePart a owl:ObjectProperty ;
+    rdfs:label "temporalWholePart" ;
+    rdfs:comment "A wholePart that asserts the spatial extent of the (whole) individual is co-extensive with the spatial extent of the (part) individual for a particular period of time." ;
+    rdfs:subPropertyOf dm2:wholePart .
+
+dm2:visionIsRealizedByDesiredEffect a owl:ObjectProperty ;
+    rdfs:label "visionIsRealizedByDesiredEffect" ;
+    rdfs:comment "The relationship that exists between a vision and the specific desired effect that realised it" ;
+    rdfs:domain dm2:Vision ;
+    rdfs:range dm2:Resource ;
+    rdfs:subPropertyOf dm2:OverlapType .
+
+dm2sh:BeforeAfterType-property sh:class dm2:IndividualType ;
+    sh:path dm2:BeforeAfterType .
+
+dm2sh:CoupleType-property sh:class dm2:Type ;
+    sh:path dm2:CoupleType .
+
+dm2sh:WholePartType-property sh:class dm2:IndividualType ;
+    sh:path dm2:WholePartType .
+
+dm2sh:activityConsumesResource-property sh:class dm2:Resource ;
+    sh:path dm2:activityConsumesResource .
+
+dm2sh:activityMapsToCapabilityType-property sh:class dm2:CapabilityType ;
+    sh:path dm2:activityMapsToCapabilityType .
+
+dm2sh:activityPartOfCapability-property sh:class dm2:Activity ;
+    sh:path dm2:activityPartOfCapability .
+
+dm2sh:activityPartOfProjectType-property sh:class dm2:Activity ;
+    sh:path dm2:activityPartOfProjectType .
+
+dm2sh:activityPerformableUnderCondition-property sh:class dm2:Condition ;
+    sh:path dm2:activityPerformableUnderCondition .
+
+dm2sh:activityPerformedByPerformer-property sh:class dm2:Activity ;
+    sh:path dm2:activityPerformedByPerformer .
+
+dm2sh:activityProducesResource-property sh:class dm2:Resource ;
+    sh:path dm2:activityProducesResource .
+
+dm2sh:associationOfInformation-property sh:class dm2:InformationType ;
+    sh:path dm2:associationOfInformation .
+
+dm2sh:axesDescribedBy-property sh:class dm2:PositionReferenceFrame ;
+    sh:path dm2:axesDescribedBy .
+
+dm2sh:beforeAfter-property sh:class dm2:Individual ;
+    sh:path dm2:beforeAfter .
+
+dm2sh:capabilityOfPerformer-property sh:class dm2:Performer ;
+    sh:path dm2:capabilityOfPerformer .
+
+dm2sh:coordinateCenterDescribedBy-property sh:class dm2:PositionReferenceFrame ;
+    sh:path dm2:coordinateCenterDescribedBy .
+
+dm2sh:couple-property sh:class dm2:Thing ;
+    sh:path dm2:couple .
+
+dm2sh:describedBy-property sh:class dm2:Information ;
+    sh:path dm2:describedBy .
+
+dm2sh:descriptionSchemeInstance-property sh:class dm2:Information ;
+    sh:path dm2:descriptionSchemeInstance .
+
+dm2sh:desireMeasure-property sh:class dm2:Resource ;
+    sh:path dm2:desireMeasure .
+
+dm2sh:desiredEffect-property sh:class dm2:Performer ;
+    sh:path dm2:desiredEffect .
+
+dm2sh:desiredEffectDirectsActivity-property sh:class dm2:Activity ;
+    sh:path dm2:desiredEffectDirectsActivity .
+
+dm2sh:desiredEffectIsRealizedByProjectType-property sh:class dm2:Resource ;
+    sh:path dm2:desiredEffectIsRealizedByProjectType .
+
+dm2sh:desiredEffectOfCapability-property sh:class dm2:Resource ;
+    sh:path dm2:desiredEffectOfCapability .
+
+dm2sh:effectMeasure-property sh:class dm2:Resource ;
+    sh:path dm2:effectMeasure .
+
+dm2sh:facilityPartOfSite-property sh:class dm2:Facility ;
+    sh:path dm2:facilityPartOfSite .
+
+dm2sh:individualPersonRolePartOfIndividualPerformer-property sh:class dm2:IndividualPersonRole ;
+    sh:path dm2:individualPersonRolePartOfIndividualPerformer .
+
+dm2sh:individualResourceInLocation-property sh:class dm2:IndividualResource ;
+    sh:path dm2:individualResourceInLocation .
+
+dm2sh:jointAction-property sh:class dm2:Activity ;
+    sh:path dm2:jointAction .
+
+dm2sh:linePartOfPlanarSurface-property sh:class dm2:Line ;
+    sh:path dm2:linePartOfPlanarSurface .
+
+dm2sh:locationNamedByAddress-property sh:class dm2:Address ;
+    sh:path dm2:locationNamedByAddress .
+
+dm2sh:materielPartOfPerformer-property sh:class dm2:Materiel ;
+    sh:path dm2:materielPartOfPerformer .
+
+dm2sh:measureOfIndividualEndBoundary-property sh:class dm2:Individual ;
+    sh:path dm2:measureOfIndividualEndBoundary .
+
+dm2sh:measureOfIndividualPoint-property sh:class dm2:Measure ;
+    sh:path dm2:measureOfIndividualPoint .
+
+dm2sh:measureOfIndividualStartBoundary-property sh:class dm2:Individual ;
+    sh:path dm2:measureOfIndividualStartBoundary .
+
+dm2sh:measureOfTypeActivity-property sh:class dm2:Activity ;
+    sh:path dm2:measureOfTypeActivity .
+
+dm2sh:measureOfTypeCondition-property sh:class dm2:Condition ;
+    sh:path dm2:measureOfTypeCondition .
+
+dm2sh:measureOfTypeEndBoundaryType-property sh:class dm2:IndividualType ;
+    sh:path dm2:measureOfTypeEndBoundaryType .
+
+dm2sh:measureOfTypeProjectType-property sh:class dm2:ProjectType ;
+    sh:path dm2:measureOfTypeProjectType .
+
+dm2sh:measureOfTypeResource-property sh:class dm2:Resource ;
+    sh:path dm2:measureOfTypeResource .
+
+dm2sh:measureOfTypeStartBoundaryType-property sh:class dm2:IndividualType ;
+    sh:path dm2:measureOfTypeStartBoundaryType .
+
+dm2sh:measureTypeApplicableToActivity-property sh:class dm2:Activity ;
+    sh:path dm2:measureTypeApplicableToActivity .
+
+dm2sh:namingSchemeInstance-property sh:class dm2:Name ;
+    sh:path dm2:namingSchemeInstance .
+
+dm2sh:partiesToAnAgreement-property sh:class dm2:Agreement ;
+    sh:path dm2:partiesToAnAgreement .
+
+dm2sh:personRoleTypePartOfPerformer-property sh:class dm2:PersonRoleType ;
+    sh:path dm2:personRoleTypePartOfPerformer .
+
+dm2sh:pointPartOfLine-property sh:class dm2:Point ;
+    sh:path dm2:pointPartOfLine .
+
+dm2sh:pointPartOfPlanarSurface-property sh:class dm2:Point ;
+    sh:path dm2:pointPartOfPlanarSurface .
+
+dm2sh:powertypeInstance-property sh:class dm2:Type ;
+    sh:path dm2:powertypeInstance .
+
+dm2sh:propertyOfIndividual-property sh:class dm2:Individual ;
+    sh:path dm2:propertyOfIndividual .
+
+dm2sh:propertyOfType-property sh:class dm2:IndividualType ;
+    sh:path dm2:propertyOfType .
+
+dm2sh:regionOfCountryPartOfCountry-property sh:class dm2:RegionOfCountry ;
+    sh:path dm2:regionOfCountryPartOfCountry .
+
+dm2sh:representationSchemeInstance-property sh:class dm2:Representation ;
+    sh:path dm2:representationSchemeInstance .
+
+dm2sh:representedBy-property sh:class dm2:Representation ;
+    sh:path dm2:representedBy .
+
+dm2sh:resourceInLocationType-property sh:class dm2:LocationType ;
+    sh:path dm2:resourceInLocationType .
+
+dm2sh:ruleConstrainsActivity-property sh:class dm2:Rule ;
+    sh:path dm2:ruleConstrainsActivity .
+
+dm2sh:rulePartOfMeasureType-property sh:class dm2:Rule ;
+    sh:path dm2:rulePartOfMeasureType .
+
+dm2sh:serviceEnablesAccessToResource-property sh:class dm2:Resource ;
+    sh:path dm2:serviceEnablesAccessToResource .
+
+dm2sh:servicePortDescribedBy-property sh:class dm2:ServiceDescription ;
+    sh:path dm2:servicePortDescribedBy .
+
+dm2sh:sitePartOfInstallation-property sh:class dm2:Site ;
+    sh:path dm2:sitePartOfInstallation .
+
+dm2sh:skillOfPersonRoleType-property sh:class dm2:PersonRoleType ;
+    sh:path dm2:skillOfPersonRoleType .
+
+dm2sh:typeInstance-property sh:class dm2:Thing ;
+    sh:path dm2:typeInstance .
+
+dm2sh:visionIsRealizedByDesiredEffect-property sh:class dm2:Resource ;
+    sh:path dm2:visionIsRealizedByDesiredEffect .
+
+dm2sh:wholePart-property sh:class dm2:Individual ;
+    sh:path dm2:wholePart .
+
+dm2:Address a owl:Class ;
+    rdfs:label "Address" ;
+    rdfs:comment "The name of a location along with the location-finding scheme that allows a location to be found from the name.  Examples include postal address, email address, URL, datalink address." ;
+    rdfs:subClassOf dm2:Name .
+
+dm2:Agreement a owl:Class ;
+    rdfs:label "Agreement" ;
+    rdfs:comment "A consent among parties regarding the terms and conditions of activities that said parties participate in." ;
+    rdfs:subClassOf dm2:Rule .
+
+dm2:CapabilityType a owl:Class ;
+    rdfs:label "CapabilityType" ;
+    rdfs:comment "Category or type of capability" ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:Country a owl:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "A political state or nation or its territory." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:DescriptionScheme a owl:Class ;
+    rdfs:label "DescriptionScheme" ;
+    rdfs:comment "A RepresentationScheme and DescriptionType whose members are intentionally descriptions" ;
+    rdfs:subClassOf dm2:InformationType,
+        dm2:RepresentationScheme .
+
+dm2:Facility a owl:Class ;
+    rdfs:label "Facility" ;
+    rdfs:comment "A real property entity consisting of underlying land and one or more of the following: a building, a structure (including linear structures), a utility system, or pavement." ;
+    rdfs:subClassOf dm2:RealProperty .
+
+dm2:IndividualPersonRole a owl:Class ;
+    rdfs:label "IndividualPersonRole" ;
+    rdfs:comment "Person roles defined by the role or roles they share that are relevant to an architecture.  Includes assigned materiel." ;
+    rdfs:subClassOf dm2:IndividualPerformer .
+
+dm2:Installation a owl:Class ;
+    rdfs:label "Installation" ;
+    rdfs:comment "A base, camp, post, station, yard, center, or other activity, including leased facilities, without regard to the duration of operational control. An installation may include one or more sites." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:Materiel a owl:Class ;
+    rdfs:label "Materiel" ;
+    rdfs:comment "Equipment, apparatus or supplies that are of interest, without distinction as to its application for administrative or combat purposes." ;
+    rdfs:subClassOf dm2:Resource .
+
+dm2:MeasureOfDesire a owl:Class ;
+    rdfs:label "MeasureOfDesire" ;
+    rdfs:comment "DesiredEffect is a member of Measure" ;
+    rdfs:subClassOf dm2:Measure .
+
+dm2:MeasureOfEffect a owl:Class ;
+    rdfs:label "MeasureOfEffect" ;
+    rdfs:comment "Category of measures on Effect Objects" ;
+    rdfs:subClassOf dm2:Measure .
+
+dm2:NameType a owl:Class ;
+    rdfs:label "NameType" ;
+    rdfs:comment "A RepresentationType that is the Powertype of Name" ;
+    rdfs:subClassOf dm2:RepresentationType .
+
+dm2:NamingScheme a owl:Class ;
+    rdfs:label "NamingScheme" ;
+    rdfs:comment "A Type whose members are Names. What kind of name the name is." ;
+    rdfs:subClassOf dm2:NameType,
+        dm2:RepresentationScheme .
+
+dm2:PhysicalMeasure a owl:Class ;
+    rdfs:label "PhysicalMeasure" ;
+    rdfs:comment "A category of measures of spatio-temporal extent of an Individual such as length, mass, energy, velocity, …" ;
+    rdfs:subClassOf dm2:Measure .
+
+dm2:PhysicalMeasureType a owl:Class ;
+    rdfs:label "PhysicalMeasureType" ;
+    rdfs:comment "The Powertype of PhysicalMeasure." ;
+    rdfs:subClassOf dm2:MeasureType .
+
+dm2:PlanarSurfaceType a owl:Class ;
+    rdfs:label "PlanarSurfaceType" ;
+    rdfs:comment "Powertype Of PlanarSurface" ;
+    rdfs:subClassOf dm2:SurfaceType .
+
+dm2:PlanarSurfaceTypeType a owl:Class ;
+    rdfs:label "PlanarSurfaceTypeType" ;
+    rdfs:comment "The Powertype of PlanarSurfaceType." ;
+    rdfs:subClassOf dm2:SurfaceTypeType .
+
+dm2:Powertype a owl:Class ;
+    rdfs:label "Powertype" ;
+    rdfs:comment "A Type that is the is the set (i.e., Type) of all subsets (i.e., subTypes) that can be taken over the some Type." ;
+    rdfs:subClassOf dm2:Type .
+
+dm2:RealProperty a owl:Class ;
+    rdfs:label "RealProperty" ;
+    rdfs:comment "Land and improvements to land (i.e., facilities)." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:RealPropertyType a owl:Class ;
+    rdfs:label "RealPropertyType" ;
+    rdfs:comment "Powertype Of RealProperty" ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentType .
+
+dm2:RealPropertyTypeType a owl:Class ;
+    rdfs:label "RealPropertyTypeType" ;
+    rdfs:comment "The Powertype of RealPropertyType." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtentTypeType .
+
+dm2:RegionOfCountry a owl:Class ;
+    rdfs:label "RegionOfCountry" ;
+    rdfs:comment "A large, usually continuous segment of a political state or nation or its territory." ;
+    rdfs:subClassOf dm2:GeoPoliticalExtent .
+
+dm2:Service a owl:Class ;
+    rdfs:label "Service" ;
+    rdfs:comment "A mechanism to enable access to a set of one or more capabilities , where the access is provided using a prescribed interface and is exercised consistent with constraints and policies as specified by the service description.  The mechanism is a Performer.  The \"capabilities\" accessed are Resources -- Information, Data, Materiel, Performers, and Geo-political Extents." ;
+    rdfs:subClassOf dm2:Performer .
+
+dm2:ServiceDescription a owl:Class ;
+    rdfs:label "ServiceDescription" ;
+    rdfs:comment "Information necessary to interact with the service in such terms as the service inputs, outputs, and associated semantics. The service description also conveys what is accomplished when the service is invoked and the conditions for using the service." ;
+    rdfs:subClassOf dm2:ArchitecturalDescription .
+
+dm2:ServicePort a owl:Class ;
+    rdfs:label "ServicePort" ;
+    rdfs:comment "A part of a Performer that specifics a interaction component through which the Performer interacts with other Performers.  This isolates dependencies between performers to particular interaction points rather than to the performer as a whole." .
+
+dm2:SingletonIndividualType a owl:Class ;
+    rdfs:label "SingletonIndividualType" ;
+    rdfs:comment "A set of individuals containing only one individual." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:Standard a owl:Class ;
+    rdfs:label "Standard" ;
+    rdfs:comment "A formal agreement documenting generally accepted specifications or criteria for products, processes, procedures, policies, systems, and/or personnel." ;
+    rdfs:subClassOf dm2:Rule .
+
+dm2:StandardType a owl:Class ;
+    rdfs:label "StandardType" ;
+    rdfs:comment "The Powertype of Standard." ;
+    rdfs:subClassOf dm2:RuleType .
+
+dm2:TemporalBoundaryType a owl:ObjectProperty ;
+    rdfs:label "TemporalBoundaryType" ;
+    rdfs:comment "The start and end times for the Individual members of a Type." ;
+    rdfs:subPropertyOf dm2:TemporalWholePartType .
+
+dm2:Vision a owl:Class ;
+    rdfs:label "Vision" ;
+    rdfs:comment "An end that describes the future state of the enterprise, without regard to how it is to be achieved; a mental image of what the future will or could be like" ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:propertyOfIndividual a owl:ObjectProperty ;
+    rdfs:label "propertyOfIndividual" ;
+    rdfs:comment """A typeInstance that asserts an Individual is an instance of a Property - i.e. the Individual "has" a property 
+
+Examples:
+
+A product being "expensive"
+A laptop weighing 2.2kg
+A car travelling between 40 and 50 km/h""" ;
+    rdfs:domain dm2:Property ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:typeInstance .
+
+dm2:skillOfPersonRoleType a owl:ObjectProperty ;
+    rdfs:label "skillOfPersonRoleType" ;
+    rdfs:comment "A type property between a PersonRoleType and the Skills it entails" ;
+    rdfs:domain dm2:Skill ;
+    rdfs:range dm2:PersonRoleType ;
+    rdfs:subPropertyOf dm2:propertyOfType .
+
+dm2:temporalBoundary a owl:ObjectProperty ;
+    rdfs:label "temporalBoundary" ;
+    rdfs:comment "The start and end times for the spatio-temporal extent of an Individual" ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:temporalWholePart .
+
+dm2:tuple a owl:ObjectProperty ;
+    rdfs:label "tuple" ;
+    rdfs:comment "A relationship between two or more things. Note: Tuples are identified by their places (i.e. the ends of the relationship)." .
+
+dm2:CoupleType a owl:ObjectProperty ;
+    rdfs:label "CoupleType" ;
+    rdfs:comment "A couple in which the places are taken by Types only." ;
+    rdfs:domain dm2:Type ;
+    rdfs:range dm2:Type ;
+    rdfs:subPropertyOf dm2:TupleType .
+
+dm2:RepresentationType a owl:Class ;
+    rdfs:label "RepresentationType" ;
+    rdfs:comment "A Type that is the Powertype of Representation" ;
+    rdfs:subClassOf dm2:Resource,
+        dm2:SignTypeType .
+
+dm2:ResourceType a owl:Class ;
+    rdfs:label "ResourceType" ;
+    rdfs:comment "The Powertype of Resource." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:RuleType a owl:Class ;
+    rdfs:label "RuleType" ;
+    rdfs:comment "The Powertype of Rule." ;
+    rdfs:subClassOf dm2:GuidanceType .
+
+dm2:Skill a owl:Class ;
+    rdfs:label "Skill" ;
+    rdfs:comment "The ability, coming from one's knowledge, practice, aptitude, etc., to do something well." ;
+    rdfs:subClassOf dm2:Property .
+
+dm2:measureOfIndividual a owl:ObjectProperty ;
+    rdfs:label "measureOfIndividual" ;
+    rdfs:comment """A propertyOfIndividual that asserts an Individual is an instance of a Measure - i.e. the Individual "has" a property corresponding to the Measure.
+
+Examples:
+
+A laptop weighing 2.2kg
+A car travelling between 40 and 50 km/h""" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:subPropertyOf dm2:propertyOfIndividual .
+
+dm2:representationSchemeInstance a owl:ObjectProperty ;
+    rdfs:label "representationSchemeInstance" ;
+    rdfs:comment "A typeInstance that asserts a Representation is a member of a RepresentationScheme." ;
+    rdfs:domain dm2:RepresentationScheme ;
+    rdfs:range dm2:Representation ;
+    rdfs:subPropertyOf dm2:typeInstance .
+
+dm2:representedBy a owl:ObjectProperty ;
+    rdfs:label "representedBy" ;
+    rdfs:comment "A couple that asserts that a Representation represents a Thing." ;
+    rdfs:domain dm2:Thing ;
+    rdfs:range dm2:Representation ;
+    rdfs:subPropertyOf dm2:couple .
+
+dm2:Condition a owl:Class ;
+    rdfs:label "Condition" ;
+    rdfs:comment "The state of an environment or situation in which a Performer performs or is disposed to perform." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:IndividualPerformer a owl:Class ;
+    rdfs:label "IndividualPerformer" ;
+    rdfs:comment "A specific thing that can perform an action" ;
+    rdfs:subClassOf dm2:IndividualResource .
+
+dm2:IndividualResource a owl:Class ;
+    rdfs:label "IndividualResource" ;
+    rdfs:comment "Any specific physical or virtual entity of limited availability" ;
+    rdfs:subClassOf dm2:Individual .
+
+dm2:Name a owl:Class ;
+    rdfs:label "Name" ;
+    rdfs:comment "The type of all utterances of a given name for a Thing. The exemplarText provides a written example of the uttered name." ;
+    rdfs:subClassOf dm2:Representation .
+
+dm2:PersonRoleType a owl:Class ;
+    rdfs:label "PersonRoleType" ;
+    rdfs:comment "A category of person roles defined by the role or roles they share that are relevant to an architecture.  Includes assigned materiel." ;
+    rdfs:subClassOf dm2:Performer .
+
+dm2:PositionReferenceFrame a owl:Class ;
+    rdfs:label "PositionReferenceFrame" ;
+    rdfs:comment "An arbitrary set of axes with reference to which the position or motion of something is described or physical laws are formulated." ;
+    rdfs:subClassOf dm2:Information .
+
+dm2:RepresentationScheme a owl:Class ;
+    rdfs:label "RepresentationScheme" ;
+    rdfs:comment "A RepresentationType that is a collection of Representations that are intended to be the preferred Representations in certain contexts." ;
+    rdfs:subClassOf dm2:RepresentationType .
+
+dm2:ServiceLevel a owl:Class ;
+    rdfs:label "ServiceLevel" ;
+    rdfs:comment "A measurement of the performance of a system or service." ;
+    rdfs:subClassOf dm2:Measure .
+
+dm2:ServiceLevelType a owl:Class ;
+    rdfs:label "ServiceLevelType" ;
+    rdfs:comment "The Powertype of ServiceLevel." ;
+    rdfs:subClassOf dm2:MeasureType .
+
+dm2:Site a owl:Class ;
+    rdfs:label "Site" ;
+    rdfs:comment "Physical (geographic) location that is or was owned by, leased to, or otherwise possessed. Each site is assigned to a single installation. A site may exist in one of three forms: (1) Land only, where there are no facilities present and where the land consists of either a single land parcel or two or more contiguous land parcels. (2)  Facility or facilities only, where the underlying land is neither owned nor controlled by the government. A stand-alone facility can be a site. If a facility is not a stand-alone facility, it must be assigned to a site. (3). Land and all the facilities thereon, where the land consists of either a single land parcel or two or more contiguous land parcels." ;
+    rdfs:subClassOf dm2:RealProperty .
+
+dm2:describedBy a owl:ObjectProperty ;
+    rdfs:label "describedBy" ;
+    rdfs:comment "A tuple that asserts that Information describes a Thing." ;
+    rdfs:domain dm2:Thing ;
+    rdfs:range dm2:Information ;
+    rdfs:subPropertyOf dm2:representedBy .
+
+dm2:propertyOfType a owl:ObjectProperty ;
+    rdfs:label "propertyOfType" ;
+    rdfs:comment """A superSubtype that asserts an IndividualType is a subtype of a Property - i.e. it asserts all members of the Individual type "have" a property 
+
+Examples:
+
+All London Buses are red
+All Porsche 911 2.2S have a mass between 900 and 960 kg
+All atoms of merc""" ;
+    rdfs:domain dm2:Property ;
+    rdfs:range dm2:IndividualType .
+
+dm2:LocationTypeType a owl:Class ;
+    rdfs:label "LocationTypeType" ;
+    rdfs:comment "The Powertype of LocationType." ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:PerformerType a owl:Class ;
+    rdfs:label "PerformerType" ;
+    rdfs:comment "The Powertype of Performer." ;
+    rdfs:subClassOf dm2:ResourceType .
+
+dm2:couple a owl:ObjectProperty ;
+    rdfs:label "couple" ;
+    rdfs:comment "An ordered relationship (tuple) between two Things, i.e., that has two place positions." ;
+    rdfs:domain dm2:Thing ;
+    rdfs:range dm2:Thing ;
+    rdfs:subPropertyOf dm2:tuple .
+
+dm2:typeInstance a owl:ObjectProperty ;
+    rdfs:label "typeInstance" ;
+    rdfs:comment "A Thing can be an instance of a Type - i.e. set membership. Note that IDEAS is a higher-order model, hence Types may be instances of Types." ;
+    rdfs:domain dm2:Type ;
+    rdfs:range dm2:Thing ;
+    rdfs:subPropertyOf dm2:couple .
+
+dm2:BeforeAfterType a owl:ObjectProperty ;
+    rdfs:label "BeforeAfterType" ;
+    rdfs:comment "An association between two Individual Types signifying that the temporal end of all the Individuals of one Individual Type is before the temporal start of all the Individuals of the other Individual Type." ;
+    rdfs:domain dm2:IndividualType ;
+    rdfs:range dm2:IndividualType ;
+    rdfs:subPropertyOf dm2:CoupleType .
+
+dm2:Capability a owl:Class ;
+    rdfs:label "Capability" ;
+    rdfs:comment "The ability to achieve a Desired Effect under specified [performance] standards and conditions through combinations of ways and means [activities and resources] to perform a set of activities." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:GeoPoliticalExtent a owl:Class ;
+    rdfs:label "GeoPoliticalExtent" ;
+    rdfs:comment "A geospatial extent whose boundaries are by declaration or agreement by political parties." ;
+    rdfs:subClassOf dm2:IndividualResource,
+        dm2:Location .
+
+dm2:GeoPoliticalExtentType a owl:Class ;
+    rdfs:label "GeoPoliticalExtentType" ;
+    rdfs:comment "Powertype Of GeoPoliticalExtent" ;
+    rdfs:subClassOf dm2:LocationType,
+        dm2:Resource .
+
+dm2:GeoPoliticalExtentTypeType a owl:Class ;
+    rdfs:label "GeoPoliticalExtentTypeType" ;
+    rdfs:comment "The Powertype of GeoPoliticalExtentType." ;
+    rdfs:subClassOf dm2:LocationTypeType,
+        dm2:ResourceType .
+
+dm2:Line a owl:Class ;
+    rdfs:label "Line" ;
+    rdfs:comment "A geometric figure formed by a point moving along a fixed direction and the reverse direction." ;
+    rdfs:subClassOf dm2:Location .
+
+dm2:PlanarSurface a owl:Class ;
+    rdfs:label "PlanarSurface" ;
+    rdfs:comment "A two-dimensional portion of space." ;
+    rdfs:subClassOf dm2:Surface .
+
+dm2:ProjectType a owl:Class ;
+    rdfs:label "ProjectType" ;
+    rdfs:comment "The powertype of Project" ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:Property a owl:Class ;
+    rdfs:label "Property" ;
+    rdfs:comment "An IndividualType whose members all exhibit a common trait or feature. Often the Individuals are states having a property (the state of being 18 degrees centigrade), where this property can be a CategoricalProperty (qv.) or a DispositionalProperty (qv.)." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:Representation a owl:Class ;
+    rdfs:label "Representation" ;
+    rdfs:comment "A SignType where all the individual Signs are intended to signify the same Thing." ;
+    rdfs:subClassOf dm2:SignType .
+
+dm2:Rule a owl:Class ;
+    rdfs:label "Rule" ;
+    rdfs:comment "A principle or condition that governs behavior; a prescribed guide for conduct or action" ;
+    rdfs:subClassOf dm2:Guidance .
+
+dm2:LocationType a owl:Class ;
+    rdfs:label "LocationType" ;
+    rdfs:comment "The powertype of Location" ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:Location a owl:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "A point or extent in space that may be referred to physically or logically." ;
+    rdfs:subClassOf dm2:Individual .
+
+dm2:Point a owl:Class ;
+    rdfs:label "Point" ;
+    rdfs:comment "Unidimensional Individual (dimensionless in space, existant over all time)" ;
+    rdfs:subClassOf dm2:Location .
+
+dm2:Information a owl:Class ;
+    rdfs:label "Information" ;
+    rdfs:comment "Information is the state of a something of interest that is materialized -- in any medium or form -- and communicated or received." ;
+    rdfs:subClassOf dm2:Representation .
+
+dm2:measureOfType a owl:ObjectProperty ;
+    rdfs:label "measureOfType" ;
+    rdfs:comment """A propertyOfType that asserts an IndividualType is a subtype of a Measure - i.e. it asserts all members of the Individual type have a property corresponding to the Measure 
+
+Examples:
+
+All Porsche 911 2.2S have a mass between 900 and 960 kg
+All atoms of mercury have an atomic weight of 200.59 &thinsp;g·mol&minus;1""" ;
+    rdfs:domain dm2:Measure ;
+    rdfs:subPropertyOf dm2:propertyOfType .
+
+dm2:IndividualTypeType a owl:Class ;
+    rdfs:label "IndividualTypeType" ;
+    rdfs:comment "A PlaceableType that is the Powertype of IndividualType" ;
+    rdfs:subClassOf dm2:Type .
+
+dm2:InformationType a owl:Class ;
+    rdfs:label "InformationType" ;
+    rdfs:comment "Category or type of information" ;
+    rdfs:subClassOf dm2:RepresentationType .
+
+dm2:MeasureType a owl:Class ;
+    rdfs:label "MeasureType" ;
+    rdfs:comment "A category of Measures" ;
+    rdfs:subClassOf dm2:IndividualTypeType .
+
+dm2:OverlapType a owl:ObjectProperty ;
+    rdfs:label "OverlapType" ;
+    rdfs:comment "An overlap in which the places are taken by Types only." ;
+    rdfs:range dm2:IndividualType ;
+    rdfs:subPropertyOf dm2:WholePartType .
+
+dm2:Type a owl:Class ;
+    rdfs:label "Type" ;
+    rdfs:comment "A set (or class) of Things.  Note1: Types are identified by their members (i.e. all the things of that type). Note2: The IDEAS Foundation is a higher-order ontology, so Types may have members that are also Types." ;
+    rdfs:subClassOf dm2:Thing .
+
+dm2:WholePartType a owl:ObjectProperty ;
+    rdfs:label "WholePartType" ;
+    rdfs:comment "A coupleType that asserts one Type (the part) has members that have a whole-part relation with a member of the other Type (whole)." ;
+    rdfs:domain dm2:IndividualType ;
+    rdfs:range dm2:IndividualType ;
+    rdfs:subPropertyOf dm2:CoupleType .
+
+dm2:wholePart a owl:ObjectProperty ;
+    rdfs:label "wholePart" ;
+    rdfs:comment "A couple that asserts one (part) Individual is part of another (whole) Individual." ;
+    rdfs:domain dm2:Individual ;
+    rdfs:range dm2:Individual ;
+    rdfs:subPropertyOf dm2:couple .
+
+dm2:Thing a owl:Class ;
+    rdfs:label "Thing" ;
+    rdfs:comment "The union of Individual, Type, and tuple." .
+
+dm2:Performer a owl:Class ;
+    rdfs:label "Performer" ;
+    rdfs:comment "Any entity - human, automated, or any aggregation of human and/or automated - that performs an activity and provides a capability." ;
+    rdfs:subClassOf dm2:Resource .
+
+dm2:Individual a owl:Class ;
+    rdfs:label "Individual" ;
+    rdfs:comment "A Thing that has spatio-temporal extent.  Note - this may be something that existed in the past, exists now, or may exist in some future possible world." ;
+    rdfs:subClassOf dm2:Thing .
+
+dm2:IndividualType a owl:Class ;
+    rdfs:label "IndividualType" ;
+    rdfs:comment "The powertype of Individual." ;
+    rdfs:subClassOf dm2:Type .
+
+dm2:Activity a owl:Class ;
+    rdfs:label "Activity" ;
+    rdfs:comment "Work, not specific to a single organization, weapon system or individual that transforms inputs (Resources) into outputs (Resources) or changes their state." ;
+    rdfs:subClassOf dm2:IndividualType .
+
+dm2:Measure a owl:Class ;
+    rdfs:label "Measure" ;
+    rdfs:comment "The magnitude of some attribute of an individual." ;
+    rdfs:subClassOf dm2:Property .
+
+dm2:Resource a owl:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "Data, Information, Performers, Materiel, or Personnel Types that are produced or consumed." ;
+    rdfs:subClassOf dm2:IndividualType .
+

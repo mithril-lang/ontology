@@ -1,0 +1,3109 @@
+{
+  "dm2_version": "2.02",
+  "base": "https://mithril.fund/ontology/dm2/2.02",
+  "generated_from": "source/dm2-2.02.edn",
+  "generated_by": "scripts/gen_dm2_ttl.py",
+  "classes": [
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "name": "Activity",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Rules",
+        "Information Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ActivityType",
+      "name": "ActivityType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#AdaptabilityMeasure",
+      "name": "AdaptabilityMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevel"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#AdaptabilityMeasureType",
+      "name": "AdaptabilityMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Address",
+      "name": "Address",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Name"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#AddressType",
+      "name": "AddressType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#NameType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Agreement",
+      "name": "Agreement",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Rule"
+      ],
+      "data_groups": [
+        "Performer",
+        "Information And Data",
+        "Reification Levels",
+        "Rules"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#AgreementType",
+      "name": "AgreementType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RuleType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescription",
+      "name": "ArchitecturalDescription",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Services"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescriptionType",
+      "name": "ArchitecturalDescriptionType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "name": "Capability",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Capability",
+        "Services"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CapabilityType",
+      "name": "CapabilityType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "Capability"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CircularArea",
+      "name": "CircularArea",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#EllipticalArea"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CircularAreaType",
+      "name": "CircularAreaType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CircularAreaTypeType",
+      "name": "CircularAreaTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Condition",
+      "name": "Condition",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Rules"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ConditionType",
+      "name": "ConditionType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Country",
+      "name": "Country",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CountryType",
+      "name": "CountryType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CountryTypeType",
+      "name": "CountryTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Data",
+      "name": "Data",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": [
+        "Resource Flow"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#DataType",
+      "name": "DataType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Information And Data"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#DescriptionScheme",
+      "name": "DescriptionScheme",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType",
+        "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#DomainInformation",
+      "name": "DomainInformation",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#DomainInformationType",
+      "name": "DomainInformationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#EllipticalArea",
+      "name": "EllipticalArea",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurface"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaType",
+      "name": "EllipticalAreaType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#EllipticalAreaTypeType",
+      "name": "EllipticalAreaTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Facility",
+      "name": "Facility",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealProperty"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#FacilityType",
+      "name": "FacilityType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealPropertyType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#FacilityTypeType",
+      "name": "FacilityTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealPropertyTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#FunctionalStandard",
+      "name": "FunctionalStandard",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Standard"
+      ],
+      "data_groups": [
+        "Rules"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#FunctionalStandardType",
+      "name": "FunctionalStandardType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#StandardType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoFeature",
+      "name": "GeoFeature",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoFeatureType",
+      "name": "GeoFeatureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoFeatureTypeType",
+      "name": "GeoFeatureTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent",
+      "name": "GeoPoliticalExtent",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualResource",
+        "https://mithril.fund/ontology/dm2/2.02#Location"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType",
+      "name": "GeoPoliticalExtentType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationType",
+        "https://mithril.fund/ontology/dm2/2.02#Resource"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType",
+      "name": "GeoPoliticalExtentTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationTypeType",
+        "https://mithril.fund/ontology/dm2/2.02#ResourceType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPoint",
+      "name": "GeoStationaryPoint",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Point"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPointType",
+      "name": "GeoStationaryPointType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PointType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GeoStationaryPointTypeType",
+      "name": "GeoStationaryPointTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PointTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Guidance",
+      "name": "Guidance",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Rules",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#GuidanceType",
+      "name": "GuidanceType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Individual",
+      "name": "Individual",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Thing"
+      ],
+      "data_groups": [
+        "Organizational Structure",
+        "Pedigree",
+        "Location",
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualActivity",
+      "name": "IndividualActivity",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Individual"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer",
+      "name": "IndividualPerformer",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualResource"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Organizational Structure",
+        "Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualPersonRole",
+      "name": "IndividualPersonRole",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Organizational Structure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualResource",
+      "name": "IndividualResource",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Individual"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Organizational Structure",
+        "Pedigree",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualType",
+      "name": "IndividualType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Type"
+      ],
+      "data_groups": [
+        "Organizational Structure",
+        "Pedigree",
+        "Measure",
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType",
+      "name": "IndividualTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Type"
+      ],
+      "data_groups": [
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Information",
+      "name": "Information",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Representation"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Services",
+        "Pedigree",
+        "Information Pedigree",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#InformationType",
+      "name": "InformationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RepresentationType"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Services",
+        "Pedigree",
+        "Information Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Installation",
+      "name": "Installation",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#InstallationType",
+      "name": "InstallationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#InstallationTypeType",
+      "name": "InstallationTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Line",
+      "name": "Line",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Location"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#LineType",
+      "name": "LineType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#LineTypeType",
+      "name": "LineTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Location",
+      "name": "Location",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Individual"
+      ],
+      "data_groups": [
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#LocationType",
+      "name": "LocationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Pedigree",
+        "Information Pedigree",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#LocationTypeType",
+      "name": "LocationTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MaintainabilityMeasure",
+      "name": "MaintainabilityMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevel"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MaintainabilityMeasureType",
+      "name": "MaintainabilityMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Materiel",
+      "name": "Materiel",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Resource"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MaterielType",
+      "name": "MaterielType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ResourceType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "name": "Measure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Property"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Information Pedigree",
+        "Measure",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureableSkill",
+      "name": "MeasureableSkill",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure",
+        "https://mithril.fund/ontology/dm2/2.02#Skill"
+      ],
+      "data_groups": [
+        "Performer",
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureableSkillType",
+      "name": "MeasureableSkillType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+        "https://mithril.fund/ontology/dm2/2.02#SkillType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesire",
+      "name": "MeasureOfDesire",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure"
+      ],
+      "data_groups": [
+        "Capability",
+        "Project",
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesireType",
+      "name": "MeasureOfDesireType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffect",
+      "name": "MeasureOfEffect",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure"
+      ],
+      "data_groups": [
+        "Capability",
+        "Project",
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffectType",
+      "name": "MeasureOfEffectType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+      "name": "MeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "Capability",
+        "Pedigree",
+        "Rules",
+        "Measure",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#MeasureTypeUnitsOfMeasure",
+      "name": "MeasureTypeUnitsOfMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+        "https://mithril.fund/ontology/dm2/2.02#RuleType"
+      ],
+      "data_groups": [
+        "Capability",
+        "Rules",
+        "Measure",
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Name",
+      "name": "Name",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Representation"
+      ],
+      "data_groups": [
+        "Location",
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#NameType",
+      "name": "NameType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RepresentationType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#NamingScheme",
+      "name": "NamingScheme",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#NameType",
+        "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme"
+      ],
+      "data_groups": [
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#NeedsSatisfactionMeasure",
+      "name": "NeedsSatisfactionMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevel"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#NeedsSatisfactionMeasureType",
+      "name": "NeedsSatisfactionMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Organization",
+      "name": "Organization",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Organizational Structure",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#OrganizationalMeasure",
+      "name": "OrganizationalMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#OrganizationalMeasureType",
+      "name": "OrganizationalMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#OrganizationType",
+      "name": "OrganizationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Performer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Organizational Structure",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#OrganizationTypeType",
+      "name": "OrganizationTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PedigreeInformation",
+      "name": "PedigreeInformation",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Pedigree",
+        "Information Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PedigreeInformationType",
+      "name": "PedigreeInformationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PerformanceMeasure",
+      "name": "PerformanceMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevel"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PerformanceMeasureType",
+      "name": "PerformanceMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "name": "Performer",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Resource"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Organizational Structure",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Rules",
+        "Information Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PerformerType",
+      "name": "PerformerType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ResourceType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PersonRoleType",
+      "name": "PersonRoleType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Performer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Organizational Structure",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PersonRoleTypeType",
+      "name": "PersonRoleTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasure",
+      "name": "PhysicalMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure"
+      ],
+      "data_groups": [
+        "Measure",
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasureType",
+      "name": "PhysicalMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PlanarSurface",
+      "name": "PlanarSurface",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Surface"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceType",
+      "name": "PlanarSurfaceType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#SurfaceType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceTypeType",
+      "name": "PlanarSurfaceTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#SurfaceTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Point",
+      "name": "Point",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Location"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PointType",
+      "name": "PointType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PointTypeType",
+      "name": "PointTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PolygonArea",
+      "name": "PolygonArea",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurface"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PolygonAreaType",
+      "name": "PolygonAreaType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PolygonAreaTypeType",
+      "name": "PolygonAreaTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PlanarSurfaceTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PortType",
+      "name": "PortType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame",
+      "name": "PositionReferenceFrame",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrameType",
+      "name": "PositionReferenceFrameType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Powertype",
+      "name": "Powertype",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Type"
+      ],
+      "data_groups": [
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Project",
+      "name": "Project",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Individual"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Project"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ProjectType",
+      "name": "ProjectType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Project"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ProjectTypeType",
+      "name": "ProjectTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Property",
+      "name": "Property",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Pedigree",
+        "Measure",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#PropertyType",
+      "name": "PropertyType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RealProperty",
+      "name": "RealProperty",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RealPropertyType",
+      "name": "RealPropertyType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RealPropertyTypeType",
+      "name": "RealPropertyTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RectangularArea",
+      "name": "RectangularArea",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PolygonArea"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RectangularAreaType",
+      "name": "RectangularAreaType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PolygonAreaType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RectangularAreaTypeType",
+      "name": "RectangularAreaTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PolygonAreaTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfCountry",
+      "name": "RegionOfCountry",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfCountryType",
+      "name": "RegionOfCountryType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfCountryTypeType",
+      "name": "RegionOfCountryTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfWorld",
+      "name": "RegionOfWorld",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtent"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfWorldType",
+      "name": "RegionOfWorldType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RegionOfWorldTypeType",
+      "name": "RegionOfWorldTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GeoPoliticalExtentTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Representation",
+      "name": "Representation",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#SignType"
+      ],
+      "data_groups": [
+        "Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme",
+      "name": "RepresentationScheme",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RepresentationType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RepresentationType",
+      "name": "RepresentationType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Resource",
+        "https://mithril.fund/ontology/dm2/2.02#SignTypeType"
+      ],
+      "data_groups": [
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Services",
+        "Pedigree",
+        "Information Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "name": "Resource",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Organizational Structure",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Information Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ResourceType",
+      "name": "ResourceType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Rule",
+      "name": "Rule",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Guidance"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Information And Data",
+        "Reification Levels",
+        "Capability",
+        "Services",
+        "Project",
+        "Pedigree",
+        "Rules",
+        "Information Pedigree",
+        "Measure",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#RuleType",
+      "name": "RuleType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#GuidanceType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup",
+      "name": "SecurityAttributesGroup",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Information"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroupType",
+      "name": "SecurityAttributesGroupType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#InformationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Service",
+      "name": "Service",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Performer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Services",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServiceDescription",
+      "name": "ServiceDescription",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescription"
+      ],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Services"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServiceDescriptionType",
+      "name": "ServiceDescriptionType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#ArchitecturalDescriptionType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServiceLevel",
+      "name": "ServiceLevel",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Measure"
+      ],
+      "data_groups": [
+        "Measure",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServiceLevelType",
+      "name": "ServiceLevelType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#MeasureType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServicePort",
+      "name": "ServicePort",
+      "sub_class_of": [],
+      "data_groups": [
+        "Services"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServicePortType",
+      "name": "ServicePortType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PortType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ServiceType",
+      "name": "ServiceType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Sign",
+      "name": "Sign",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Individual"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SignType",
+      "name": "SignType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SignTypeType",
+      "name": "SignTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SingletonActivity",
+      "name": "SingletonActivity",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Activity",
+        "https://mithril.fund/ontology/dm2/2.02#SingletonIndividualType"
+      ],
+      "data_groups": [
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SingletonIndividualType",
+      "name": "SingletonIndividualType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SingletonResource",
+      "name": "SingletonResource",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Resource",
+        "https://mithril.fund/ontology/dm2/2.02#SingletonIndividualType"
+      ],
+      "data_groups": [
+        "Pedigree",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Site",
+      "name": "Site",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealProperty"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SiteType",
+      "name": "SiteType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealPropertyType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SiteTypeType",
+      "name": "SiteTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RealPropertyTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Skill",
+      "name": "Skill",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Property"
+      ],
+      "data_groups": [
+        "Performer",
+        "Organizational Structure",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SkillType",
+      "name": "SkillType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PropertyType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SolidVolume",
+      "name": "SolidVolume",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Location"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SolidVolumeType",
+      "name": "SolidVolumeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SolidVolumeTypeType",
+      "name": "SolidVolumeTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SpatialMeasure",
+      "name": "SpatialMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasure"
+      ],
+      "data_groups": [
+        "Measure",
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SpatialMeasureType",
+      "name": "SpatialMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Standard",
+      "name": "Standard",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Rule"
+      ],
+      "data_groups": [
+        "Rules",
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#StandardType",
+      "name": "StandardType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#RuleType"
+      ],
+      "data_groups": [
+        "DM2 Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Surface",
+      "name": "Surface",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Location"
+      ],
+      "data_groups": [
+        "Location"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SurfaceType",
+      "name": "SurfaceType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SurfaceTypeType",
+      "name": "SurfaceTypeType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#LocationTypeType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#System",
+      "name": "System",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Performer"
+      ],
+      "data_groups": [
+        "Performer",
+        "Resource Flow",
+        "Pedigree"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#SystemType",
+      "name": "SystemType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PerformerType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TechnicalStandard",
+      "name": "TechnicalStandard",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Standard"
+      ],
+      "data_groups": [
+        "Rules"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TechnicalStandardType",
+      "name": "TechnicalStandardType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#StandardType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TemporalMeasure",
+      "name": "TemporalMeasure",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasure"
+      ],
+      "data_groups": [
+        "Measure"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TemporalMeasureType",
+      "name": "TemporalMeasureType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#PhysicalMeasureType"
+      ],
+      "data_groups": []
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "name": "Thing",
+      "sub_class_of": [],
+      "data_groups": [
+        "Information And Data",
+        "Reification Levels",
+        "Pedigree",
+        "Information Pedigree",
+        "Location",
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Type",
+      "name": "Type",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#Thing"
+      ],
+      "data_groups": [
+        "Pedigree",
+        "IDEAS Foundation"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#Vision",
+      "name": "Vision",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+      ],
+      "data_groups": [
+        "Project"
+      ]
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#VisionType",
+      "name": "VisionType",
+      "sub_class_of": [
+        "https://mithril.fund/ontology/dm2/2.02#IndividualTypeType"
+      ],
+      "data_groups": []
+    }
+  ],
+  "properties": [
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityConsumesResource",
+      "name": "activityConsumesResource",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityMapsToCapabilityType",
+      "name": "activityMapsToCapabilityType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#CapabilityType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityPartOfCapability",
+      "name": "activityPartOfCapability",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityPartOfProjectType",
+      "name": "activityPartOfProjectType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#ProjectType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityPerformableUnderCondition",
+      "name": "activityPerformableUnderCondition",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Condition"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityPerformedByPerformer",
+      "name": "activityPerformedByPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#activityProducesResource",
+      "name": "activityProducesResource",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#associationOfInformation",
+      "name": "associationOfInformation",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#tuple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#InformationType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#InformationType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#axesDescribedBy",
+      "name": "axesDescribedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#describedBy"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Line",
+      "range": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#beforeAfter",
+      "name": "beforeAfter",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#couple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Individual",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+      "name": "BeforeAfterType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#CoupleType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#IndividualType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#capabilityOfPerformer",
+      "name": "capabilityOfPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#propertyOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Performer"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#coordinateCenterDescribedBy",
+      "name": "coordinateCenterDescribedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#describedBy"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Point",
+      "range": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#couple",
+      "name": "couple",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#tuple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Thing"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#CoupleType",
+      "name": "CoupleType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#TupleType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Type",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Type"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#describedBy",
+      "name": "describedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#representedBy"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Information"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#descriptionSchemeInstance",
+      "name": "descriptionSchemeInstance",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#representationSchemeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#DescriptionScheme",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Information"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#desiredEffect",
+      "name": "desiredEffect",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Performer"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#desiredEffectDirectsActivity",
+      "name": "desiredEffectDirectsActivity",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#desiredEffectIsRealizedByProjectType",
+      "name": "desiredEffectIsRealizedByProjectType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#ProjectType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#desiredEffectOfCapability",
+      "name": "desiredEffectOfCapability",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#desireMeasure",
+      "name": "desireMeasure",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesire",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#effectMeasure",
+      "name": "effectMeasure",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffect",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#endBoundary",
+      "name": "endBoundary",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#temporalBoundary"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#EndBoundaryType",
+      "name": "EndBoundaryType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#TemporalBoundaryType"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#facilityPartOfSite",
+      "name": "facilityPartOfSite",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Site",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Facility"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#individualPersonRolePartOfIndividualPerformer",
+      "name": "individualPersonRolePartOfIndividualPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualPersonRole"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#individualResourceInLocation",
+      "name": "individualResourceInLocation",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Location",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualResource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#jointAction",
+      "name": "jointAction",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#linePartOfPlanarSurface",
+      "name": "linePartOfPlanarSurface",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#PlanarSurface",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Line"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#locationNamedByAddress",
+      "name": "locationNamedByAddress",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#namedBy"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Location",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Address"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#materielPartOfPerformer",
+      "name": "materielPartOfPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Materiel"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureableSkillOfPersonRoleType",
+      "name": "measureableSkillOfPersonRoleType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType",
+        "https://mithril.fund/ontology/dm2/2.02#skillOfPersonRoleType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#MeasureableSkill",
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividual",
+      "name": "measureOfIndividual",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#propertyOfIndividual"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualEndBoundary",
+      "name": "measureOfIndividualEndBoundary",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfIndividual"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualPoint",
+      "name": "measureOfIndividualPoint",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfIndividual"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Point",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Measure"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualStartBoundary",
+      "name": "measureOfIndividualStartBoundary",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfIndividual"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfType",
+      "name": "measureOfType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#propertyOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeActivity",
+      "name": "measureOfTypeActivity",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeCondition",
+      "name": "measureOfTypeCondition",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Condition"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeEndBoundaryType",
+      "name": "measureOfTypeEndBoundaryType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeProjectType",
+      "name": "measureOfTypeProjectType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#ProjectType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeResource",
+      "name": "measureOfTypeResource",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeStartBoundaryType",
+      "name": "measureOfTypeStartBoundaryType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeWholePartType",
+      "name": "measureOfTypeWholePartType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#measureOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#measureTypeApplicableToActivity",
+      "name": "measureTypeApplicableToActivity",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#typeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#namedBy",
+      "name": "namedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#representedBy"
+      ],
+      "domain": null,
+      "range": "https://mithril.fund/ontology/dm2/2.02#Name"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#namingSchemeInstance",
+      "name": "namingSchemeInstance",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#representationSchemeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#NamingScheme",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Name"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#overlap",
+      "name": "overlap",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": null,
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#OverlapType",
+      "name": "OverlapType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": null,
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#partiesToAnAgreement",
+      "name": "partiesToAnAgreement",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Agreement"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#personRoleTypePartOfPerformer",
+      "name": "personRoleTypePartOfPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "range": "https://mithril.fund/ontology/dm2/2.02#PersonRoleType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#pointPartOfLine",
+      "name": "pointPartOfLine",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Line",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Point"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#pointPartOfPlanarSurface",
+      "name": "pointPartOfPlanarSurface",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#PlanarSurface",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Point"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#portPartOfPerformer",
+      "name": "portPartOfPerformer",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#powertypeInstance",
+      "name": "powertypeInstance",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#typeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Powertype",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Type"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#propertyOfIndividual",
+      "name": "propertyOfIndividual",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#typeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Property",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#propertyOfType",
+      "name": "propertyOfType",
+      "sub_property_of": [],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Property",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#regionOfCountryPartOfCountry",
+      "name": "regionOfCountryPartOfCountry",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Country",
+      "range": "https://mithril.fund/ontology/dm2/2.02#RegionOfCountry"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#representationSchemeInstance",
+      "name": "representationSchemeInstance",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#typeInstance"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Representation"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#representedBy",
+      "name": "representedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#couple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Representation"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#resourceInLocationType",
+      "name": "resourceInLocationType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "range": "https://mithril.fund/ontology/dm2/2.02#LocationType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#ruleConstrainsActivity",
+      "name": "ruleConstrainsActivity",
+      "sub_property_of": [],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Rule"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#rulePartOfMeasureType",
+      "name": "rulePartOfMeasureType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Rule"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#serviceEnablesAccessToResource",
+      "name": "serviceEnablesAccessToResource",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Service",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#servicePortDescribedBy",
+      "name": "servicePortDescribedBy",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#describedBy"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#ServicePort",
+      "range": "https://mithril.fund/ontology/dm2/2.02#ServiceDescription"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#sitePartOfInstallation",
+      "name": "sitePartOfInstallation",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Installation",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Site"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#skillOfPersonRoleType",
+      "name": "skillOfPersonRoleType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#propertyOfType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Skill",
+      "range": "https://mithril.fund/ontology/dm2/2.02#PersonRoleType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#startBoundary",
+      "name": "startBoundary",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#temporalBoundary"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#StartBoundaryType",
+      "name": "StartBoundaryType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#TemporalBoundaryType"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#superSubType",
+      "name": "superSubType",
+      "sub_property_of": [],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#temporalBoundary",
+      "name": "temporalBoundary",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#temporalWholePart"
+      ],
+      "domain": null,
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TemporalBoundaryType",
+      "name": "TemporalBoundaryType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#TemporalWholePartType"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#temporalWholePart",
+      "name": "temporalWholePart",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#wholePart"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TemporalWholePartType",
+      "name": "TemporalWholePartType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+      ],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#tuple",
+      "name": "tuple",
+      "sub_property_of": [],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#TupleType",
+      "name": "TupleType",
+      "sub_property_of": [],
+      "domain": null,
+      "range": null
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#typeInstance",
+      "name": "typeInstance",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#couple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Type",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Thing"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#visionIsRealizedByDesiredEffect",
+      "name": "visionIsRealizedByDesiredEffect",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#OverlapType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Vision",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#wholePart",
+      "name": "wholePart",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#couple"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#Individual",
+      "range": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02#WholePartType",
+      "name": "WholePartType",
+      "sub_property_of": [
+        "https://mithril.fund/ontology/dm2/2.02#CoupleType"
+      ],
+      "domain": "https://mithril.fund/ontology/dm2/2.02#IndividualType",
+      "range": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    }
+  ],
+  "shapes": [
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityConsumesResource",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityConsumesResource",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityMapsToCapabilityType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityMapsToCapabilityType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#CapabilityType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityPartOfCapability",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityPartOfCapability",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityPartOfProjectType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#ProjectType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityPartOfProjectType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityPerformableUnderCondition",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityPerformableUnderCondition",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Condition"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityPerformedByPerformer",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityPerformedByPerformer",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#activityProducesResource",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#activityProducesResource",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#associationOfInformation",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#InformationType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#associationOfInformation",
+      "class": "https://mithril.fund/ontology/dm2/2.02#InformationType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#axesDescribedBy",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Line",
+      "path": "https://mithril.fund/ontology/dm2/2.02#axesDescribedBy",
+      "class": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#beforeAfter",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Individual",
+      "path": "https://mithril.fund/ontology/dm2/2.02#beforeAfter",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#BeforeAfterType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#IndividualType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#BeforeAfterType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#capabilityOfPerformer",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "path": "https://mithril.fund/ontology/dm2/2.02#capabilityOfPerformer",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Performer"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#coordinateCenterDescribedBy",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Point",
+      "path": "https://mithril.fund/ontology/dm2/2.02#coordinateCenterDescribedBy",
+      "class": "https://mithril.fund/ontology/dm2/2.02#PositionReferenceFrame"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#couple",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "path": "https://mithril.fund/ontology/dm2/2.02#couple",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Thing"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#CoupleType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Type",
+      "path": "https://mithril.fund/ontology/dm2/2.02#CoupleType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Type"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#describedBy",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "path": "https://mithril.fund/ontology/dm2/2.02#describedBy",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Information"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#descriptionSchemeInstance",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#DescriptionScheme",
+      "path": "https://mithril.fund/ontology/dm2/2.02#descriptionSchemeInstance",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Information"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#desiredEffect",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "path": "https://mithril.fund/ontology/dm2/2.02#desiredEffect",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Performer"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#desiredEffectDirectsActivity",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "path": "https://mithril.fund/ontology/dm2/2.02#desiredEffectDirectsActivity",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#desiredEffectIsRealizedByProjectType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#ProjectType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#desiredEffectIsRealizedByProjectType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#desiredEffectOfCapability",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Capability",
+      "path": "https://mithril.fund/ontology/dm2/2.02#desiredEffectOfCapability",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#desireMeasure",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#MeasureOfDesire",
+      "path": "https://mithril.fund/ontology/dm2/2.02#desireMeasure",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#effectMeasure",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#MeasureOfEffect",
+      "path": "https://mithril.fund/ontology/dm2/2.02#effectMeasure",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#facilityPartOfSite",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Site",
+      "path": "https://mithril.fund/ontology/dm2/2.02#facilityPartOfSite",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Facility"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#individualPersonRolePartOfIndividualPerformer",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#IndividualPerformer",
+      "path": "https://mithril.fund/ontology/dm2/2.02#individualPersonRolePartOfIndividualPerformer",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualPersonRole"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#individualResourceInLocation",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Location",
+      "path": "https://mithril.fund/ontology/dm2/2.02#individualResourceInLocation",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualResource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#jointAction",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#jointAction",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#linePartOfPlanarSurface",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#PlanarSurface",
+      "path": "https://mithril.fund/ontology/dm2/2.02#linePartOfPlanarSurface",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Line"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#locationNamedByAddress",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Location",
+      "path": "https://mithril.fund/ontology/dm2/2.02#locationNamedByAddress",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Address"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#materielPartOfPerformer",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "path": "https://mithril.fund/ontology/dm2/2.02#materielPartOfPerformer",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Materiel"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfIndividualEndBoundary",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualEndBoundary",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfIndividualPoint",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Point",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualPoint",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Measure"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfIndividualStartBoundary",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfIndividualStartBoundary",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeActivity",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeActivity",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeCondition",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeCondition",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Condition"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeEndBoundaryType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeEndBoundaryType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeProjectType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeProjectType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#ProjectType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeResource",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeResource",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeStartBoundaryType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Measure",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureOfTypeStartBoundaryType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#measureTypeApplicableToActivity",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#measureTypeApplicableToActivity",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Activity"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#namingSchemeInstance",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#NamingScheme",
+      "path": "https://mithril.fund/ontology/dm2/2.02#namingSchemeInstance",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Name"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#partiesToAnAgreement",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "path": "https://mithril.fund/ontology/dm2/2.02#partiesToAnAgreement",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Agreement"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#personRoleTypePartOfPerformer",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Performer",
+      "path": "https://mithril.fund/ontology/dm2/2.02#personRoleTypePartOfPerformer",
+      "class": "https://mithril.fund/ontology/dm2/2.02#PersonRoleType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#pointPartOfLine",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Line",
+      "path": "https://mithril.fund/ontology/dm2/2.02#pointPartOfLine",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Point"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#pointPartOfPlanarSurface",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#PlanarSurface",
+      "path": "https://mithril.fund/ontology/dm2/2.02#pointPartOfPlanarSurface",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Point"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#powertypeInstance",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Powertype",
+      "path": "https://mithril.fund/ontology/dm2/2.02#powertypeInstance",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Type"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#propertyOfIndividual",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Property",
+      "path": "https://mithril.fund/ontology/dm2/2.02#propertyOfIndividual",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#propertyOfType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Property",
+      "path": "https://mithril.fund/ontology/dm2/2.02#propertyOfType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#regionOfCountryPartOfCountry",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Country",
+      "path": "https://mithril.fund/ontology/dm2/2.02#regionOfCountryPartOfCountry",
+      "class": "https://mithril.fund/ontology/dm2/2.02#RegionOfCountry"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#representationSchemeInstance",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#RepresentationScheme",
+      "path": "https://mithril.fund/ontology/dm2/2.02#representationSchemeInstance",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Representation"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#representedBy",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Thing",
+      "path": "https://mithril.fund/ontology/dm2/2.02#representedBy",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Representation"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#resourceInLocationType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Resource",
+      "path": "https://mithril.fund/ontology/dm2/2.02#resourceInLocationType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#LocationType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#ruleConstrainsActivity",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Activity",
+      "path": "https://mithril.fund/ontology/dm2/2.02#ruleConstrainsActivity",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Rule"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#rulePartOfMeasureType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#MeasureType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#rulePartOfMeasureType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Rule"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#serviceEnablesAccessToResource",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Service",
+      "path": "https://mithril.fund/ontology/dm2/2.02#serviceEnablesAccessToResource",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#servicePortDescribedBy",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#ServicePort",
+      "path": "https://mithril.fund/ontology/dm2/2.02#servicePortDescribedBy",
+      "class": "https://mithril.fund/ontology/dm2/2.02#ServiceDescription"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#sitePartOfInstallation",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Installation",
+      "path": "https://mithril.fund/ontology/dm2/2.02#sitePartOfInstallation",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Site"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#skillOfPersonRoleType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Skill",
+      "path": "https://mithril.fund/ontology/dm2/2.02#skillOfPersonRoleType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#PersonRoleType"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#typeInstance",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Type",
+      "path": "https://mithril.fund/ontology/dm2/2.02#typeInstance",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Thing"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#visionIsRealizedByDesiredEffect",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Vision",
+      "path": "https://mithril.fund/ontology/dm2/2.02#visionIsRealizedByDesiredEffect",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Resource"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#wholePart",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#Individual",
+      "path": "https://mithril.fund/ontology/dm2/2.02#wholePart",
+      "class": "https://mithril.fund/ontology/dm2/2.02#Individual"
+    },
+    {
+      "iri": "https://mithril.fund/ontology/dm2/2.02/shapes#WholePartType",
+      "target_class": "https://mithril.fund/ontology/dm2/2.02#IndividualType",
+      "path": "https://mithril.fund/ontology/dm2/2.02#WholePartType",
+      "class": "https://mithril.fund/ontology/dm2/2.02#IndividualType"
+    }
+  ],
+  "axiom_gaps": {
+    "edges": [
+      {
+        "sub": "Classification",
+        "super": "ClassificationType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ClassificationReason",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ClassificationType",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ClassifiedBy",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DateOfExemptedSource",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DeclassDate",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DeclassEvent",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DeclassException",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DeclassManualReview",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DerivedFrom",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "DisseminationControls",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "FGIsourceOpen",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "FGIsourceOpenPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "FGIsourceProtected",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "FGIsourceProtectedPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "NonICmarkings",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "OwnerProducer",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "Port",
+        "super": "Performer",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ReleasableTo",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "SARIdentifier",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "SARIdentifierPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "SCIControls",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "SCIControlsPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ServicePort",
+        "super": "Port",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "TupleType",
+        "super": "Type",
+        "reason": "association is a subtype of a non-association class"
+      },
+      {
+        "sub": "TypeOfExemptedSource",
+        "super": "IndividualType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "classificationPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "classificationReasonPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "classifiedByPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "dateOfExemptedSourcePartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "declassDatePartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "declassEventPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "declassExceptionPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "declassManualReviewPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "derivedFromPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "disseminationControlsPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "informationPedigree",
+        "super": "describedBy",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "nonICmarkingsPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ownerProducerPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "propertyOfType",
+        "super": "superSubtype",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "releasableToPartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "ruleConstrainsActivity",
+        "super": "superSubtype",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "superSubtype",
+        "super": "couple",
+        "reason": "an end is not an in-model dictionary term"
+      },
+      {
+        "sub": "tuple",
+        "super": "Thing",
+        "reason": "association is a subtype of a non-association class"
+      },
+      {
+        "sub": "typeOfExemptedSourcePartOfSecurityAttributesGroup",
+        "super": "WholePartType",
+        "reason": "an end is not an in-model dictionary term"
+      }
+    ]
+  }
+}

@@ -13,6 +13,22 @@ The repository has one data source and two generated outputs:
 | [`ontology/dodaf-v2-02.mith`](ontology/dodaf-v2-02.mith) | Mithril ontology (generated) |
 | [`ontology/dodaf-v2-02-views.edn`](ontology/dodaf-v2-02-views.edn) | Viewpoint / model catalog (generated) |
 
+### Turtle / JSON outputs (for non-Mithril consumers)
+
+[`scripts/gen_dm2_ttl.py`](scripts/gen_dm2_ttl.py) derives the same axioms from the same source with the same IRIs, and writes them as plain OWL/SHACL Turtle and JSON. mithril-fund (TypeScript / Python / Iceberg) reads these instead of the `.mith` file.
+
+| File | Role |
+|---|---|
+| [`ontology/dm2-2.02.ttl`](ontology/dm2-2.02.ttl) | OWL classes and object properties, subClassOf / subPropertyOf, domain / range, SHACL node shapes (generated) |
+| [`ontology/dm2-2.02.json`](ontology/dm2-2.02.json) | The same content as JSON, plus the supertype edges that have no OWL counterpart (generated) |
+
+```bash
+uv run scripts/gen_dm2_ttl.py          # regenerate
+uv run scripts/gen_dm2_ttl.py --check  # exit 3 if the committed files are stale, 1 if a count check fails
+```
+
+The script checks the counts stated in this README (173 classes, 81 properties, 182 class edges, 81 property edges, 67 domains, 66 ranges, 62 shapes) and that no IRI is dangling.
+
 ### Sources
 
 Both files come from the DoD CIO [DM2 Data Dictionary and Model Files](https://dowcio.war.gov/Library/DoD-Architecture-Framework/dodaf20_logical/) page:
