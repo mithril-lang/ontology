@@ -12,8 +12,12 @@
   failure is printed as FAIL<TAB>reason), 2 = usage or unreadable input.
 
   Nothing here is invented: every axiom is one EA connector or one dictionary
-  cell from source/dm2-2.02.edn. What the Mithril form surface cannot express
-  is listed under :axiom-gaps in the view catalog instead of being dropped."
+  cell from source/dm2-2.02.edn. EA names outside the in-model dictionary set
+  are declared as external nodes (marked in :description, recorded under
+  :resolutions in the view catalog) instead of being dropped. The IDEA
+  instance links (powertypeInstance / typeInstance) and n-ary places live in
+  ontology/dm2-2.02.ttl under the ideas: namespace; only EA connectors with
+  an empty name are unrepresentable and stay under :axiom-gaps."
   (:require [cljs.reader :as reader]
             [clojure.set :as set]
             [clojure.string :as str]))
@@ -29,6 +33,21 @@
 (def source-rel "source/dm2-2.02.edn")
 (def mith-rel "ontology/dodaf-v2-02.mith")
 (def views-rel "ontology/dodaf-v2-02-views.edn")
+
+;; Dictionary spelling -> EA-model spelling. Only exact, single-concept
+;; aliases belong here; anything else stays a gap instead of being matched.
+(def normalizations {"superSubtype" "superSubType"})
+
+(defn- normalize-name [n] (get normalizations n n))
+
+;; In-model associations that also need a Class facet (OWL punning, same IRI):
+;; TupleType/tuple are asserted as subtypes of the classes Type/Thing in the EA
+;; model, and WholePartType is referenced as a place type. The Mithril form
+;; surface carries these as (owl/class) nodes sharing the property IRI.
+(def punned-extra-facets
+  {"TupleType" "EA asserts TupleType as a subtype of the class Type (property-subclass-of-class); OWL punning"
+   "tuple" "EA asserts tuple as a subtype of the class Thing (property-subclass-of-class); OWL punning"
+   "WholePartType" "referenced as a place type; associations used as types gain a Class facet (punning)"})
 
 ;; DoDAF 2.02 viewpoint names, as published on
 ;; https://dowcio.war.gov/Library/DoD-Architecture-Framework/dodaf20_viewpoints/
@@ -60,55 +79,129 @@
   (let [terms (:terms src)
         assoc? (into {} (map (juxt :name :association?)) terms)
         in-model (set (keys assoc?))
-        class? (fn [n] (and (in-model n) (not (assoc? n))))
-        prop? (fn [n] (and (in-model n) (assoc? n)))
-        edges (:super-subtype src)
-        sub-class (reduce (fn [m [sub sup]]
-                            (if (and (class? sub) (class? sup))
-                              (update m sub (fnil conj []) sup) m))
-                          {} edges)
-        sub-prop (reduce (fn [m [sub sup]]
-                           (if (and (prop? sub) (prop? sup))
-                             (update m sub (fnil conj []) sup) m))
-                         {} edges)
-        edge-gaps (vec (for [[sub sup] edges
-                             :when (not (or (and (class? sub) (class? sup))
-                                            (and (prop? sub) (prop? sup))))]
-                         {:sub sub :super sup
-                          :reason (cond
-                                    (not (and (in-model sub) (in-model sup)))
-                                    "an end is not an in-model dictionary term"
-                                    :else
-                                    "association is a subtype of a non-association class; OWL has no subClassOf/subPropertyOf between a property and a class")}))
-        places (:tuple-places src)
+        raw-edges (:super-subtype src)
+        edges (mapv (fn [[a b]] [(normalize-name a) (normalize-name b)]) raw-edges)
+        places (into {} (map (fn [[k v]] [(normalize-name k) v]) (:tuple-places src)))
+        owners (set (keys places))
+        blank? (fn [n] (or (not (string? n)) (str/blank? n)))
+        counterparts (fn [n] (vec (for [[a b] edges
+                                        :when (or (= a n) (= b n))
+                                        :let [o (if (= a n) b a)]
+                                        :when (in-model o)]
+                                    o)))
+        ;; External declarations: every referenced name outside the in-model
+        ;; dictionary set gets a facet. Property iff it owns tuple places or
+        ;; all its in-model counterparts are associations; otherwise class.
+        ;; Both-external edges inherit the decided facet (fixpoint).
+        facet (loop [f (into {} (for [n (sort (set/difference owners in-model #{""}))]
+                                  [n "property"]))]
+                (let [seeded (if (some #(contains? f %) (mapcat identity edges))
+                               f
+                               (merge f
+                                      (into {}
+                                            (for [n (sort (set/difference (set (mapcat identity edges))
+                                                                         in-model (set (keys f)) #{""}))]
+                                              (let [cps (counterparts n)]
+                                                [n (if (and (seq cps) (every? assoc? cps))
+                                                     "property" "class")])))))
+                      valued (merge seeded
+                                    (into {}
+                                          (for [[_ v] places [k pv] v
+                                                :when (#{:place1Type :place2Type} k)
+                                                :when (and (string? pv) (not (str/blank? pv))
+                                                        (not (in-model pv)) (not (owners pv))
+                                                        (not (contains? seeded pv)))]
+                                            [pv "class"])))
+                      news (into {}
+                                 (for [[a b] edges
+                                       :when (and (not (blank? a)) (not (blank? b))
+                                                  (not (in-model a)) (not (in-model b)))
+                                       :when (or (and (contains? valued a) (not (contains? valued b)))
+                                                 (and (contains? valued b) (not (contains? valued a))))]
+                                   (if (contains? valued a) [b (valued a)] [a (valued b)])))]
+                  (if (seq news) (recur (merge valued news)) valued)))
+        class? (fn [n] (or (and (in-model n) (not (assoc? n))) (= "class" (facet n))))
+        prop? (fn [n] (or (and (in-model n) (assoc? n)) (= "property" (facet n))))
+        punned? (fn [n] (contains? punned-extra-facets n))
+        declared? (fn [n] (and (not (blank? n)) (or (in-model n) (contains? facet n))))
+        edge-kind (fn [[sub sup]]
+                    (cond (or (blank? sub) (blank? sup)) :empty
+                          (and (punned? sub) (class? sup)) :class
+                          (or (prop? sub) (prop? sup)) :property
+                          :else :class))
+        kinds (group-by edge-kind edges)
+        sub-class (reduce (fn [m [sub sup]] (update m sub (fnil conj []) sup))
+                          {} (:class kinds))
+        sub-prop (reduce (fn [m [sub sup]] (update m sub (fnil conj []) sup))
+                         {} (:property kinds))
+        empty-ends (vec (:empty kinds))
+        ;; Roles describe why each external name is declared; they become the
+        ;; external node's description suffix (the marker prefix is fixed).
+        roles (let [m (reduce (fn [m [a b]]
+                                (cond-> m
+                                  (and (not (in-model a)) (not (blank? a)))
+                                  (update a (fnil conj []) (str "subtype of " b))
+                                  (and (not (in-model b)) (not (blank? b)))
+                                  (update b (fnil conj []) (str "supertype of " a))))
+                              {} edges)]
+                (reduce (fn [m [o v]]
+                          (if (or (in-model o) (blank? o)) m
+                            (update m o (fnil conj [])
+                                    (str "tuple with"
+                                         (when (:place1Type v) (str " place1Type " (:place1Type v)))
+                                         (when (:place2Type v) (str " place2Type " (:place2Type v)))))))
+                        (reduce (fn [m [o v]]
+                                  (reduce (fn [m [k pv]]
+                                            (if (and (#{:place1Type :place2Type} k)
+                                                     (string? pv) (not (in-model pv)) (not (blank? pv)))
+                                              (update m pv (fnil conj [])
+                                                      (str "place type of " (if (blank? o) "(unnamed tuple)" o)
+                                                           " (" (name k) ")"))
+                                              m))
+                                          m v))
+                                m places)
+                        places))
+        external-names (sort (keys facet))
+        external-terms (mapv (fn [n]
+                               {:name n
+                                :association? (= "property" (facet n))
+                                :roles (vec (roles n))
+                                :definition (str "External to the DM2 in-model dictionary set. "
+                                                 (str/join "; " (roles n)) ".")})
+                             external-names)
+        prop-names (set (concat (for [t terms :when (:association? t)] (:name t))
+                                (for [n external-names :when (= "property" (facet n))] n)))
         dom-rng (into {}
-                      (for [t terms :when (:association? t)
-                            :let [p (get places (:name t))
+                      (for [n (sort prop-names)
+                            :let [p (get places n)
                                   d (:place1Type p) r (:place2Type p)]]
-                        [(:name t) (cond-> {}
-                                     (class? d) (assoc :domain d)
-                                     (class? r) (assoc :range r))]))
-        place-gaps (vec (concat
-                         (for [t terms :when (:association? t)
-                               :when (not (contains? places (:name t)))]
-                           {:association (:name t)
-                            :reason "no place connector in the EA model under this exact name"})
-                         (for [t terms :when (:association? t)
-                               :let [p (get places (:name t))]
-                               :when p
-                               [k v] (sort-by key p)
-                               :when (not (or (and (= k :place1Type) (class? v))
-                                              (and (= k :place2Type) (class? v))))]
-                           {:association (:name t) :place (name k) :type v
-                            :reason (cond
-                                      (#{:place3Type :placeType} k)
-                                      (str (name k) " has no binary OWL counterpart (domain is place1Type, range is place2Type)")
-                                      (prop? v)
-                                      "place type is an association (object property), not a class"
-                                      :else "place type is not an in-model dictionary term")})))]
-    {:class? class? :prop? prop?
-     :sub-class sub-class :sub-prop sub-prop :dom-rng dom-rng
-     :edge-gaps edge-gaps :place-gaps place-gaps}))
+                        [n (cond-> {}
+                             (and (declared? d) (or (class? d) (punned? d))) (assoc :domain d)
+                             (and (declared? r) (or (class? r) (punned? r))) (assoc :range r))]))
+        powertype (:powertype-instance src)
+        type-inst (vec (for [[a b] (:type-instance src) :when (not (blank? a))] [a b]))
+        type-empty (vec (for [[a b] (:type-instance src) :when (blank? a)]
+                           (str "type-instance " a ">" b)))
+        empty-owners (vec (for [[o v] places :when (blank? o)]
+                             (str "tuple-place owner '' " (pr-str v))))
+        nary {:place3 (vec (for [[k v] (sort places) :when (:place3Type v)] [k (:place3Type v)]))
+              :place (vec (for [[k v] (sort places) :when (:placeType v)] [k (:placeType v)]))}
+        norm-edges (vec (mapcat (fn [[a b]]
+                                  (let [na (normalize-name a) nb (normalize-name b)
+                                        reason "EA spelling; the dictionary spells this concept superSubType"]
+                                    (concat (when (not= a na) [{:from a :to na :via-edge [a b] :reason reason}])
+                                            (when (not= b nb) [{:from b :to nb :via-edge [a b] :reason reason}]))))
+                                raw-edges))]
+    {:class? class? :prop? prop? :punned? punned? :declared? declared?
+     :sub-class sub-class :sub-prop sub-prop :dom-rng dom-rng :places places
+     :facet facet :external-terms external-terms
+     :empty-ends empty-ends
+     :powertype powertype :type-inst type-inst :type-empty type-empty
+     :empty-owners empty-owners :nary nary :norm-edges norm-edges
+     :norm-places (when (not= (get (:tuple-places src) "superSubtype")
+                              (get places "superSubType"))
+                    {:from "superSubtype" :to "superSubType"
+                     :places (get places "superSubType")})}))
 
 ;; ---------------------------------------------------------------- .mith text
 
@@ -149,12 +242,25 @@
        "        :sh/path " (q (term-iri assoc-name)) "\n"
        "        :sh/class " (q (term-iri range)) ")] )"))
 
+(defn- punned-class-text [n definition {:keys [sub-class]}]
+  ;; Same IRI as the object-property node: OWL punning (Class + ObjectProperty
+  ;; facets on one IRI). JSON-LD merges same-@id nodes; the compiler takes the
+  ;; union of their types.
+  (str "   (owl/class\n"
+       "     :id " (q (term-iri n)) "\n"
+       "     :name " (q n) "\n"
+       "     :description " (q definition)
+       (when (seq (sub-class n))
+         (str "\n     :rdfs/sub-class-of " (iri-value (sub-class n))))
+       " )"))
+
 (defn- mith-text [src ax]
-  (let [terms (:terms src)
-        pairs (for [t terms :when (:association? t)
+  (let [all-terms (concat (:terms src) (:external-terms ax))
+        pairs (for [t all-terms :when (:association? t)
                     :let [dr ((:dom-rng ax) (:name t))]
                     :when (and (:domain dr) (:range dr))]
-                [(:name t) dr])]
+                [(:name t) dr])
+        by-name (into {} (map (juxt :name identity)) (:terms src))]
     (str "(mithril/ontology\n"
          "  :id " (q base) "\n"
          "  :profile\n"
@@ -163,10 +269,12 @@
          "   \"https://www.w3.org/TR/shacl/\"]\n"
          "  :graph\n"
          "  [\n"
-         (str/join "\n" (concat (map #(node-text % ax) terms)
-                                (map (fn [[n dr]] (shape-text n dr (get (:tuple-places src) n)))
+         (str/join "\n" (concat (map #(node-text % ax) all-terms)
+                                (map (fn [n] (punned-class-text n (:definition (by-name n)) ax))
+                                     (sort (keys punned-extra-facets)))
+                                (map (fn [[n dr]] (shape-text n dr (get (:places ax) n)))
                                      pairs)))
-         "\n  ])\n")))
+         "\n  ]\n)")))
 
 ;; ---------------------------------------------------------------- EDN printer
 ;; Deterministic: map keys sorted, one entry per line once a value is nested.
@@ -176,7 +284,11 @@
 (def ^:private key-priority
   [:dm2/version :generated-from :generated-by :ontology :iri-note :viewpoint-source
    :id :iri :name :title :description :viewpoint :owl-kind :ideas-kind
-   :data-groups :models :concepts :viewpoints :terms :mapping-codes])
+   :data-groups :models :concepts :viewpoints :terms :mapping-codes
+   :axiom-gaps :empty-source-names :resolutions :normalizations :from :to
+   :via-edge :via :places :reason :external-declarations :facet :roles
+   :instance-links :powertype-instance :type-instance :count :surface
+   :empty :empty-ends :expressed :n-ary-places :place3 :place])
 
 (defn- sort-keys [m]
   (let [rank (zipmap key-priority (range))]
@@ -252,18 +364,36 @@
                           :owl-kind (if (:association? t) "owl:ObjectProperty" "owl:Class")
                           :data-groups (:data-groups t)
                           :models (:models t)}
-                   (get (:ideas-kind src) (:name t))
-                   (assoc :ideas-kind (get (:ideas-kind src) (:name t))))]))
+                   (or (get (:ideas-kind src) (:name t)) (= (:name t) "superSubType"))
+                   (assoc :ideas-kind (or (get (:ideas-kind src) (:name t))
+                                          "IDEAS:TupleType")))]))
+     ;; Only connector names with no representable IRI stay here (empty EA
+     ;; names). Everything else is expressed and recorded under :resolutions.
      :axiom-gaps
-     {:super-subtype (:edge-gaps ax)
-      :tuple-places (:place-gaps ax)
-      :ideas-kind (vec (for [t terms :when (not (get (:ideas-kind src) (:name t)))]
-                         {:term (:name t)
-                          :reason "no EA class with this exact name (EA spells a class superSubtype; names are not fuzzy-matched)"}))
-      :powertype-instance {:count (count (:powertype-instance src))
-                           :reason "IDEAS powertypeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it (no rdf:type between two classes / punning)"}
-      :type-instance {:count (count (:type-instance src))
-                      :reason "IDEAS typeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it"}}}))
+     {:empty-source-names (vec (concat (:type-empty ax) (:empty-owners ax)))}
+     :resolutions
+     {:normalizations
+     (vec (concat (:norm-edges ax)
+                  (when (:norm-places ax)
+                    [(:norm-places ax)])))
+      :external-declarations
+      (vec (for [t (:external-terms ax)]
+             {:name (:name t)
+              :facet (if (:association? t) "property" "class")
+              :roles (:roles t)}))
+      :instance-links
+      {:powertype-instance {:count (count (:powertype ax))
+                            :surface "ontology/dm2-2.02.ttl via ideas:powertypeInstance"
+                            :empty-ends (vec (for [[a b] (:powertype ax)
+                                                   :when (or (str/blank? a) (str/blank? b))]
+                                               [a b]))}
+       :type-instance {:count (count (:type-inst ax))
+                       :surface "ontology/dm2-2.02.ttl via ideas:typeInstance"
+                       :empty (vec (:type-empty ax))}}
+      :n-ary-places
+      {:place3 (:place3 (:nary ax))
+       :place (:place (:nary ax))
+       :surface "ontology/dm2-2.02.ttl via ideas:place3Type / ideas:placeType"}}}))
 
 (defn- views-text [src ax]
   (str ";; Generated by scripts/gen-dm2.cljk from source/dm2-2.02.edn. Do not edit.\n"
@@ -330,6 +460,25 @@
         defs (into {} (map (juxt (comp term-iri :name) :definition)) (:terms src))
         faithful (count (filter #(= (:description %) (defs (:id %)))
                                 (concat classes props)))
+        ;; Punned extra Class facets reuse the in-model definition text, so
+        ;; they count as faithful: 254 in-model nodes + 3 extra facets.
+        expected-faithful (+ (count (:terms src)) (count punned-extra-facets))
+        ext-decl (get-in views [:resolutions :external-declarations])
+        ext-names (set (map :name ext-decl))
+        ext-nodes (filter #(ext-names (:name %)) (concat classes props))
+        ext-marker "External to the DM2 in-model dictionary set."
+        unmarked (remove #(str/starts-with? (:description %) ext-marker) ext-nodes)
+        ;; Every name the EA source references must be declared in this file:
+        ;; in-model terms, external declarations, or the empty-name record.
+        ;; (Normalization is applied exactly as in derive-axioms.)
+        norm (fn [n] (get normalizations n n))
+        referenced (set (concat (mapcat (fn [[a b]] [(norm a) (norm b)]) (:super-subtype src))
+                                (mapcat (fn [[k v]] (cons (norm k) (vals v)))
+                                        (:tuple-places src))
+                                (mapcat identity (:powertype-instance src))
+                                (mapcat identity (:type-instance src))))
+        referenced (disj (set (map #(if (string? %) % "") referenced)) "")
+        missing (sort (remove #(declared (term-iri %)) referenced))
         pairs (count (filter #(and (:rdfs/domain %) (:rdfs/range %)) props))
         model-concepts (reduce + (map (comp count :concepts) (:models views)))
         vp-models (set (mapcat :models (:viewpoints views)))
@@ -342,6 +491,7 @@
                 ["domain-range-pairs" pairs]
                 ["node-shapes" (count shapes)]
                 ["property-shapes" (count shape-props)]
+                ["external-declarations" (count ext-decl)]
                 ["viewpoints" (count (:viewpoints views))]
                 ["models" (count (:models views))]
                 ["models-in-a-viewpoint" (count vp-models)]
@@ -352,10 +502,24 @@
         failures (concat
                   (for [[k n] counts :when (zero? n)]
                     (str "SCANNED " k " = 0 (nothing measured is not a pass)"))
-                  (when (not= faithful (count (:terms src)))
-                    [(str "descriptions equal to source definition: " faithful " of " (count (:terms src)))])
-                  (when (not= (count declared) (count (:terms src)))
-                    [(str "declared term IRIs " (count declared) " != source terms " (count (:terms src)))])
+                  (when (not= faithful expected-faithful)
+                    [(str "descriptions equal to source definition: " faithful " of " expected-faithful)])
+                  (when (not= (count declared) (+ (count (:terms src)) (count ext-decl)))
+                    [(str "declared term IRIs " (count declared)
+                          " != source terms " (count (:terms src))
+                          " + external declarations " (count ext-decl))])
+                  (when (seq unmarked)
+                    [(str (count unmarked) " external nodes lack the external marker in :description")])
+                  (when (seq missing)
+                    [(str "EA-referenced names not declared in the .mith graph: "
+                          (str/join ", " (take 5 missing)))])
+                  (when (not= (get-in views [:resolutions :instance-links :powertype-instance :count])
+                               (count (:powertype-instance src)))
+                    ["view resolutions powertype-instance count disagrees with source"])
+                  (when (not= (+ (get-in views [:resolutions :instance-links :type-instance :count])
+                                  (count (get-in views [:resolutions :instance-links :type-instance :empty])))
+                               (count (:type-instance src)))
+                    ["view resolutions type-instance count + empty disagrees with source"])
                   (when (not= (count (:models views)) (count (:models src)))
                     [(str "view catalog models " (count (:models views)) " != source models " (count (:models src)))])
                   (when (not= (count vp-models) (count (:models views)))
@@ -370,6 +534,8 @@
                     (when (pos? n) [(str "sub-property-of graph is cyclic: " n " properties cannot be topologically ordered")])))]
     (doseq [[k n] counts] (println (str "SCANNED\t" k "\t" n)))
     (println (str "COUNT\tdangling-iris\t" (count dangling)))
+    (println (str "COUNT\tunmarked-externals\t" (count unmarked)))
+    (println (str "COUNT\tundeclared-references\t" (count missing)))
     (println (str "COUNT\tmiskinded-iris\t" (count miskinded)))
     (println (str "COUNT\tsub-class-cycle-nodes\t" (acyclic-count sc-edges)))
     (println (str "COUNT\tsub-property-cycle-nodes\t" (acyclic-count sp-edges)))

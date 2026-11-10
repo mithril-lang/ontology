@@ -677,7 +677,8 @@
      :name "measureOfTypeWholePartType"
      :description "wholePart is a member of Measure"
      :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#measureOfType"
-     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Measure" )
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Measure"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#WholePartType" )
    (owl/class
      :id "https://mithril.fund/ontology/dm2/2.02#MeasureType"
      :name "MeasureType"
@@ -898,7 +899,8 @@
      :name "portPartOfPerformer"
      :description "A an association of the whole Performer to its Port that is visible and interfaces with other Performers"
      :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
-     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Performer" )
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Performer"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#Port" )
    (owl/class
      :id "https://mithril.fund/ontology/dm2/2.02#PortType"
      :name "PortType"
@@ -957,6 +959,7 @@
      :id "https://mithril.fund/ontology/dm2/2.02#propertyOfType"
      :name "propertyOfType"
      :description "A superSubtype that asserts an IndividualType is a subtype of a Property - i.e. it asserts all members of the Individual type \"have\" a property \n\nExamples:\n\nAll London Buses are red\nAll Porsche 911 2.2S have a mass between 900 and 960 kg\nAll atoms of merc"
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#superSubType"
      :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Property"
      :rdfs/range "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
    (owl/class
@@ -1086,6 +1089,7 @@
      :id "https://mithril.fund/ontology/dm2/2.02#ruleConstrainsActivity"
      :name "ruleConstrainsActivity"
      :description "An overlap between a Rule and the Activities it allows"
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#superSubType"
      :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Activity"
      :rdfs/range "https://mithril.fund/ontology/dm2/2.02#Rule" )
    (owl/object-property
@@ -1145,7 +1149,8 @@
    (owl/class
      :id "https://mithril.fund/ontology/dm2/2.02#ServicePort"
      :name "ServicePort"
-     :description "A part of a Performer that specifics a interaction component through which the Performer interacts with other Performers.  This isolates dependencies between performers to particular interaction points rather than to the performer as a whole." )
+     :description "A part of a Performer that specifics a interaction component through which the Performer interacts with other Performers.  This isolates dependencies between performers to particular interaction points rather than to the performer as a whole."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#Port" )
    (owl/object-property
      :id "https://mithril.fund/ontology/dm2/2.02#servicePortDescribedBy"
      :name "servicePortDescribedBy"
@@ -1280,7 +1285,10 @@
    (owl/object-property
      :id "https://mithril.fund/ontology/dm2/2.02#superSubType"
      :name "superSubType"
-     :description "An association in which one Type (the subtype) is a subset of the other Type (supertype)." )
+     :description "An association in which one Type (the subtype) is a subset of the other Type (supertype)."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#couple"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#Type"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#Type" )
    (owl/class
      :id "https://mithril.fund/ontology/dm2/2.02#Surface"
      :name "Surface"
@@ -1402,6 +1410,252 @@
      :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#CoupleType"
      :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#IndividualType"
      :rdfs/range "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Classification"
+     :name "Classification"
+     :description "External to the DM2 in-model dictionary set. subtype of ClassificationType; place type of classificationPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#ClassificationType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ClassificationReason"
+     :name "ClassificationReason"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of classificationReasonPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ClassificationType"
+     :name "ClassificationType"
+     :description "External to the DM2 in-model dictionary set. supertype of Classification; subtype of IndividualType."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ClassifiedBy"
+     :name "ClassifiedBy"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of classifiedByPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DateOfExemptedSource"
+     :name "DateOfExemptedSource"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of dateOfExemptedSourcePartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DeclassDate"
+     :name "DeclassDate"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of declassDatePartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DeclassEvent"
+     :name "DeclassEvent"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of declassEventPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DeclassException"
+     :name "DeclassException"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of declassExceptionPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DeclassManualReview"
+     :name "DeclassManualReview"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of declassManualReviewPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DerivedFrom"
+     :name "DerivedFrom"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of derivedFromPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#DisseminationControls"
+     :name "DisseminationControls"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of disseminationControlsPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FGIsourceOpen"
+     :name "FGIsourceOpen"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of FGIsourceOpenPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#FGIsourceOpenPartOfSecurityAttributesGroup"
+     :name "FGIsourceOpenPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type FGIsourceOpen."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#FGIsourceOpen" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#FGIsourceProtected"
+     :name "FGIsourceProtected"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of FGIsourceProtectedPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#FGIsourceProtectedPartOfSecurityAttributesGroup"
+     :name "FGIsourceProtectedPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type FGIsourceProtected."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#FGIsourceProtected" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#NonICmarkings"
+     :name "NonICmarkings"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of nonICmarkingsPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#OwnerProducer"
+     :name "OwnerProducer"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of ownerProducerPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#Port"
+     :name "Port"
+     :description "External to the DM2 in-model dictionary set. subtype of Performer; supertype of ServicePort; place type of portPartOfPerformer (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#Performer" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#ReleasableTo"
+     :name "ReleasableTo"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of releasableToPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SARIdentifier"
+     :name "SARIdentifier"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of SARIdentifierPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#SARIdentifierPartOfSecurityAttributesGroup"
+     :name "SARIdentifierPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type SARIdentifier."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#SARIdentifier" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#SCIControls"
+     :name "SCIControls"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of SCIControlsPartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#SCIControlsPartOfSecurityAttributesGroup"
+     :name "SCIControlsPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type SCIControls."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#SCIControls" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TypeOfExemptedSource"
+     :name "TypeOfExemptedSource"
+     :description "External to the DM2 in-model dictionary set. subtype of IndividualType; place type of typeOfExemptedSourcePartOfSecurityAttributesGroup (place2Type)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#IndividualType" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#classificationPartOfSecurityAttributesGroup"
+     :name "classificationPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type Classification."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#Classification" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#classificationReasonPartOfSecurityAttributesGroup"
+     :name "classificationReasonPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type ClassificationReason."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#ClassificationReason" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#classifiedByPartOfSecurityAttributesGroup"
+     :name "classifiedByPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type ClassifiedBy."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#ClassifiedBy" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#dateOfExemptedSourcePartOfSecurityAttributesGroup"
+     :name "dateOfExemptedSourcePartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DateOfExemptedSource."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DateOfExemptedSource" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#declassDatePartOfSecurityAttributesGroup"
+     :name "declassDatePartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DeclassDate."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DeclassDate" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#declassEventPartOfSecurityAttributesGroup"
+     :name "declassEventPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DeclassEvent."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DeclassEvent" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#declassExceptionPartOfSecurityAttributesGroup"
+     :name "declassExceptionPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DeclassException."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DeclassException" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#declassManualReviewPartOfSecurityAttributesGroup"
+     :name "declassManualReviewPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DeclassManualReview."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DeclassManualReview" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#derivedFromPartOfSecurityAttributesGroup"
+     :name "derivedFromPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DerivedFrom."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DerivedFrom" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#disseminationControlsPartOfSecurityAttributesGroup"
+     :name "disseminationControlsPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type DisseminationControls."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#DisseminationControls" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#informationPedigree"
+     :name "informationPedigree"
+     :description "External to the DM2 in-model dictionary set. subtype of describedBy; tuple with place2Type PedigreeInformation."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#describedBy"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#PedigreeInformation" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#nonICmarkingsPartOfSecurityAttributesGroup"
+     :name "nonICmarkingsPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type NonICmarkings."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#NonICmarkings" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#ownerProducerPartOfSecurityAttributesGroup"
+     :name "ownerProducerPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type OwnerProducer."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#OwnerProducer" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#releasableToPartOfSecurityAttributesGroup"
+     :name "releasableToPartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type ReleasableTo."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#ReleasableTo" )
+   (owl/object-property
+     :id "https://mithril.fund/ontology/dm2/2.02#typeOfExemptedSourcePartOfSecurityAttributesGroup"
+     :name "typeOfExemptedSourcePartOfSecurityAttributesGroup"
+     :description "External to the DM2 in-model dictionary set. subtype of WholePartType; tuple with place1Type SecurityAttributesGroup place2Type TypeOfExemptedSource."
+     :rdfs/sub-property-of "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :rdfs/domain "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :rdfs/range "https://mithril.fund/ontology/dm2/2.02#TypeOfExemptedSource" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#TupleType"
+     :name "TupleType"
+     :description "The powertype of tuple that provides the stereotype for tuples of Types."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#Type" )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#WholePartType"
+     :name "WholePartType"
+     :description "A coupleType that asserts one Type (the part) has members that have a whole-part relation with a member of the other Type (whole)." )
+   (owl/class
+     :id "https://mithril.fund/ontology/dm2/2.02#tuple"
+     :name "tuple"
+     :description "A relationship between two or more things. Note: Tuples are identified by their places (i.e. the ends of the relationship)."
+     :rdfs/sub-class-of "https://mithril.fund/ontology/dm2/2.02#Thing" )
    (shacl/node-shape
      :id "https://mithril.fund/ontology/dm2/2.02/shapes#activityConsumesResource"
      :name "activityConsumesResourceShape"
@@ -1754,6 +2008,15 @@
         :sh/path "https://mithril.fund/ontology/dm2/2.02#measureOfTypeStartBoundaryType"
         :sh/class "https://mithril.fund/ontology/dm2/2.02#IndividualType")] )
    (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#measureOfTypeWholePartType"
+     :name "measureOfTypeWholePartTypeShape"
+     :description "Tuple place typing of measureOfTypeWholePartType in the official DM2 2.02 EA model: place1Type Measure, place2Type WholePartType."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#Measure"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#measureOfTypeWholePartType"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#WholePartType")] )
+   (shacl/node-shape
      :id "https://mithril.fund/ontology/dm2/2.02/shapes#measureTypeApplicableToActivity"
      :name "measureTypeApplicableToActivityShape"
      :description "Tuple place typing of measureTypeApplicableToActivity in the official DM2 2.02 EA model: place1Type MeasureType, place2Type Activity."
@@ -1807,6 +2070,15 @@
      [(shacl/property-shape
         :sh/path "https://mithril.fund/ontology/dm2/2.02#pointPartOfPlanarSurface"
         :sh/class "https://mithril.fund/ontology/dm2/2.02#Point")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#portPartOfPerformer"
+     :name "portPartOfPerformerShape"
+     :description "Tuple place typing of portPartOfPerformer in the official DM2 2.02 EA model: place1Type Performer, place2Type Port."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#Performer"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#portPartOfPerformer"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#Port")] )
    (shacl/node-shape
      :id "https://mithril.fund/ontology/dm2/2.02/shapes#powertypeInstance"
      :name "powertypeInstanceShape"
@@ -1925,6 +2197,15 @@
         :sh/path "https://mithril.fund/ontology/dm2/2.02#skillOfPersonRoleType"
         :sh/class "https://mithril.fund/ontology/dm2/2.02#PersonRoleType")] )
    (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#superSubType"
+     :name "superSubTypeShape"
+     :description "Tuple place typing of superSubType in the official DM2 2.02 EA model: place1Type Type, place2Type Type."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#Type"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#superSubType"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#Type")] )
+   (shacl/node-shape
      :id "https://mithril.fund/ontology/dm2/2.02/shapes#typeInstance"
      :name "typeInstanceShape"
      :description "Tuple place typing of typeInstance in the official DM2 2.02 EA model: place1Type Type, place2Type Thing."
@@ -1960,4 +2241,167 @@
      [(shacl/property-shape
         :sh/path "https://mithril.fund/ontology/dm2/2.02#WholePartType"
         :sh/class "https://mithril.fund/ontology/dm2/2.02#IndividualType")] )
-  ])
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#FGIsourceOpenPartOfSecurityAttributesGroup"
+     :name "FGIsourceOpenPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of FGIsourceOpenPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type FGIsourceOpen."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#FGIsourceOpenPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#FGIsourceOpen")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#FGIsourceProtectedPartOfSecurityAttributesGroup"
+     :name "FGIsourceProtectedPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of FGIsourceProtectedPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type FGIsourceProtected."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#FGIsourceProtectedPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#FGIsourceProtected")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#SARIdentifierPartOfSecurityAttributesGroup"
+     :name "SARIdentifierPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of SARIdentifierPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type SARIdentifier."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#SARIdentifierPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#SARIdentifier")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#SCIControlsPartOfSecurityAttributesGroup"
+     :name "SCIControlsPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of SCIControlsPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type SCIControls."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#SCIControlsPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#SCIControls")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#classificationPartOfSecurityAttributesGroup"
+     :name "classificationPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of classificationPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type Classification."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#classificationPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#Classification")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#classificationReasonPartOfSecurityAttributesGroup"
+     :name "classificationReasonPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of classificationReasonPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type ClassificationReason."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#classificationReasonPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#ClassificationReason")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#classifiedByPartOfSecurityAttributesGroup"
+     :name "classifiedByPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of classifiedByPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type ClassifiedBy."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#classifiedByPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#ClassifiedBy")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#dateOfExemptedSourcePartOfSecurityAttributesGroup"
+     :name "dateOfExemptedSourcePartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of dateOfExemptedSourcePartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DateOfExemptedSource."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#dateOfExemptedSourcePartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DateOfExemptedSource")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#declassDatePartOfSecurityAttributesGroup"
+     :name "declassDatePartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of declassDatePartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DeclassDate."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#declassDatePartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DeclassDate")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#declassEventPartOfSecurityAttributesGroup"
+     :name "declassEventPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of declassEventPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DeclassEvent."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#declassEventPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DeclassEvent")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#declassExceptionPartOfSecurityAttributesGroup"
+     :name "declassExceptionPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of declassExceptionPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DeclassException."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#declassExceptionPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DeclassException")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#declassManualReviewPartOfSecurityAttributesGroup"
+     :name "declassManualReviewPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of declassManualReviewPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DeclassManualReview."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#declassManualReviewPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DeclassManualReview")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#derivedFromPartOfSecurityAttributesGroup"
+     :name "derivedFromPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of derivedFromPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DerivedFrom."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#derivedFromPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DerivedFrom")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#disseminationControlsPartOfSecurityAttributesGroup"
+     :name "disseminationControlsPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of disseminationControlsPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type DisseminationControls."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#disseminationControlsPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#DisseminationControls")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#nonICmarkingsPartOfSecurityAttributesGroup"
+     :name "nonICmarkingsPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of nonICmarkingsPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type NonICmarkings."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#nonICmarkingsPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#NonICmarkings")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#ownerProducerPartOfSecurityAttributesGroup"
+     :name "ownerProducerPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of ownerProducerPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type OwnerProducer."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#ownerProducerPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#OwnerProducer")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#releasableToPartOfSecurityAttributesGroup"
+     :name "releasableToPartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of releasableToPartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type ReleasableTo."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#releasableToPartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#ReleasableTo")] )
+   (shacl/node-shape
+     :id "https://mithril.fund/ontology/dm2/2.02/shapes#typeOfExemptedSourcePartOfSecurityAttributesGroup"
+     :name "typeOfExemptedSourcePartOfSecurityAttributesGroupShape"
+     :description "Tuple place typing of typeOfExemptedSourcePartOfSecurityAttributesGroup in the official DM2 2.02 EA model: place1Type SecurityAttributesGroup, place2Type TypeOfExemptedSource."
+     :sh/target-class "https://mithril.fund/ontology/dm2/2.02#SecurityAttributesGroup"
+     :sh/property
+     [(shacl/property-shape
+        :sh/path "https://mithril.fund/ontology/dm2/2.02#typeOfExemptedSourcePartOfSecurityAttributesGroup"
+        :sh/class "https://mithril.fund/ontology/dm2/2.02#TypeOfExemptedSource")] )
+  ]
+)
