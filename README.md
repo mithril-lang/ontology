@@ -20,14 +20,14 @@ The repository has one data source and two generated outputs:
 | File | Role |
 |---|---|
 | [`ontology/dm2-2.02.ttl`](ontology/dm2-2.02.ttl) | OWL classes and object properties, subClassOf / subPropertyOf, domain / range, SHACL node shapes (generated) |
-| [`ontology/dm2-2.02.json`](ontology/dm2-2.02.json) | The same content as JSON, plus the supertype edges that have no OWL counterpart (generated) |
+| [`ontology/dm2-2.02.json`](ontology/dm2-2.02.json) | The same content as JSON, plus `ideas_relations`, `ideas_kinds` and `resolutions` (generated) |
 
 ```bash
 uv run scripts/gen_dm2_ttl.py          # regenerate
 uv run scripts/gen_dm2_ttl.py --check  # exit 3 if the committed files are stale, 1 if a count check fails
 ```
 
-The script checks the counts stated in this README (173 classes, 81 properties, 182 class edges, 81 property edges, 67 domains, 66 ranges, 62 shapes) and that no IRI is dangling.
+The script checks the counts stated in this README (196 classes, 100 object properties, 205 sub-class edges, 103 sub-property edges, 86 domains, 88 ranges, 83 node shapes) and that no IRI is dangling.
 
 ### Sources
 
@@ -40,25 +40,20 @@ The column-by-column extraction procedure is recorded under `:sources` in `sourc
 
 ### 1. Terms and definitions (dictionary)
 
-Every dictionary row marked `a. In Model` is included: 254 terms, with the official spelling and definition (column C; CRLF normalized to LF and surrounding whitespace trimmed). The dictionary's `Association?` flag decides whether a term is an OWL object property (81 terms) or a class (173 terms). Deleted, alias/composite, external and new dictionary-only entries are excluded. The `:id`, `:name` and `:description` of every node are unchanged from the earlier term-only projection.
+Every dictionary row marked `a. In Model` is included: 254 terms, with the official spelling and definition (column C; CRLF normalized to LF and surrounding whitespace trimmed). The dictionary's `Association?` flag decides whether a term is an OWL object property (81 terms) or a class (173 terms). Deleted, alias/composite and new dictionary-only entries are excluded. The `:id`, `:name` and `:description` of every in-model node are unchanged from the earlier term-only projection.
+
+Names referenced by EA connectors but outside the in-model dictionary set are declared as external nodes (39: 20 classes, 19 properties; `:description` starts with `External to the DM2 in-model dictionary set.`). Three in-model associations also carry a Class facet on their property IRI (OWL punning): `TupleType` and `tuple`, which the EA model asserts as subtypes of the classes `Type` and `Thing`, and `WholePartType`, which is referenced as a place type.
 
 ### 2. Supertypes and tuple places (EA model)
 
 The logical structure is taken from connectors in the EA model. It adds only what those connectors state:
 
-- **Subtypes.** An EA `Generalization` (IDEAS `superSubtype`) between two in-model classes becomes `:rdfs/sub-class-of`. The same connector between two in-model associations becomes `:rdfs/sub-property-of`. This gives 182 class edges and 81 property edges. When a term has several supertypes, the value is a vector.
-- **Tuple places.** DM2 associations are IDEAS tuple types whose places are typed by `place1Type` / `place2Type` connectors. **Convention used here: `:rdfs/domain` is the `place1Type` and `:rdfs/range` is the `place2Type`.** This is the IDEAS place order. It is not always the order that the association's English name suggests: for example, the EA gives `activityPerformedByPerformer` place1 `Performer` and place2 `Activity`. This gives 67 domains and 66 ranges.
-- **SHACL.** Each association that has both places typed by in-model classes also gets a `shacl/node-shape` (IRI `https://mithril.fund/ontology/dm2/2.02/shapes#<association>`), 62 in total. It has `:sh/target-class` set to the place1 type and one property shape whose `:sh/path` is the association and whose `:sh/class` is the place2 type. No cardinality is asserted, because the EA model states none.
+- **Subtypes.** Every EA `Generalization` (IDEAS `superSubtype`) is expressed: between two classes as `:rdfs/sub-class-of`, otherwise as `:rdfs/sub-property-of`. This gives 205 class edges and 103 property edges, including all ends outside the in-model set. The dictionary spelling `superSubType` and the EA spelling `superSubtype` are normalized to the one concept (recorded under `:resolutions` in the view catalog). When a term has several supertypes, the value is a vector.
+- **Tuple places.** DM2 associations are IDEAS tuple types whose places are typed by `place1Type` / `place2Type` connectors. **Convention used here: `:rdfs/domain` is the `place1Type` and `:rdfs/range` is the `place2Type`.** This is the IDEAS place order. It is not always the order that the association's English name suggests: for example, the EA gives `activityPerformedByPerformer` place1 `Performer` and place2 `Activity`. This gives 86 domains and 88 ranges.
+- **SHACL.** Each association that has both places typed also gets a `shacl/node-shape` (IRI `https://mithril.fund/ontology/dm2/2.02/shapes#<association>`), 83 in total. It has `:sh/target-class` set to the place1 type and one property shape whose `:sh/path` is the association and whose `:sh/class` is the place2 type. No cardinality is asserted, because the EA model states none.
+- **Instance links and n-ary places.** IDEAS `powertypeInstance` (106 pairs, e.g. `Activity` to `ActivityType`) and `typeInstance` (6 pairs) are triples in the TTL/JSON outputs under the `ideas:` namespace (`.../dm2/2.02/ideas#`), as are the `place3Type` (1) and `placeType` (2) places, which have no binary OWL counterpart. The Mithril form surface has no keys for custom predicates, so the `.mith` carries the RDFS backbone, domains/ranges and shapes, and the TTL/JSON carry these triples; the view catalog records both under `:resolutions`.
 
-Some structure has no counterpart in the Mithril form surface. It is listed, with a reason, under `:axiom-gaps` in the view catalog rather than being approximated. It includes:
-
-- 43 supertype edges with an end that is not an in-model term, such as the security-marking classes.
-- 2 edges where an association is a subtype of a class (`TupleType` to `Type`, `tuple` to `Thing`).
-- 8 associations with no place connectors under their exact name.
-- `place3Type` / `placeType` places.
-- A place typed by an association or by a term that is not in the model.
-- The spelling mismatch `superSubType` (dictionary) versus `superSubtype` (EA).
-- IDEAS `powertypeInstance` (106) and `typeInstance` (9). These stay in the source EDN.
+Only EA connectors with an empty (unnamed) end are unrepresentable and stay under `:axiom-gaps` in the view catalog: 3 `typeInstance` connectors and 1 tuple-place connector with no name. Nothing else is dropped.
 
 ### 3. View catalog (dictionary mapping)
 
@@ -74,7 +69,7 @@ The mapping codes are `o`, `n`, `np`, `s`, `df`, `dfo`, `if` and `ifo`. They are
 
 ### Identity and conformance
 
-DoD does not publish a stable public RDF namespace for DM2 terms. All IRIs here (`https://mithril.fund/ontology/dm2/2.02#`, `/shapes#` and `/views#`) are local identifiers, and must not be mistaken for DoD-issued IRIs. This repository is a machine-checkable projection of the DM2 2.02 terms, their supertype and tuple-place structure, and the dictionary's model mapping. It is not the complete IDEAS formal ontology (for example, powertypes and the 4D extensional semantics are not asserted in OWL). It makes no DoDAF conformance claim: that also requires data exchange in accordance with the PES, which is not provided here.
+DoD does not publish a stable public RDF namespace for DM2 terms. All IRIs here (`https://mithril.fund/ontology/dm2/2.02#`, `/shapes#`, `/views#` and `/ideas#`) are local identifiers, and must not be mistaken for DoD-issued IRIs. This repository is a machine-checkable projection of the DM2 2.02 terms, their supertype and tuple-place structure, the dictionary's model mapping, and the IDEAS instance links (`powertypeInstance`, `typeInstance`) and n-ary places — every EA connector with a named end is expressed somewhere. The IDEAS 4D extensional semantics themselves are a documented modeling convention, not axioms in OWL. It makes no DoDAF conformance claim: that also requires data exchange in accordance with the PES, which is not provided here.
 
 ## Regenerate and check
 
@@ -83,10 +78,12 @@ kbb --backend sci scripts/gen-dm2.cljk           # write both generated files
 kbb --backend sci scripts/gen-dm2.cljk --check   # regenerate in memory and compare
 ```
 
-`--check` exits non-zero and names the first file and line that differ. It also re-reads the files on disk and prints `SCANNED<TAB>name<TAB>n` counts, where a zero count fails. The counts cover classes, properties, sub-class edges, domain/range pairs, shapes, viewpoints, models and descriptions equal to the source definition. The check also requires the following, and fails otherwise:
+`--check` exits non-zero and names the first file and line that differ. It also re-reads the files on disk and prints `SCANNED<TAB>name<TAB>n` counts, where a zero count fails. The counts cover classes (including external declarations and punned extra Class facets), properties, sub-class edges, domain/range pairs, shapes, viewpoints, models and descriptions equal to the source definition. The check also requires the following, and fails otherwise:
 
 - No dangling IRIs: every IRI used by an axiom, shape or the view catalog is declared in the `.mith`.
 - No IRI used as the wrong kind, for example a property used where a class is expected.
+- Every name referenced by the EA source (edges, places, instance links, after spelling normalization) is declared in the `.mith` — as an in-model term or an external declaration — or recorded as an empty source name.
+- Every external declaration has its marker in `:description`; the view catalog's `:resolutions` instance-link counts agree with the source.
 - Acyclic `subClassOf` and `subPropertyOf` graphs.
 
 `--check --root <dir>` checks a copy.
@@ -112,3 +109,5 @@ kbb --backend sci --classpath "$(kbb -Spath)" \
 ```
 
 `source/dm2-2.02.edn` is the canonical source. Both files under `ontology/` are generated from it, so do not hand-edit them. Change the source or the generator, then regenerate.
+
+Reference compile output (MITHRIL-2320): `graph-digest: sha256:ad939f2f7610da676bb23c3db09129f9260589a6a7efdca40de519c5d7d33bed`.

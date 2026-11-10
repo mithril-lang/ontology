@@ -10146,6 +10146,7 @@
   "https://mithril.fund/ontology/dm2/2.02#superSubType"
   {:name "superSubType"
    :owl-kind "owl:ObjectProperty"
+   :ideas-kind "IDEAS:TupleType"
    :data-groups
    ["IDEAS Foundation"]
    :models
@@ -10204,69 +10205,197 @@
   :values
   ["df" "dfo" "if" "ifo" "n" "np" "o" "s"]}
  :axiom-gaps
- {:ideas-kind
-  [{:reason "no EA class with this exact name (EA spells a class superSubtype; names are not fuzzy-matched)" :term "superSubType"}]
-  :powertype-instance
-  {:count 106 :reason "IDEAS powertypeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it (no rdf:type between two classes / punning)"}
-  :super-subtype
-  [{:reason "an end is not an in-model dictionary term" :sub "Classification" :super "ClassificationType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ClassificationReason" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ClassificationType" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ClassifiedBy" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DateOfExemptedSource" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DeclassDate" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DeclassEvent" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DeclassException" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DeclassManualReview" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DerivedFrom" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "DisseminationControls" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "FGIsourceOpen" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "FGIsourceOpenPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "FGIsourceProtected" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "FGIsourceProtectedPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "NonICmarkings" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "OwnerProducer" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "Port" :super "Performer"}
-   {:reason "an end is not an in-model dictionary term" :sub "ReleasableTo" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "SARIdentifier" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "SARIdentifierPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "SCIControls" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "SCIControlsPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ServicePort" :super "Port"}
-   {:reason "association is a subtype of a non-association class; OWL has no subClassOf/subPropertyOf between a property and a class" :sub "TupleType" :super "Type"}
-   {:reason "an end is not an in-model dictionary term" :sub "TypeOfExemptedSource" :super "IndividualType"}
-   {:reason "an end is not an in-model dictionary term" :sub "classificationPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "classificationReasonPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "classifiedByPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "dateOfExemptedSourcePartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "declassDatePartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "declassEventPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "declassExceptionPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "declassManualReviewPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "derivedFromPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "disseminationControlsPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "informationPedigree" :super "describedBy"}
-   {:reason "an end is not an in-model dictionary term" :sub "nonICmarkingsPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ownerProducerPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "propertyOfType" :super "superSubtype"}
-   {:reason "an end is not an in-model dictionary term" :sub "releasableToPartOfSecurityAttributesGroup" :super "WholePartType"}
-   {:reason "an end is not an in-model dictionary term" :sub "ruleConstrainsActivity" :super "superSubtype"}
-   {:reason "an end is not an in-model dictionary term" :sub "superSubtype" :super "couple"}
-   {:reason "association is a subtype of a non-association class; OWL has no subClassOf/subPropertyOf between a property and a class" :sub "tuple" :super "Thing"}
-   {:reason "an end is not an in-model dictionary term" :sub "typeOfExemptedSourcePartOfSecurityAttributesGroup" :super "WholePartType"}]
-  :tuple-places
-  [{:association "endBoundary" :reason "no place connector in the EA model under this exact name"}
-   {:association "EndBoundaryType" :reason "no place connector in the EA model under this exact name"}
-   {:association "startBoundary" :reason "no place connector in the EA model under this exact name"}
-   {:association "StartBoundaryType" :reason "no place connector in the EA model under this exact name"}
-   {:association "superSubType" :reason "no place connector in the EA model under this exact name"}
-   {:association "TemporalBoundaryType" :reason "no place connector in the EA model under this exact name"}
-   {:association "temporalWholePart" :reason "no place connector in the EA model under this exact name"}
-   {:association "TemporalWholePartType" :reason "no place connector in the EA model under this exact name"}
-   {:association "associationOfInformation" :place "place3Type" :reason "place3Type has no binary OWL counterpart (domain is place1Type, range is place2Type)" :type "InformationType"}
-   {:association "measureOfTypeWholePartType" :place "place2Type" :reason "place type is an association (object property), not a class" :type "WholePartType"}
-   {:association "portPartOfPerformer" :place "place2Type" :reason "place type is not an in-model dictionary term" :type "Port"}
-   {:association "tuple" :place "placeType" :reason "placeType has no binary OWL counterpart (domain is place1Type, range is place2Type)" :type "Thing"}
-   {:association "TupleType" :place "placeType" :reason "placeType has no binary OWL counterpart (domain is place1Type, range is place2Type)" :type "Type"}]
-  :type-instance
-  {:count 9 :reason "IDEAS typeInstance is kept in source/dm2-2.02.edn; the Mithril form surface has no key for it"}}}
+ {:empty-source-names
+  ["type-instance >describedBy" "type-instance >representedBy" "type-instance >wholePart" "tuple-place owner '' {:place1Type \"\", :place2Type \"Performer\"}"]}
+ :resolutions
+ {:normalizations
+  [{:from "superSubtype"
+    :to "superSubType"
+    :via-edge
+    ["propertyOfType" "superSubtype"]
+    :reason "EA spelling; the dictionary spells this concept superSubType"}
+   {:from "superSubtype"
+    :to "superSubType"
+    :via-edge
+    ["ruleConstrainsActivity" "superSubtype"]
+    :reason "EA spelling; the dictionary spells this concept superSubType"}
+   {:from "superSubtype"
+    :to "superSubType"
+    :via-edge
+    ["superSubtype" "couple"]
+    :reason "EA spelling; the dictionary spells this concept superSubType"}]
+  :external-declarations
+  [{:name "Classification"
+    :facet "class"
+    :roles
+    ["subtype of ClassificationType" "place type of classificationPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "ClassificationReason"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of classificationReasonPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "ClassificationType"
+    :facet "class"
+    :roles
+    ["supertype of Classification" "subtype of IndividualType"]}
+   {:name "ClassifiedBy"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of classifiedByPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DateOfExemptedSource"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of dateOfExemptedSourcePartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DeclassDate"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of declassDatePartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DeclassEvent"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of declassEventPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DeclassException"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of declassExceptionPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DeclassManualReview"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of declassManualReviewPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DerivedFrom"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of derivedFromPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "DisseminationControls"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of disseminationControlsPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "FGIsourceOpen"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of FGIsourceOpenPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "FGIsourceOpenPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type FGIsourceOpen"]}
+   {:name "FGIsourceProtected"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of FGIsourceProtectedPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "FGIsourceProtectedPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type FGIsourceProtected"]}
+   {:name "NonICmarkings"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of nonICmarkingsPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "OwnerProducer"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of ownerProducerPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "Port"
+    :facet "class"
+    :roles
+    ["subtype of Performer" "supertype of ServicePort" "place type of portPartOfPerformer (place2Type)"]}
+   {:name "ReleasableTo"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of releasableToPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "SARIdentifier"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of SARIdentifierPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "SARIdentifierPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type SARIdentifier"]}
+   {:name "SCIControls"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of SCIControlsPartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "SCIControlsPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type SCIControls"]}
+   {:name "TypeOfExemptedSource"
+    :facet "class"
+    :roles
+    ["subtype of IndividualType" "place type of typeOfExemptedSourcePartOfSecurityAttributesGroup (place2Type)"]}
+   {:name "classificationPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type Classification"]}
+   {:name "classificationReasonPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type ClassificationReason"]}
+   {:name "classifiedByPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type ClassifiedBy"]}
+   {:name "dateOfExemptedSourcePartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DateOfExemptedSource"]}
+   {:name "declassDatePartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DeclassDate"]}
+   {:name "declassEventPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DeclassEvent"]}
+   {:name "declassExceptionPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DeclassException"]}
+   {:name "declassManualReviewPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DeclassManualReview"]}
+   {:name "derivedFromPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DerivedFrom"]}
+   {:name "disseminationControlsPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type DisseminationControls"]}
+   {:name "informationPedigree"
+    :facet "property"
+    :roles
+    ["subtype of describedBy" "tuple with place2Type PedigreeInformation"]}
+   {:name "nonICmarkingsPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type NonICmarkings"]}
+   {:name "ownerProducerPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type OwnerProducer"]}
+   {:name "releasableToPartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type ReleasableTo"]}
+   {:name "typeOfExemptedSourcePartOfSecurityAttributesGroup"
+    :facet "property"
+    :roles
+    ["subtype of WholePartType" "tuple with place1Type SecurityAttributesGroup place2Type TypeOfExemptedSource"]}]
+  :instance-links
+  {:powertype-instance
+   {:count 106
+    :surface "ontology/dm2-2.02.ttl via ideas:powertypeInstance"
+    :empty-ends
+    []}
+   :type-instance
+   {:count 6
+    :surface "ontology/dm2-2.02.ttl via ideas:typeInstance"
+    :empty
+    ["type-instance >describedBy" "type-instance >representedBy" "type-instance >wholePart"]}}
+  :n-ary-places
+  {:surface "ontology/dm2-2.02.ttl via ideas:place3Type / ideas:placeType"
+   :place3
+   [["associationOfInformation" "InformationType"]]
+   :place
+   [["TupleType" "Type"]
+    ["tuple" "Thing"]]}}}
